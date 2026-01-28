@@ -78,7 +78,7 @@ params:
 
     comments:
         enabled: true
-        provider: utterances
+        provider: giscus
 
         disqusjs:
             shortname:
@@ -88,7 +88,7 @@ params:
             adminLabel:
 
         utterances:
-            repo:
+            repo: morningCPU/blog
             issueTerm: pathname
             label:
 
@@ -139,13 +139,13 @@ params:
             siteName: "" # You must insert a unique identifier here matching the one you registered (See https://cactus.chat/docs/getting-started/quick-start/#register-your-site)
 
         giscus:
-            repo:
-            repoID:
-            category:
-            categoryID:
-            mapping:
-            lightTheme:
-            darkTheme:
+            repo: morningCPU/blog
+            repoID: R_kgDORCgPmw
+            category: Announcements
+            categoryID: DIC_kwDORCgPm84C1inE
+            mapping: pathname
+            lightTheme: 
+            darkTheme: 
             reactionsEnabled: 1
             emitMetadata: 0
 

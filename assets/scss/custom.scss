@@ -1,0 +1,39 @@
+/* --- Hugo Stack TOC 无序列表自定义 --- */
+
+/* 1. 禁用原有的计数器数字 */
+.widget--toc #TableOfContents ol li a:first-of-type::before {
+    content: none !important;
+}
+
+/* 2. 还原列表的显示模式，并设置一级为实心圆 */
+.widget--toc #TableOfContents ol,
+.widget--toc #TableOfContents ul {
+    list-style-type: disc !important;
+    /* 一级圆点 */
+    padding-left: 1.2rem !important;
+    /* 留出圆点空间 */
+    counter-reset: none !important;
+}
+
+/* 3. 强制每一行作为列表项显示（否则不显示圆点） */
+.widget--toc #TableOfContents li {
+    display: list-item !important;
+    margin: 10px 0 10px 10px !important;
+    /* 调整间距 */
+}
+
+/* 4. 设置二级及以上层级为空心圆 */
+.widget--toc #TableOfContents li>ol,
+.widget--toc #TableOfContents li>ul {
+    list-style-type: circle !important;
+    /* 二级圆点 */
+    padding-left: 1.5rem !important;
+    /* 层级缩进 */
+    margin-top: 5px !important;
+}
+
+/* 5. 针对 Stack 主题高亮条的微调（防止遮挡圆点） */
+.widget--toc #TableOfContents li.active-class>a {
+    padding-left: 5px !important;
+    margin-left: 0 !important;
+}

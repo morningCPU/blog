@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="用hugo创建静态博客页面，并通过github进行自动部署">
+<title>使用github&#43;hugo创建个人博客</title>
+
+<link rel='canonical' href='http://localhost:1313/blog/p/001/'>
+
+<link rel="stylesheet" href="/blog/scss/style.min.3d657a5272465b0cb967b35a0af42593af9c95f6b50b9dae0be6ecd8d86af7cc.css"><meta property='og:title' content="使用github+hugo创建个人博客">
+<meta property='og:description' content="用hugo创建静态博客页面，并通过github进行自动部署">
+<meta property='og:url' content='http://localhost:1313/blog/p/001/'>
+<meta property='og:site_name' content='morningCPU'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-01-28T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-01-28T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/blog/p/001/title.webp' />
+<meta name="twitter:title" content="使用github+hugo创建个人博客">
+<meta name="twitter:description" content="用hugo创建静态博客页面，并通过github进行自动部署"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/blog/p/001/title.webp' />
+    <link rel="shortcut icon" href="/blog/cpu.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky compact">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/blog/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/blog/img/avatar_hu6909942167441337802.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤠</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/blog">morningCPU</a></h1>
+            <h2 class="site-description">一起记录知识！</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.zhihu.com/people/13-69-67-66/posts'
+                        target="_blank"
+                        title="zhihu"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-zhihu"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 6h6v12h-2l-2 2l-1 -2h-1l0 -12" /><path d="M4 12h6.5" /><path d="M10.5 6h-5" /><path d="M6 4c-.5 2.5 -1.5 3.5 -2.5 4.5" /><path d="M8 6v7c0 4.5 -2 5.5 -4 7" /><path d="M11 18l-3 -5" /></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/blog/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/blog/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/blog/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/blog/%E8%B5%84%E6%96%99%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>资料链接</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/blog/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#1-资源准备">1 资源准备</a>
+      <ol>
+        <li><a href="#11-下载hugo">1.1 下载hugo</a></li>
+        <li><a href="#12-下载主题">1.2 下载主题</a></li>
+      </ol>
+    </li>
+    <li><a href="#2-准备工作">2 准备工作</a>
+      <ol>
+        <li><a href="#21-创建项目">2.1 创建项目</a></li>
+        <li><a href="#22-设置主题">2.2 设置主题</a></li>
+        <li><a href="#23-使用样例">2.3 使用样例</a></li>
+        <li><a href="#24-启动">2.4 启动</a></li>
+      </ol>
+    </li>
+    <li><a href="#3-修改配置">3. 修改配置</a>
+      <ol>
+        <li><a href="#31-完整的hugoyaml配置文件">3.1 完整的hugo.yaml配置文件</a></li>
+        <li><a href="#32-详细说明">3.2 详细说明</a></li>
+      </ol>
+    </li>
+    <li><a href="#4-使用博客">4. 使用博客</a></li>
+    <li><a href="#5-github自动部署">5. github自动部署</a>
+      <ol>
+        <li><a href="#51-github创建仓库">5.1 github创建仓库</a></li>
+        <li><a href="#52-设置访问token">5.2 设置访问token</a></li>
+        <li><a href="#53-设置仓库变量">5.3 设置仓库变量</a></li>
+        <li><a href="#54-本地创建仓库">5.4 本地创建仓库</a></li>
+        <li><a href="#55-创建工作流配置文件">5.5 创建工作流配置文件</a></li>
+        <li><a href="#56-创建gitignore文件">5.6 创建.gitignore文件</a></li>
+        <li><a href="#57-github设置action">5.7 github设置action</a></li>
+        <li><a href="#58-提交">5.8 提交</a></li>
+      </ol>
+    </li>
+    <li><a href="#6-目录的修改">6. 目录的修改</a></li>
+    <li><a href="#7-评论">7. 评论</a>
+      <ol>
+        <li><a href="#71-utterances">7.1 utterances</a></li>
+        <li><a href="#72-giscus">7.2 giscus</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/blog/p/001/">
+                <img src="/blog/p/001/title_hu15791591415830104823.webp"
+                        srcset="/blog/p/001/title_hu15791591415830104823.webp 800w, /blog/p/001/title_hu17597190725741403570.webp 1600w"
+                        width="800" 
+                        height="272" 
+                        loading="lazy"
+                        alt="Featured image of post 使用github&#43;hugo创建个人博客" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/blog/categories/github/" >
+                Github
+            </a>
+        
+            <a href="/blog/categories/hugo/" >
+                Hugo
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/blog/p/001/">使用github&#43;hugo创建个人博客</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            用hugo创建静态博客页面，并通过github进行自动部署
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 28, 2026</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 5 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>本文介绍如何使用hugo和github构建个人博客<br>
+参照B站 <a class="link" href="https://www.bilibili.com/video/BV1bovfeaEtQ/"  target="_blank" rel="noopener"
+    >@Letere-莱特雷</a> 的教学：<br>
+<a class="link" href="https://www.bilibili.com/video/BV1bovfeaEtQ/"  target="_blank" rel="noopener"
+    >https://www.bilibili.com/video/BV1bovfeaEtQ/</a><br>
+<a class="link" href="https://letere-gzj.github.io/hugo-stack"  target="_blank" rel="noopener"
+    >Letere-莱特雷博客</a><br>
+<a class="link" href="https://letere-gzj.github.io/hugo-stack"  target="_blank" rel="noopener"
+    >https://letere-gzj.github.io/hugo-stack</a><br>
+感谢大佬(*´∀`)~♥</p>
+<!-- more -->
+<hr>
+<h2 id="1-资源准备">1 资源准备
+</h2><h3 id="11-下载hugo">1.1 下载hugo
+</h3><p>下载地址 <a class="link" href="https://gohugo.io/"  target="_blank" rel="noopener"
+    >https://gohugo.io/</a>
+点击上方github进入仓库 <br>
+点击tag选择需要的版本进行下载，注意要点进去，里面有不同的类型</p>
+<p><img src="/blog/p/001/image.png"
+	width="1278"
+	height="366"
+	srcset="/blog/p/001/image_hu2801315308241895762.png 480w, /blog/p/001/image_hu5873903982594316204.png 1024w"
+	loading="lazy"
+	
+		alt="hugo"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="349"
+		data-flex-basis="838px"
+	
+></p>
+<p>这里下载版本是 extended-0.131.0<br>
+最好用同样的版本，不然依照这个教程会有些问题(有些函数，变量之类的可能变了)</p>
+<h3 id="12-下载主题">1.2 下载主题
+</h3><p>hugo页面上方点击Themes
+这里选择stack-3.26.0</p>
+<hr>
+<h2 id="2-准备工作">2 准备工作
+</h2><h3 id="21-创建项目">2.1 创建项目
+</h3><p>cmd使用命令 <code>hugo new site name</code>(注意在hugo所在文件夹使用cmd)<br>
+ex. <code>hugo new site blog</code></p>
+<h3 id="22-设置主题">2.2 设置主题
+</h3><p>将上面下载好的主题解压到 hugo/blog/themes</p>
+<h3 id="23-使用样例">2.3 使用样例
+</h3><p><strong>1.</strong> 在解压的主题文件中可以发现exampleSite，这是示例文件<br>
+将其中的content和hugo.yaml复制到项目主文件夹(也就是hugo/blog)<br>
+<strong>2.</strong> 删除多余的hugo.toml<br>
+<strong>3.</strong> 将主题文件夹多余的版本号去除(因为要和配置文件中匹配)<br>
+<strong>4.</strong> 把blog/content/post/rich-content删除(里面有一些链接可能无法访问会导致不能正常启动)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># hugo.yaml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">theme</span><span class="p">:</span><span class="w"> </span><span class="l">hugo-theme-stack</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/blog/p/001/image-1.png"
+	width="1364"
+	height="156"
+	srcset="/blog/p/001/image-1_hu123750753053067149.png 480w, /blog/p/001/image-1_hu14782472331622712161.png 1024w"
+	loading="lazy"
+	
+		alt="theme"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="874"
+		data-flex-basis="2098px"
+	
+></p>
+<h3 id="24-启动">2.4 启动
+</h3><p><strong>1.</strong> 将hugo目录中的hugo.exe复制到blog中(因为没有配置环境变量又要使用hugo)<br>
+也没有必要配置环境变量，直接使用也方便
+<strong>2.</strong> 进入新建的项目 <code>cd blog</code><br>
+<strong>3.</strong> 使用命令 <code>hugo server -D</code> 启动
+<strong>4.</strong> 进入提示的网址</p>
+<p><img src="/blog/p/001/image-2.png"
+	width="2310"
+	height="894"
+	srcset="/blog/p/001/image-2_hu12898517455977428051.png 480w, /blog/p/001/image-2_hu1400918210462071311.png 1024w"
+	loading="lazy"
+	
+		alt="web"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="258"
+		data-flex-basis="620px"
+	
+></p>
+<p>按住ctrl点击就可以浏览器打开</p>
+<p><img src="/blog/p/001/image-3.png"
+	width="3200"
+	height="1730"
+	srcset="/blog/p/001/image-3_hu6853771828445262963.png 480w, /blog/p/001/image-3_hu13631806756268730898.png 1024w"
+	loading="lazy"
+	
+		alt="example"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="184"
+		data-flex-basis="443px"
+	
+></p>
+<p>差不多这样(有些有改了没有复原，不要在意~)</p>
+<hr>
+<h2 id="3-修改配置">3. 修改配置
+</h2><h3 id="31-完整的hugoyaml配置文件">3.1 完整的hugo.yaml配置文件
+</h3><p><a class="link" href="hugo.txt" >hugo.yaml</a></p>
+<h3 id="32-详细说明">3.2 详细说明
+</h3><p><strong>1.</strong> baseurl 下面配置github自动部署有用<br>
+<strong>2.</strong> languageCode 网站的语言，告诉浏览器自己用的是什么语言<br>
+<strong>3.</strong> theme 使用的主题<br>
+<strong>4.</strong> paginate 分页，每一页有几个<br>
+<strong>5.</strong> title 名字<br>
+浏览器标签这里</p>
+<p><img src="/blog/p/001/image-4.png"
+	width="788"
+	height="107"
+	srcset="/blog/p/001/image-4_hu11627856278961745279.png 480w, /blog/p/001/image-4_hu14099004218357875190.png 1024w"
+	loading="lazy"
+	
+		alt="title"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="736"
+		data-flex-basis="1767px"
+	
+></p>
+<p><strong>6.</strong> copyright 版权声明<br>
+下面这里</p>
+<p><img src="/blog/p/001/image-5.png"
+	width="1167"
+	height="250"
+	srcset="/blog/p/001/image-5_hu16529180830008213252.png 480w, /blog/p/001/image-5_hu2164049805202367588.png 1024w"
+	loading="lazy"
+	
+		alt="copyright"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="466"
+		data-flex-basis="1120px"
+	
+></p>
+<p><strong>7.</strong> DefaultContentLanguage 创建的默认语言<br>
+hugo文件格式为index.language.md<br>
+如果你写为index.md那么默认就是index.DefaultContentLanguage.md<br>
+<strong>8.</strong> hasCJKLanguage 如果使用中文就改为true<br>
+<strong>9.</strong> languages 配置不同语言显示的主页</p>
+<p><img src="/blog/p/001/image-6.png"
+	width="517"
+	height="237"
+	srcset="/blog/p/001/image-6_hu3007857035469143887.png 480w, /blog/p/001/image-6_hu2868887333466595076.png 1024w"
+	loading="lazy"
+	
+		alt="languages"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="218"
+		data-flex-basis="523px"
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">zh-cn</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">languageName</span><span class="p">:</span><span class="w"> </span><span class="l">简体中文</span><span class="w"> </span><span class="c">#左下角语言选项的名字</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">morningCPU</span><span class="w"> </span><span class="c"># 名字</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="c"># 权重，选项里排第几个</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>params</strong> 其他设置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">favicon</span><span class="p">:</span><span class="w"> </span><span class="c"># 网页标签图标,放在 blog/static/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">footer</span><span class="p">:</span><span class="w"> </span><span class="c"># 角标</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">since</span><span class="p">:</span><span class="w"> </span><span class="m">2026</span><span class="w"> </span><span class="c">#开始时间</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>下面那里</p>
+<p><img src="/blog/p/001/image-7.png"
+	width="1063"
+	height="182"
+	srcset="/blog/p/001/image-7_hu8230783005085364090.png 480w, /blog/p/001/image-7_hu12093066239062272474.png 1024w"
+	loading="lazy"
+	
+		alt="footer"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="584"
+		data-flex-basis="1401px"
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">sidebar</span><span class="p">:</span><span class="w"> </span><span class="c"># 侧边栏设置</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">emoji</span><span class="p">:</span><span class="w"> </span><span class="l">🤠</span><span class="w"> </span><span class="c">#头像旁的表情包</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">subtitle</span><span class="p">:</span><span class="w"> </span><span class="l">一起记录知识！</span><span class="w"> </span><span class="c"># 名字下面的描述</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">avatar</span><span class="p">:</span><span class="w"> </span><span class="c"># 头像</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">local</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l">img/avatar.png</span><span class="w"> </span><span class="c"># 放在 blog/assets/img/avatar.png</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">compact</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 紧凑模式,改为true更好看我觉得</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>注意图片一定要是150*150的</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">article</span><span class="p">:</span><span class="w"> </span><span class="c"># 文章默认设置</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">headingAnchor</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c">#标题左边的链接标签</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">math</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">toc</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 目录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">readingTime</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">license</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l">Licensed under CC BY-NC-SA 4.0</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>这是默认设置，文章里面也可以设置并且优先级更高</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">widgets</span><span class="p">:</span><span class="w"> </span><span class="c"># 组件</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">homepage</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">search</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">archives</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">limit</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">categories</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">limit</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">page</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">toc</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>左侧的选项，文章的目录</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">menu</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">main</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">social</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">identifier</span><span class="p">:</span><span class="w"> </span><span class="l">github</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">GitHub</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">https://github.com/CaiJimmy/hugo-theme-stack</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l">brand-github</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">identifier</span><span class="p">:</span><span class="w"> </span><span class="l">zhihu</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">zhihu</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">https://www.zhihu.com/people/13-69-67-66/posts</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l">zhihu</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>侧边栏的小图标</li>
+<li>图标文件存在 blog/assets/icons</li>
+<li>可以在 <a class="link" href="https://tabler.io/icons"  target="_blank" rel="noopener"
+    >Tabler Icons</a> 下载图标</li>
+</ul>
+<hr>
+<h2 id="4-使用博客">4. 使用博客
+</h2><p><strong>1.</strong> 命令<code>hugo new content post/name/index.language.md</code>创建一个文件<br>
+ex. <code>hugo new content post/test/index.md</code> (因为设置了默认所以就不写language了)<br>
+(name是文件名，language是语言，md是文件格式)</p>
+<p><img src="/blog/p/001/image-8.png"
+	width="1415"
+	height="87"
+	srcset="/blog/p/001/image-8_hu13560010343485419425.png 480w, /blog/p/001/image-8_hu5780014599696949241.png 1024w"
+	loading="lazy"
+	
+		alt="file"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1626"
+		data-flex-basis="3903px"
+	
+></p>
+<p><strong>2.</strong> 可以使用code或者其他打开目录<br>
+这里就 <code>code E:\\library\\hugo\\blog\\content\\post\\test</code></p>
+<p><strong>3.</strong> 创建模版
+打开index.md会发现已经有内容了，这是因为有模版<br>
+模版是 blog/archetypes/default.md<br>
+可以使用下面这个模版</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">+++
+</span></span><span class="line"><span class="cl">author = &#34;morning&#34;
+</span></span><span class="line"><span class="cl">title = &#39;{{ replace .File.ContentBaseName &#34;-&#34; &#34; &#34; | title }}&#39;
+</span></span><span class="line"><span class="cl">description = &#34;&#34;
+</span></span><span class="line"><span class="cl">date = {{ .Date }}
+</span></span><span class="line"><span class="cl">image = &#34;title.jpg&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">readingtime=true
+</span></span><span class="line"><span class="cl">math= false
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">categories = []
+</span></span><span class="line"><span class="cl">tags = []
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">slug= &#34;&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">series = []
+</span></span><span class="line"><span class="cl">aliases = []
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">draft = true
+</span></span><span class="line"><span class="cl">+++
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="5-github自动部署">5. github自动部署
+</h2><h3 id="51-github创建仓库">5.1 github创建仓库
+</h3><p>比如仓库名为blog</p>
+<h3 id="52-设置访问token">5.2 设置访问token
+</h3><p>头像-&gt;settings-&gt;Developer settings-&gt;personal access tokens-&gt;tokens(basic)</p>
+<h3 id="53-设置仓库变量">5.3 设置仓库变量
+</h3><ul>
+<li>用于安全访问token<br>
+仓库-&gt;settings-&gt;secrets and variables-&gt;actions-&gt;repository secrets</li>
+</ul>
+<h3 id="54-本地创建仓库">5.4 本地创建仓库
+</h3><ul>
+<li>在blog下创建仓库</li>
+<li>关联远程仓库</li>
+</ul>
+<h3 id="55-创建工作流配置文件">5.5 创建工作流配置文件
+</h3><ul>
+<li>创建blog/.github/workflows/blog.yaml</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">deploy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 代码提交到main分支时触发github action</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">main</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">deploy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Checkout</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v4</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Setup Hugo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">peaceiris/actions-hugo@v3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">hugo-version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;0.131.0&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">extended</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build Web</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l">hugo -D</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy Web</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">peaceiris/actions-gh-pages@v4</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">PERSONAL_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.token }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">EXTERNAL_REPOSITORY</span><span class="p">:</span><span class="w"> </span><span class="l">morningCPU/blog</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">PUBLISH_BRANCH</span><span class="p">:</span><span class="w"> </span><span class="l">main</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">PUBLISH_DIR</span><span class="p">:</span><span class="w"> </span><span class="l">./public</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">commit_message</span><span class="p">:</span><span class="w"> </span><span class="l">auto deploy</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>hugo-version，PERSONAL_TOKEN，EXTERNAL_REPOSITORY改一下</li>
+</ul>
+<h3 id="56-创建gitignore文件">5.6 创建.gitignore文件
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">./public
+</span></span><span class="line"><span class="cl">./resources
+</span></span><span class="line"><span class="cl">./.hugo_build.lock
+</span></span><span class="line"><span class="cl">./hugo.exe
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="57-github设置action">5.7 github设置action
+</h3><p>仓库-&gt;settings-&gt;pages-&gt;branch-&gt;选择分支-&gt;save</p>
+<h3 id="58-提交">5.8 提交
+</h3><p>需要<code>git push -f</code>强制提交，因为action会改变提交内容<br>
+千万不要git pull，里面的内容是不一样的</p>
+<hr>
+<h2 id="6-目录的修改">6. 目录的修改
+</h2><ul>
+<li>要注意要二级标题目录才生效<br>
+改为无序列表<br>
+blog\assets\scss\custom.scss中写入</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="cm">/* --- Hugo Stack TOC 无序列表自定义 --- */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/* 1. 禁用原有的计数器数字 */</span>
+</span></span><span class="line"><span class="cl"><span class="nc">.widget--toc</span> <span class="nn">#TableOfContents</span> <span class="nt">ol</span> <span class="nt">li</span> <span class="nt">a</span><span class="nd">:first-of-type::before</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">content</span><span class="o">:</span> <span class="ni">none</span> <span class="k">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/* 2. 还原列表的显示模式，并设置一级为实心圆 */</span>
+</span></span><span class="line"><span class="cl"><span class="nc">.widget--toc</span> <span class="nn">#TableOfContents</span> <span class="nt">ol</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="nc">.widget--toc</span> <span class="nn">#TableOfContents</span> <span class="nt">ul</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">list-style-type</span><span class="o">:</span> <span class="ni">disc</span> <span class="k">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* 一级圆点 */</span>
+</span></span><span class="line"><span class="cl">    <span class="na">padding-left</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.2</span><span class="kt">rem</span> <span class="k">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* 留出圆点空间 */</span>
+</span></span><span class="line"><span class="cl">    <span class="na">counter-reset</span><span class="o">:</span> <span class="ni">none</span> <span class="k">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/* 3. 强制每一行作为列表项显示（否则不显示圆点） */</span>
+</span></span><span class="line"><span class="cl"><span class="nc">.widget--toc</span> <span class="nn">#TableOfContents</span> <span class="nt">li</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">display</span><span class="o">:</span> <span class="ni">list-item</span> <span class="k">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">margin</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span> <span class="mi">0</span> <span class="mi">10</span><span class="kt">px</span> <span class="mi">10</span><span class="kt">px</span> <span class="k">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* 调整间距 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/* 4. 设置二级及以上层级为空心圆 */</span>
+</span></span><span class="line"><span class="cl"><span class="nc">.widget--toc</span> <span class="nn">#TableOfContents</span> <span class="nt">li</span><span class="o">&gt;</span><span class="nt">ol</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="nc">.widget--toc</span> <span class="nn">#TableOfContents</span> <span class="nt">li</span><span class="o">&gt;</span><span class="nt">ul</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">list-style-type</span><span class="o">:</span> <span class="ni">circle</span> <span class="k">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* 二级圆点 */</span>
+</span></span><span class="line"><span class="cl">    <span class="na">padding-left</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.5</span><span class="kt">rem</span> <span class="k">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* 层级缩进 */</span>
+</span></span><span class="line"><span class="cl">    <span class="na">margin-top</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span> <span class="k">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/* 5. 针对 Stack 主题高亮条的微调（防止遮挡圆点） */</span>
+</span></span><span class="line"><span class="cl"><span class="nc">.widget--toc</span> <span class="nn">#TableOfContents</span> <span class="nt">li</span><span class="nc">.active-class</span><span class="o">&gt;</span><span class="nt">a</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">padding-left</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span> <span class="k">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">margin-left</span><span class="o">:</span> <span class="mi">0</span> <span class="k">!important</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="7-评论">7. 评论
+</h2><h3 id="71-utterances">7.1 utterances
+</h3><p><strong>1.</strong> github安装utterances
+地址：https://github.com/apps/utterances
+<strong>2.</strong> 修改配置文件
+hugo.yaml-&gt;comments-&gt;provider<br>
+打开并使用utterances<br>
+utterances设置仓库</p>
+<h3 id="72-giscus">7.2 giscus
+</h3><p><strong>1.</strong> github安装giscus
+<a class="link" href="https://github.com/apps/giscus"  target="_blank" rel="noopener"
+    >https://github.com/apps/giscus</a>
+<strong>2.</strong> 配置
+<a class="link" href="https://giscus.app/zh-CN"  target="_blank" rel="noopener"
+    >https://giscus.app/zh-CN</a>
+<strong>3.</strong> 修改配置文件
+hugo.yaml-&gt;comments-&gt;provider<br>
+打开并使用giscus<br>
+配置giscus  <br>
+<strong>4.</strong> 注意事项</p>
+<ol>
+<li>确保仓库是公开的</li>
+<li>仓库开启discussions(仓库-&gt;settings-&gt;general-&gt;features)</li>
+<li>配置映射关系pathname,discussion分类，其他默认就好</li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <script
+    src="https://giscus.app/client.js"
+    data-repo="morningCPU/blog"
+    data-repo-id="R_kgDORCgPmw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDORCgPm84C1inE"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="light"
+    data-lang="en"
+    crossorigin="anonymous"
+    async
+></script>
+<script>
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector("iframe.giscus-frame");
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: theme,
+                        },
+                    },
+                },
+                "https://giscus.app"
+            );
+        }
+    }
+
+    (function () {
+        addEventListener("message", (e) => {
+            if (event.origin !== "https://giscus.app") return;
+            handler();
+        });
+        window.addEventListener("onColorSchemeChange", handler);
+
+        function handler() {
+            if (document.documentElement.dataset.scheme === "light") {
+                setGiscusTheme('light');
+            } else {
+                setGiscusTheme('dark_dimmed');
+            }
+        }
+    })();
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2026 morning
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

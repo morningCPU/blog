@@ -8,20 +8,20 @@
         <language>zh-cn</language>
         <copyright>morning</copyright>
         <lastBuildDate>Wed, 28 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/blog/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Github</title>
+        <title>github</title>
         <link>http://localhost:1313/blog/categories/github/</link>
         <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/blog/categories/github/</guid>
-        <description></description>
+        <description>&lt;img src="http://localhost:1313/blog/categories/github/github.jpg" alt="Featured image of post github" /&gt;</description>
         </item>
         <item>
-        <title>Hugo</title>
+        <title>hugo</title>
         <link>http://localhost:1313/blog/categories/hugo/</link>
         <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/blog/categories/hugo/</guid>
-        <description></description>
+        <description>&lt;img src="http://localhost:1313/blog/categories/hugo/hugo.jpg" alt="Featured image of post hugo" /&gt;</description>
         </item>
         
     </channel>

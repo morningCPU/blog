@@ -162,6 +162,7 @@ params:
     # 装饰
     widgets:
         homepage:
+            - type: clock_num
             - type: search
             - type: archives
               params:

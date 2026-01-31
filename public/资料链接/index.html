@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='http://localhost:1313/blog/%E8%B5%84%E6%96%99%E9%93%BE%E6%8E%A5/'>
 
-<link rel="stylesheet" href="/blog/scss/style.min.3d657a5272465b0cb967b35a0af42593af9c95f6b50b9dae0be6ecd8d86af7cc.css"><meta property='og:title' content="资料链接">
+<link rel="stylesheet" href="/blog/scss/style.min.88235b797ea4c11d94f9caa61bfa369ab320ccf00ce2a2ac527095fa86397ddd.css"><meta property='og:title' content="资料链接">
 <meta property='og:description' content="">
 <meta property='og:url' content='http://localhost:1313/blog/%E8%B5%84%E6%96%99%E9%93%BE%E6%8E%A5/'>
 <meta property='og:site_name' content='morningCPU'>
@@ -81,7 +81,7 @@
             
                 <li>
                     <a 
-                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        href='https://github.com/morningCPU'
                         target="_blank"
                         title="GitHub"
                         rel="me"
@@ -491,6 +491,174 @@ links:
         document.head.appendChild(customFont);
     }());
 </script>
+<div id="particles-js"></div>
 
+<script src=http://localhost:1313/blog/background/particles.min.js></script>
+<script>
+  particlesJS.load('particles-js', "http://localhost:1313/blog/background/particlesjs-config.json", function () {
+    console.log('particles.js loaded - callback');
+  });
+</script>
+
+<style>
+  #particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+  }
+</style>
+
+
+<style>
+  @font-face {
+    font-family: 'JetBrainsMono-Regular-2';
+    src: url('http://localhost:1313/blog/font/JetBrains-Mono/JetBrainsMono-Regular-2.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'SourceHanSansCN-VF-2';
+    src: url('http://localhost:1313/blog/font/SiYuanHeiTi-CN-VF/SourceHanSansCN-VF-2.otf') format('opentype');
+  }
+
+  :root {
+    --base-font-family: 'SourceHanSansCN-VF-2';
+    --code-font-family: 'JetBrainsMono-Regular-2';
+     
+  }
+</style>
+
+<style>
+  #backTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    z-index: 99;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background-image: url('http://localhost:1313/blog/icons/backTop.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+</style>
+
+<script>
+  function initScrollTop() {
+    let rightSideBar = document.querySelector(".right-sidebar");
+    if (!rightSideBar) return;
+
+    let btn = document.createElement("div");
+    btn.id = "backTopBtn";
+    btn.onclick = function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+    rightSideBar.appendChild(btn);
+
+    window.addEventListener('scroll', function () {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        btn.style.display = "block";
+      } else {
+        btn.style.display = "none";
+      }
+    });
+  }
+  
+  document.addEventListener("DOMContentLoaded", initScrollTop);
+</script>
+
+<style>
+  .highlight {
+    max-height: 400px;
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.3s ease;
+  }
+
+  .code-show {
+    max-height: none !important;
+    padding-bottom: 40px;
+  }
+
+  .code-more-box {
+    width: 100%;
+    padding-top: 60px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--card-background, #fff));
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+
+  .code-more-box.expanded {
+    background: none;
+    position: relative;
+    padding-top: 10px;
+  }
+
+  .code-more-btn {
+    display: block;
+    margin: auto;
+    width: 44px;
+    height: 30px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .code-more-img {
+    display: inline-block;
+    width: 22px;
+    height: 16px;
+    transition: transform 0.3s;
+  }
+
+  .code-show .code-more-img {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+  function initCodeMoreBox() {
+    let codeBlocks = document.querySelectorAll(".highlight");
+
+    codeBlocks.forEach(codeBlock => {
+      if (codeBlock.scrollHeight <= 400) return;
+
+      let codeMoreBox = document.createElement('div');
+      codeMoreBox.classList.add('code-more-box');
+
+      let codeMoreBtn = document.createElement('span');
+      codeMoreBtn.classList.add('code-more-btn');
+
+      let img = document.createElement('img');
+      img.classList.add('code-more-img');
+      
+      img.src = 'http:\/\/localhost:1313\/blog\/icons\/fold-down.svg';
+
+      codeMoreBtn.onclick = function () {
+        const isExpanded = codeBlock.classList.contains('code-show');
+        if (isExpanded) {
+          codeBlock.classList.remove('code-show');
+          codeMoreBox.classList.remove('expanded');
+          codeBlock.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          codeBlock.classList.add('code-show');
+          codeMoreBox.classList.add('expanded');
+        }
+        window.dispatchEvent(new Event('resize'));
+      };
+
+      codeMoreBtn.appendChild(img);
+      codeMoreBox.appendChild(codeMoreBtn);
+      codeBlock.appendChild(codeMoreBox);
+    });
+  }
+
+  
+  window.onload = function () {
+    setTimeout(initCodeMoreBox, 300);
+  };
+</script>
     </body>
 </html>

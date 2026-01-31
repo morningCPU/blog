@@ -5,6 +5,7 @@ menu:
         weight: -50
         params:
             icon: user
+comments: false 
 ---
 
-This is a test page for i18n support.
+It is made with Hugo.

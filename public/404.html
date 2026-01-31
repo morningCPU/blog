@@ -277,6 +277,7 @@
         document.head.appendChild(customFont);
     }());
 </script>
+
 <div id="particles-js"></div>
 
 <script src=http://localhost:1313/blog/background/particles.min.js></script>
@@ -314,6 +315,7 @@
      
   }
 </style>
+
 
 <style>
   #backTopBtn {
@@ -402,6 +404,11 @@
   .code-show .code-more-img {
     transform: rotate(180deg);
   }
+
+   
+  [data-scheme="dark"] .code-more-img {
+    filter: brightness(0) invert(1);
+  }
 </style>
 
 <script>
@@ -445,6 +452,199 @@
   window.onload = function () {
     setTimeout(initCodeMoreBox, 300);
   };
+</script>
+
+
+
+<script>
+  
+  const cssPath = "http://localhost:1313/blog/waifu/waifu.css"
+  const tipsJsonPath = "http://localhost:1313/blog/waifu/waifu-tips.json"
+  
+  const live2d_path = "https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/";
+
+  
+  function loadExternalResource(url, type) {
+    return new Promise((resolve, reject) => {
+      let tag;
+      if (type === "css") {
+        tag = document.createElement("link");
+        tag.rel = "stylesheet";
+        tag.href = url;
+      }
+      else if (type === "js") {
+        tag = document.createElement("script");
+        tag.src = url;
+      }
+      if (tag) {
+        tag.onload = () => resolve(url);
+        tag.onerror = () => reject(url);
+        document.head.appendChild(tag);
+      }
+    });
+  }
+
+  
+  if (screen.width >= 768) {
+    Promise.all([
+      loadExternalResource(cssPath, "css"),
+      loadExternalResource(live2d_path + "live2d.min.js", "js"),
+      loadExternalResource(live2d_path + "waifu-tips.js", "js")
+    ]).then(() => {
+      
+      initWidget({
+        waifuPath: tipsJsonPath,
+        cdnPath: "https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/",
+        tools: ["hitokoto", "asteroids", "switch-model", "switch-texture", "photo", "info", "quit"]
+      });
+    });
+  }
+</script>
+
+<script>
+  
+  document.addEventListener('DOMContentLoaded', function () {
+    
+    const observer = new MutationObserver(function () {
+      const waifuElement = document.getElementById('waifu');
+      if (waifuElement && !waifuElement.hasAttribute('draggable-enabled')) {
+        waifuElement.setAttribute('draggable-enabled', 'true');
+        enableDragging(waifuElement);
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+
+    
+    setTimeout(function () {
+      const waifuElement = document.getElementById('waifu');
+      if (waifuElement && !waifuElement.hasAttribute('draggable-enabled')) {
+        enableDragging(waifuElement);
+      }
+    }, 6000);
+  });
+
+  function enableDragging(waifuElement) {
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let currentX = 0;
+    let currentY = 0;
+
+    
+    const computedStyle = window.getComputedStyle(waifuElement);
+    let initialRight = parseFloat(computedStyle.right) || 10;
+    let initialBottom = parseFloat(computedStyle.bottom) || 0;
+
+    
+    waifuElement.addEventListener('mousedown', function (e) {
+      
+      if (e.target.closest('#waifu-tool')) {
+        return;
+      }
+
+      isDragging = true;
+      startX = e.clientX;
+      startY = e.clientY;
+
+      
+      const rect = waifuElement.getBoundingClientRect();
+      currentX = rect.left;
+      currentY = rect.top;
+
+      
+      e.stopPropagation();
+    });
+
+    document.addEventListener('mousemove', function (e) {
+      if (isDragging) {
+        const deltaX = e.clientX - startX;
+        const deltaY = e.clientY - startY;
+
+        
+        const newX = currentX + deltaX;
+        const newY = currentY + deltaY;
+
+        
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        const waifuWidth = waifuElement.offsetWidth;
+        const waifuHeight = waifuElement.offsetHeight;
+
+        const clampedX = Math.max(0, Math.min(viewportWidth - waifuWidth, newX));
+        const clampedY = Math.max(0, Math.min(viewportHeight - waifuHeight, newY));
+
+        
+        waifuElement.style.left = clampedX + 'px';
+        waifuElement.style.top = clampedY + 'px';
+        waifuElement.style.right = 'auto';
+        waifuElement.style.bottom = 'auto';
+
+        
+        e.stopPropagation();
+      }
+    });
+
+    document.addEventListener('mouseup', function (e) {
+      if (isDragging) {
+        isDragging = false;
+        e.stopPropagation();
+      }
+    });
+
+    
+    waifuElement.addEventListener('touchstart', function (e) {
+      if (e.target.closest('#waifu-tool')) {
+        return;
+      }
+
+      isDragging = true;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+
+      const rect = waifuElement.getBoundingClientRect();
+      currentX = rect.left;
+      currentY = rect.top;
+
+      e.stopPropagation();
+    });
+
+    document.addEventListener('touchmove', function (e) {
+      if (isDragging) {
+        const deltaX = e.touches[0].clientX - startX;
+        const deltaY = e.touches[0].clientY - startY;
+
+        const newX = currentX + deltaX;
+        const newY = currentY + deltaY;
+
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        const waifuWidth = waifuElement.offsetWidth;
+        const waifuHeight = waifuElement.offsetHeight;
+
+        const clampedX = Math.max(0, Math.min(viewportWidth - waifuWidth, newX));
+        const clampedY = Math.max(0, Math.min(viewportHeight - waiguHeight, newY));
+
+        waifuElement.style.left = clampedX + 'px';
+        waifuElement.style.top = clampedY + 'px';
+        waifuElement.style.right = 'auto';
+        waifuElement.style.bottom = 'auto';
+
+        e.stopPropagation();
+      }
+    });
+
+    document.addEventListener('touchend', function (e) {
+      if (isDragging) {
+        isDragging = false;
+        e.stopPropagation();
+      }
+    });
+  }
 </script>
     </body>
 </html>

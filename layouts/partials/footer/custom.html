@@ -125,6 +125,11 @@
   .code-show .code-more-img {
     transform: rotate(180deg);
   }
+
+  /* 黑暗模式下折叠展开图标变为白色 */
+  [data-scheme="dark"] .code-more-img {
+    filter: brightness(0) invert(1);
+  }
 </style>
 
 <script>

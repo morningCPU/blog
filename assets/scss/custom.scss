@@ -1,42 +1,96 @@
-/* --- Hugo Stack TOC 无序列表自定义 --- */
-
-/* 1. 禁用原有的计数器数字 */
+/* --- Hugo Stack TOC 稳定版 (无闪动 + 自然悬停) --- */
 .widget--toc #TableOfContents ol li a:first-of-type::before {
     content: none !important;
 }
 
-/* 2. 还原列表的显示模式，并设置一级为实心圆 */
+/* 基础样式 */
 .widget--toc #TableOfContents ol,
 .widget--toc #TableOfContents ul {
-    list-style-type: disc !important;
-    /* 一级圆点 */
-    padding-left: 1.2rem !important;
-    /* 留出圆点空间 */
+    list-style-type: none !important;
+    padding-left: 0 !important;
     counter-reset: none !important;
+    line-height: 1.68;
+    margin-bottom: 0 !important;
+    border-left: none !important;
 }
 
-/* 3. 强制每一行作为列表项显示（否则不显示圆点） */
+/* 核心修复：用padding替代margin，消除间距导致的闪动 */
 .widget--toc #TableOfContents li {
-    display: list-item !important;
-    margin: 10px 0 10px 10px !important;
-    /* 调整间距 */
+    display: block !important;
+    margin: 0 !important;
+    /* 移除margin，避免鼠标空隙 */
+    padding: 4px 8px !important;
+    /* 增加上下padding，替代margin的间距 */
+    border-radius: 2px !important;
+    transition: background-color 0.15s ease, color 0.15s ease !important;
+    /* 只保留必要过渡 */
+    border-left: none !important;
 }
 
-/* 4. 设置二级及以上层级为空心圆 */
+/* 层级缩进 */
+.widget--toc #TableOfContents>ol,
+.widget--toc #TableOfContents>ul {
+    padding-left: 0 !important;
+}
+
 .widget--toc #TableOfContents li>ol,
 .widget--toc #TableOfContents li>ul {
-    list-style-type: circle !important;
-    /* 二级圆点 */
-    padding-left: 1.5rem !important;
-    /* 层级缩进 */
-    margin-top: 5px !important;
+    padding-left: 1.3rem !important;
+    margin-top: 1px !important;
+    /* 极小间距，避免层级间闪动 */
+    margin-bottom: 1px !important;
+    color: #777 !important;
 }
 
-/* 5. 针对 Stack 主题高亮条的微调（防止遮挡圆点） */
+.widget--toc #TableOfContents li>ol>li>ol,
+.widget--toc #TableOfContents li>ul>li>ul {
+    padding-left: 1.3rem !important;
+    color: #888 !important;
+}
+
+/* 激活项：低调高亮 */
+.widget--toc #TableOfContents li.active-class {
+    background-color: #f5f9ff !important;
+    border-left: none !important;
+}
+
 .widget--toc #TableOfContents li.active-class>a {
-    padding-left: 5px !important;
+    font-weight: 500 !important;
+    color: #337ab7 !important;
+    padding-left: 0 !important;
     margin-left: 0 !important;
 }
+
+/* 悬停效果：移除位移，保留稳定的反馈 */
+.widget--toc #TableOfContents li:hover:not(.active-class) {
+    background-color: #f2f5f8 !important;
+    /* 可感知但不突兀的背景 */
+    color: #555 !important;
+    /* 文字轻微提亮 */
+    /* 移除transform位移，彻底解决闪动 */
+}
+
+/* 链接样式：配合悬停效果 */
+.widget--toc #TableOfContents a {
+    text-decoration: none !important;
+    color: inherit !important;
+    display: block;
+    padding: 1px 0;
+    /* 扩大链接点击区域，减少空隙 */
+}
+
+.widget--toc #TableOfContents a:hover {
+    color: #4488cc !important;
+    text-decoration: none !important;
+}
+
+/* 兜底清除线条 */
+.widget--toc #TableOfContents,
+.widget--toc #TableOfContents * {
+    border-left: none !important;
+    box-shadow: none !important;
+}
+
 
 // 代码块样式
 .highlight {

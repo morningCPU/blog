@@ -13,7 +13,7 @@
         <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/blog/p/001/</guid>
-        <description>&lt;img src="http://localhost:1313/blog/p/001/title.webp" alt="Featured image of post 使用github&#43;hugo创建个人博客" /&gt;&lt;p&gt;本文介绍如何使用hugo和github构建个人博客&lt;br&gt;
+        <description>&lt;img src="http://localhost:1313/blog/p/001/images/title.webp" alt="Featured image of post 使用github&#43;hugo创建个人博客" /&gt;&lt;p&gt;本文介绍如何使用hugo和github构建个人博客&lt;br&gt;
 参照B站 &lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1bovfeaEtQ/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;@Letere-莱特雷&lt;/a&gt; 的教学：&lt;br&gt;
 &lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1bovfeaEtQ/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -28,13 +28,13 @@
 &lt;h2 id=&#34;1-资源准备&#34;&gt;1 资源准备
 &lt;/h2&gt;&lt;h3 id=&#34;11-下载hugo&#34;&gt;1.1 下载hugo
 &lt;/h3&gt;&lt;p&gt;下载地址 &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://gohugo.io/&lt;/a&gt;
+    &gt;https://gohugo.io/&lt;/a&gt;&lt;br&gt;
 点击上方github进入仓库 &lt;br&gt;
 点击tag选择需要的版本进行下载，注意要点进去，里面有不同的类型&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/blog/p/001/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/blog/p/001/images/image.png&#34;
 	width=&#34;1278&#34;
 	height=&#34;366&#34;
-	srcset=&#34;http://localhost:1313/blog/blog/p/001/image_hu2801315308241895762.png 480w, http://localhost:1313/blog/blog/p/001/image_hu5873903982594316204.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/blog/blog/p/001/images/image_hu2801315308241895762.png 480w, http://localhost:1313/blog/blog/p/001/images/image_hu5873903982594316204.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;hugo&#34;
@@ -48,7 +48,7 @@
 &lt;p&gt;这里下载版本是 extended-0.131.0&lt;br&gt;
 最好用同样的版本，不然依照这个教程会有些问题(有些函数，变量之类的可能变了)&lt;/p&gt;
 &lt;h3 id=&#34;12-下载主题&#34;&gt;1.2 下载主题
-&lt;/h3&gt;&lt;p&gt;hugo页面上方点击Themes
+&lt;/h3&gt;&lt;p&gt;hugo页面上方点击Themes&lt;br&gt;
 这里选择stack-3.26.0&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;2-准备工作&#34;&gt;2 准备工作
@@ -73,10 +73,10 @@ ex. &lt;code&gt;hugo new site blog&lt;/code&gt;&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;theme&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;hugo-theme-stack&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/blog/p/001/image-1.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/blog/p/001/images/image-1.png&#34;
 	width=&#34;1364&#34;
 	height=&#34;156&#34;
-	srcset=&#34;http://localhost:1313/blog/blog/p/001/image-1_hu123750753053067149.png 480w, http://localhost:1313/blog/blog/p/001/image-1_hu14782472331622712161.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/blog/blog/p/001/images/image-1_hu123750753053067149.png 480w, http://localhost:1313/blog/blog/p/001/images/image-1_hu14782472331622712161.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;theme&#34;
@@ -89,14 +89,14 @@ ex. &lt;code&gt;hugo new site blog&lt;/code&gt;&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;24-启动&#34;&gt;2.4 启动
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; 将hugo目录中的hugo.exe复制到blog中(因为没有配置环境变量又要使用hugo)&lt;br&gt;
-也没有必要配置环境变量，直接使用也方便
+也没有必要配置环境变量，直接使用也方便&lt;br&gt;
 &lt;strong&gt;2.&lt;/strong&gt; 进入新建的项目 &lt;code&gt;cd blog&lt;/code&gt;&lt;br&gt;
-&lt;strong&gt;3.&lt;/strong&gt; 使用命令 &lt;code&gt;hugo server -D&lt;/code&gt; 启动
+&lt;strong&gt;3.&lt;/strong&gt; 使用命令 &lt;code&gt;hugo server -D&lt;/code&gt; 启动&lt;br&gt;
 &lt;strong&gt;4.&lt;/strong&gt; 进入提示的网址&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/blog/p/001/image-2.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/blog/p/001/images/image-2.png&#34;
 	width=&#34;2310&#34;
 	height=&#34;894&#34;
-	srcset=&#34;http://localhost:1313/blog/blog/p/001/image-2_hu12898517455977428051.png 480w, http://localhost:1313/blog/blog/p/001/image-2_hu1400918210462071311.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/blog/blog/p/001/images/image-2_hu12898517455977428051.png 480w, http://localhost:1313/blog/blog/p/001/images/image-2_hu1400918210462071311.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;web&#34;
@@ -108,10 +108,10 @@ ex. &lt;code&gt;hugo new site blog&lt;/code&gt;&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;按住ctrl点击就可以浏览器打开&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/blog/p/001/image-3.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/blog/p/001/images/image-3.png&#34;
 	width=&#34;3200&#34;
 	height=&#34;1730&#34;
-	srcset=&#34;http://localhost:1313/blog/blog/p/001/image-3_hu6853771828445262963.png 480w, http://localhost:1313/blog/blog/p/001/image-3_hu13631806756268730898.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/blog/blog/p/001/images/image-3_hu6853771828445262963.png 480w, http://localhost:1313/blog/blog/p/001/images/image-3_hu13631806756268730898.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;example&#34;
@@ -126,7 +126,7 @@ ex. &lt;code&gt;hugo new site blog&lt;/code&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;3-修改配置&#34;&gt;3. 修改配置
 &lt;/h2&gt;&lt;h3 id=&#34;31-完整的hugoyaml配置文件&#34;&gt;3.1 完整的hugo.yaml配置文件
-&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;hugo.txt&#34; &gt;hugo.yaml&lt;/a&gt;&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;resources/hugo.txt&#34; &gt;hugo.yaml&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;32-详细说明&#34;&gt;3.2 详细说明
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; baseurl 下面配置github自动部署有用&lt;br&gt;
 &lt;strong&gt;2.&lt;/strong&gt; languageCode 网站的语言，告诉浏览器自己用的是什么语言&lt;br&gt;
@@ -134,10 +134,10 @@ ex. &lt;code&gt;hugo new site blog&lt;/code&gt;&lt;/p&gt;
 &lt;strong&gt;4.&lt;/strong&gt; paginate 分页，每一页有几个&lt;br&gt;
 &lt;strong&gt;5.&lt;/strong&gt; title 名字&lt;br&gt;
 浏览器标签这里&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/blog/p/001/image-4.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/blog/p/001/images/image-4.png&#34;
 	width=&#34;788&#34;
 	height=&#34;107&#34;
-	srcset=&#34;http://localhost:1313/blog/blog/p/001/image-4_hu11627856278961745279.png 480w, http://localhost:1313/blog/blog/p/001/image-4_hu14099004218357875190.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/blog/blog/p/001/images/image-4_hu11627856278961745279.png 480w, http://localhost:1313/blog/blog/p/001/images/image-4_hu14099004218357875190.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;title&#34;
@@ -150,10 +150,10 @@ ex. &lt;code&gt;hugo new site blog&lt;/code&gt;&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;6.&lt;/strong&gt; copyright 版权声明&lt;br&gt;
 下面这里&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/blog/p/001/image-5.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/blog/p/001/images/image-5.png&#34;
 	width=&#34;1167&#34;
 	height=&#34;250&#34;
-	srcset=&#34;http://localhost:1313/blog/blog/p/001/image-5_hu16529180830008213252.png 480w, http://localhost:1313/blog/blog/p/001/image-5_hu2164049805202367588.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/blog/blog/p/001/images/image-5_hu16529180830008213252.png 480w, http://localhost:1313/blog/blog/p/001/images/image-5_hu2164049805202367588.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;copyright&#34;
@@ -169,10 +169,10 @@ hugo文件格式为index.language.md&lt;br&gt;
 如果你写为index.md那么默认就是index.DefaultContentLanguage.md&lt;br&gt;
 &lt;strong&gt;8.&lt;/strong&gt; hasCJKLanguage 如果使用中文就改为true&lt;br&gt;
 &lt;strong&gt;9.&lt;/strong&gt; languages 配置不同语言显示的主页&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/blog/p/001/image-6.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/blog/p/001/images/image-6.png&#34;
 	width=&#34;517&#34;
 	height=&#34;237&#34;
-	srcset=&#34;http://localhost:1313/blog/blog/p/001/image-6_hu3007857035469143887.png 480w, http://localhost:1313/blog/blog/p/001/image-6_hu2868887333466595076.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/blog/blog/p/001/images/image-6_hu3007857035469143887.png 480w, http://localhost:1313/blog/blog/p/001/images/image-6_hu2868887333466595076.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;languages&#34;
@@ -211,10 +211,10 @@ hugo文件格式为index.language.md&lt;br&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;下面那里&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/blog/p/001/image-7.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/blog/p/001/images/image-7.png&#34;
 	width=&#34;1063&#34;
 	height=&#34;182&#34;
-	srcset=&#34;http://localhost:1313/blog/blog/p/001/image-7_hu8230783005085364090.png 480w, http://localhost:1313/blog/blog/p/001/image-7_hu12093066239062272474.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/blog/blog/p/001/images/image-7_hu8230783005085364090.png 480w, http://localhost:1313/blog/blog/p/001/images/image-7_hu12093066239062272474.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;footer&#34;
@@ -353,10 +353,10 @@ hugo文件格式为index.language.md&lt;br&gt;
 &lt;/h2&gt;&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; 命令&lt;code&gt;hugo new content post/name/index.language.md&lt;/code&gt;创建一个文件&lt;br&gt;
 ex. &lt;code&gt;hugo new content post/test/index.md&lt;/code&gt; (因为设置了默认所以就不写language了)&lt;br&gt;
 (name是文件名，language是语言，md是文件格式)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/blog/p/001/image-8.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/blog/p/001/images/image-8.png&#34;
 	width=&#34;1415&#34;
 	height=&#34;87&#34;
-	srcset=&#34;http://localhost:1313/blog/blog/p/001/image-8_hu13560010343485419425.png 480w, http://localhost:1313/blog/blog/p/001/image-8_hu5780014599696949241.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/blog/blog/p/001/images/image-8_hu13560010343485419425.png 480w, http://localhost:1313/blog/blog/p/001/images/image-8_hu5780014599696949241.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;file&#34;
@@ -369,7 +369,7 @@ ex. &lt;code&gt;hugo new content post/test/index.md&lt;/code&gt; (因为设置�
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;2.&lt;/strong&gt; 可以使用code或者其他打开目录&lt;br&gt;
 这里就 &lt;code&gt;code E:\\library\\hugo\\blog\\content\\post\\test&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3.&lt;/strong&gt; 创建模版
+&lt;p&gt;&lt;strong&gt;3.&lt;/strong&gt; 创建模版&lt;br&gt;
 打开index.md会发现已经有内容了，这是因为有模版&lt;br&gt;
 模版是 blog/archetypes/default.md&lt;br&gt;
 可以使用下面这个模版&lt;/p&gt;
@@ -630,23 +630,23 @@ blog\assets\scss\custom.scss中写入&lt;/li&gt;
 &lt;/div&gt;&lt;hr&gt;
 &lt;h2 id=&#34;7-评论&#34;&gt;7. 评论
 &lt;/h2&gt;&lt;h3 id=&#34;71-utterances&#34;&gt;7.1 utterances
-&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; github安装utterances
-地址：https://github.com/apps/utterances
-&lt;strong&gt;2.&lt;/strong&gt; 修改配置文件
-hugo.yaml-&amp;gt;comments-&amp;gt;provider&lt;br&gt;
-打开并使用utterances&lt;br&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; github安装utterances&lt;br&gt;
+地址：https://github.com/apps/utterances&lt;br&gt;
+&lt;strong&gt;2.&lt;/strong&gt; 修改配置文件&lt;br&gt;
+hugo.yaml-&amp;gt;comments-&amp;gt;provider   &lt;br&gt;
+打开并使用utterances   &lt;br&gt;
 utterances设置仓库&lt;/p&gt;
 &lt;h3 id=&#34;72-giscus&#34;&gt;7.2 giscus
-&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; github安装giscus
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; github安装giscus&lt;br&gt;
 &lt;a class=&#34;link&#34; href=&#34;https://github.com/apps/giscus&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/apps/giscus&lt;/a&gt;
-&lt;strong&gt;2.&lt;/strong&gt; 配置
+    &gt;https://github.com/apps/giscus&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;2.&lt;/strong&gt; 配置&lt;br&gt;
 &lt;a class=&#34;link&#34; href=&#34;https://giscus.app/zh-CN&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://giscus.app/zh-CN&lt;/a&gt;
-&lt;strong&gt;3.&lt;/strong&gt; 修改配置文件
-hugo.yaml-&amp;gt;comments-&amp;gt;provider&lt;br&gt;
+    &gt;https://giscus.app/zh-CN&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;3.&lt;/strong&gt; 修改配置文件&lt;br&gt;
+hugo.yaml-&amp;gt;comments-&amp;gt;provider   &lt;br&gt;
 打开并使用giscus&lt;br&gt;
-配置giscus  &lt;br&gt;
+配置giscus     &lt;br&gt;
 &lt;strong&gt;4.&lt;/strong&gt; 注意事项&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;确保仓库是公开的&lt;/li&gt;

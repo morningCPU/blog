@@ -6,14 +6,14 @@
 
 <link rel='canonical' href='http://localhost:1313/blog/p/001/'>
 
-<link rel="stylesheet" href="/blog/scss/style.min.88235b797ea4c11d94f9caa61bfa369ab320ccf00ce2a2ac527095fa86397ddd.css"><meta property='og:title' content="使用github+hugo创建个人博客">
+<link rel="stylesheet" href="/blog/scss/style.min.ffece64835a91e6e6df7597c1caacde64cf16a7cecbe1ff43edf47b346cf9fcb.css"><meta property='og:title' content="使用github+hugo创建个人博客">
 <meta property='og:description' content="用hugo创建静态博客页面，并通过github进行自动部署">
 <meta property='og:url' content='http://localhost:1313/blog/p/001/'>
 <meta property='og:site_name' content='morningCPU'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-01-28T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-01-28T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/blog/p/001/title.webp' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-01-28T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-01-28T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/blog/p/001/images/title.webp' />
 <meta name="twitter:title" content="使用github+hugo创建个人博客">
 <meta name="twitter:description" content="用hugo创建静态博客页面，并通过github进行自动部署"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='http://localhost:1313/blog/p/001/title.webp' />
+    <meta name="twitter:image" content='http://localhost:1313/blog/p/001/images/title.webp' />
     <link rel="shortcut icon" href="/blog/cpu.ico" />
 
   
@@ -313,8 +313,8 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/blog/p/001/">
-                <img src="/blog/p/001/title_hu15791591415830104823.webp"
-                        srcset="/blog/p/001/title_hu15791591415830104823.webp 800w, /blog/p/001/title_hu17597190725741403570.webp 1600w"
+                <img src="/blog/p/001/images/title_hu15791591415830104823.webp"
+                        srcset="/blog/p/001/images/title_hu15791591415830104823.webp 800w, /blog/p/001/images/title_hu17597190725741403570.webp 1600w"
                         width="800" 
                         height="272" 
                         loading="lazy"
@@ -412,13 +412,13 @@
 <h2 id="1-资源准备">1 资源准备
 </h2><h3 id="11-下载hugo">1.1 下载hugo
 </h3><p>下载地址 <a class="link" href="https://gohugo.io/"  target="_blank" rel="noopener"
-    >https://gohugo.io/</a>
+    >https://gohugo.io/</a><br>
 点击上方github进入仓库 <br>
 点击tag选择需要的版本进行下载，注意要点进去，里面有不同的类型</p>
-<p><img src="/blog/p/001/image.png"
+<p><img src="/blog/p/001/images/image.png"
 	width="1278"
 	height="366"
-	srcset="/blog/p/001/image_hu2801315308241895762.png 480w, /blog/p/001/image_hu5873903982594316204.png 1024w"
+	srcset="/blog/p/001/images/image_hu2801315308241895762.png 480w, /blog/p/001/images/image_hu5873903982594316204.png 1024w"
 	loading="lazy"
 	
 		alt="hugo"
@@ -432,7 +432,7 @@
 <p>这里下载版本是 extended-0.131.0<br>
 最好用同样的版本，不然依照这个教程会有些问题(有些函数，变量之类的可能变了)</p>
 <h3 id="12-下载主题">1.2 下载主题
-</h3><p>hugo页面上方点击Themes
+</h3><p>hugo页面上方点击Themes<br>
 这里选择stack-3.26.0</p>
 <hr>
 <h2 id="2-准备工作">2 准备工作
@@ -457,10 +457,10 @@ ex. <code>hugo new site blog</code></p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">theme</span><span class="p">:</span><span class="w"> </span><span class="l">hugo-theme-stack</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/blog/p/001/image-1.png"
+</div><p><img src="/blog/p/001/images/image-1.png"
 	width="1364"
 	height="156"
-	srcset="/blog/p/001/image-1_hu123750753053067149.png 480w, /blog/p/001/image-1_hu14782472331622712161.png 1024w"
+	srcset="/blog/p/001/images/image-1_hu123750753053067149.png 480w, /blog/p/001/images/image-1_hu14782472331622712161.png 1024w"
 	loading="lazy"
 	
 		alt="theme"
@@ -473,14 +473,14 @@ ex. <code>hugo new site blog</code></p>
 ></p>
 <h3 id="24-启动">2.4 启动
 </h3><p><strong>1.</strong> 将hugo目录中的hugo.exe复制到blog中(因为没有配置环境变量又要使用hugo)<br>
-也没有必要配置环境变量，直接使用也方便
+也没有必要配置环境变量，直接使用也方便<br>
 <strong>2.</strong> 进入新建的项目 <code>cd blog</code><br>
-<strong>3.</strong> 使用命令 <code>hugo server -D</code> 启动
+<strong>3.</strong> 使用命令 <code>hugo server -D</code> 启动<br>
 <strong>4.</strong> 进入提示的网址</p>
-<p><img src="/blog/p/001/image-2.png"
+<p><img src="/blog/p/001/images/image-2.png"
 	width="2310"
 	height="894"
-	srcset="/blog/p/001/image-2_hu12898517455977428051.png 480w, /blog/p/001/image-2_hu1400918210462071311.png 1024w"
+	srcset="/blog/p/001/images/image-2_hu12898517455977428051.png 480w, /blog/p/001/images/image-2_hu1400918210462071311.png 1024w"
 	loading="lazy"
 	
 		alt="web"
@@ -492,10 +492,10 @@ ex. <code>hugo new site blog</code></p>
 	
 ></p>
 <p>按住ctrl点击就可以浏览器打开</p>
-<p><img src="/blog/p/001/image-3.png"
+<p><img src="/blog/p/001/images/image-3.png"
 	width="3200"
 	height="1730"
-	srcset="/blog/p/001/image-3_hu6853771828445262963.png 480w, /blog/p/001/image-3_hu13631806756268730898.png 1024w"
+	srcset="/blog/p/001/images/image-3_hu6853771828445262963.png 480w, /blog/p/001/images/image-3_hu13631806756268730898.png 1024w"
 	loading="lazy"
 	
 		alt="example"
@@ -510,7 +510,7 @@ ex. <code>hugo new site blog</code></p>
 <hr>
 <h2 id="3-修改配置">3. 修改配置
 </h2><h3 id="31-完整的hugoyaml配置文件">3.1 完整的hugo.yaml配置文件
-</h3><p><a class="link" href="hugo.txt" >hugo.yaml</a></p>
+</h3><p><a class="link" href="resources/hugo.txt" >hugo.yaml</a></p>
 <h3 id="32-详细说明">3.2 详细说明
 </h3><p><strong>1.</strong> baseurl 下面配置github自动部署有用<br>
 <strong>2.</strong> languageCode 网站的语言，告诉浏览器自己用的是什么语言<br>
@@ -518,10 +518,10 @@ ex. <code>hugo new site blog</code></p>
 <strong>4.</strong> paginate 分页，每一页有几个<br>
 <strong>5.</strong> title 名字<br>
 浏览器标签这里</p>
-<p><img src="/blog/p/001/image-4.png"
+<p><img src="/blog/p/001/images/image-4.png"
 	width="788"
 	height="107"
-	srcset="/blog/p/001/image-4_hu11627856278961745279.png 480w, /blog/p/001/image-4_hu14099004218357875190.png 1024w"
+	srcset="/blog/p/001/images/image-4_hu11627856278961745279.png 480w, /blog/p/001/images/image-4_hu14099004218357875190.png 1024w"
 	loading="lazy"
 	
 		alt="title"
@@ -534,10 +534,10 @@ ex. <code>hugo new site blog</code></p>
 ></p>
 <p><strong>6.</strong> copyright 版权声明<br>
 下面这里</p>
-<p><img src="/blog/p/001/image-5.png"
+<p><img src="/blog/p/001/images/image-5.png"
 	width="1167"
 	height="250"
-	srcset="/blog/p/001/image-5_hu16529180830008213252.png 480w, /blog/p/001/image-5_hu2164049805202367588.png 1024w"
+	srcset="/blog/p/001/images/image-5_hu16529180830008213252.png 480w, /blog/p/001/images/image-5_hu2164049805202367588.png 1024w"
 	loading="lazy"
 	
 		alt="copyright"
@@ -553,10 +553,10 @@ hugo文件格式为index.language.md<br>
 如果你写为index.md那么默认就是index.DefaultContentLanguage.md<br>
 <strong>8.</strong> hasCJKLanguage 如果使用中文就改为true<br>
 <strong>9.</strong> languages 配置不同语言显示的主页</p>
-<p><img src="/blog/p/001/image-6.png"
+<p><img src="/blog/p/001/images/image-6.png"
 	width="517"
 	height="237"
-	srcset="/blog/p/001/image-6_hu3007857035469143887.png 480w, /blog/p/001/image-6_hu2868887333466595076.png 1024w"
+	srcset="/blog/p/001/images/image-6_hu3007857035469143887.png 480w, /blog/p/001/images/image-6_hu2868887333466595076.png 1024w"
 	loading="lazy"
 	
 		alt="languages"
@@ -595,10 +595,10 @@ hugo文件格式为index.language.md<br>
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>下面那里</p>
-<p><img src="/blog/p/001/image-7.png"
+<p><img src="/blog/p/001/images/image-7.png"
 	width="1063"
 	height="182"
-	srcset="/blog/p/001/image-7_hu8230783005085364090.png 480w, /blog/p/001/image-7_hu12093066239062272474.png 1024w"
+	srcset="/blog/p/001/images/image-7_hu8230783005085364090.png 480w, /blog/p/001/images/image-7_hu12093066239062272474.png 1024w"
 	loading="lazy"
 	
 		alt="footer"
@@ -737,10 +737,10 @@ hugo文件格式为index.language.md<br>
 </h2><p><strong>1.</strong> 命令<code>hugo new content post/name/index.language.md</code>创建一个文件<br>
 ex. <code>hugo new content post/test/index.md</code> (因为设置了默认所以就不写language了)<br>
 (name是文件名，language是语言，md是文件格式)</p>
-<p><img src="/blog/p/001/image-8.png"
+<p><img src="/blog/p/001/images/image-8.png"
 	width="1415"
 	height="87"
-	srcset="/blog/p/001/image-8_hu13560010343485419425.png 480w, /blog/p/001/image-8_hu5780014599696949241.png 1024w"
+	srcset="/blog/p/001/images/image-8_hu13560010343485419425.png 480w, /blog/p/001/images/image-8_hu5780014599696949241.png 1024w"
 	loading="lazy"
 	
 		alt="file"
@@ -753,7 +753,7 @@ ex. <code>hugo new content post/test/index.md</code> (因为设置了默认所�
 ></p>
 <p><strong>2.</strong> 可以使用code或者其他打开目录<br>
 这里就 <code>code E:\\library\\hugo\\blog\\content\\post\\test</code></p>
-<p><strong>3.</strong> 创建模版
+<p><strong>3.</strong> 创建模版<br>
 打开index.md会发现已经有内容了，这是因为有模版<br>
 模版是 blog/archetypes/default.md<br>
 可以使用下面这个模版</p>
@@ -1014,23 +1014,23 @@ blog\assets\scss\custom.scss中写入</li>
 </div><hr>
 <h2 id="7-评论">7. 评论
 </h2><h3 id="71-utterances">7.1 utterances
-</h3><p><strong>1.</strong> github安装utterances
-地址：https://github.com/apps/utterances
-<strong>2.</strong> 修改配置文件
-hugo.yaml-&gt;comments-&gt;provider<br>
-打开并使用utterances<br>
+</h3><p><strong>1.</strong> github安装utterances<br>
+地址：https://github.com/apps/utterances<br>
+<strong>2.</strong> 修改配置文件<br>
+hugo.yaml-&gt;comments-&gt;provider   <br>
+打开并使用utterances   <br>
 utterances设置仓库</p>
 <h3 id="72-giscus">7.2 giscus
-</h3><p><strong>1.</strong> github安装giscus
+</h3><p><strong>1.</strong> github安装giscus<br>
 <a class="link" href="https://github.com/apps/giscus"  target="_blank" rel="noopener"
-    >https://github.com/apps/giscus</a>
-<strong>2.</strong> 配置
+    >https://github.com/apps/giscus</a><br>
+<strong>2.</strong> 配置<br>
 <a class="link" href="https://giscus.app/zh-CN"  target="_blank" rel="noopener"
-    >https://giscus.app/zh-CN</a>
-<strong>3.</strong> 修改配置文件
-hugo.yaml-&gt;comments-&gt;provider<br>
+    >https://giscus.app/zh-CN</a><br>
+<strong>3.</strong> 修改配置文件<br>
+hugo.yaml-&gt;comments-&gt;provider   <br>
 打开并使用giscus<br>
-配置giscus  <br>
+配置giscus     <br>
 <strong>4.</strong> 注意事项</p>
 <ol>
 <li>确保仓库是公开的</li>
@@ -1423,195 +1423,6 @@ hugo.yaml-&gt;comments-&gt;provider<br>
 
 
 
-<script>
-  
-  const cssPath = "http://localhost:1313/blog/waifu/waifu.css"
-  const tipsJsonPath = "http://localhost:1313/blog/waifu/waifu-tips.json"
-  
-  const live2d_path = "https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/";
 
-  
-  function loadExternalResource(url, type) {
-    return new Promise((resolve, reject) => {
-      let tag;
-      if (type === "css") {
-        tag = document.createElement("link");
-        tag.rel = "stylesheet";
-        tag.href = url;
-      }
-      else if (type === "js") {
-        tag = document.createElement("script");
-        tag.src = url;
-      }
-      if (tag) {
-        tag.onload = () => resolve(url);
-        tag.onerror = () => reject(url);
-        document.head.appendChild(tag);
-      }
-    });
-  }
-
-  
-  if (screen.width >= 768) {
-    Promise.all([
-      loadExternalResource(cssPath, "css"),
-      loadExternalResource(live2d_path + "live2d.min.js", "js"),
-      loadExternalResource(live2d_path + "waifu-tips.js", "js")
-    ]).then(() => {
-      
-      initWidget({
-        waifuPath: tipsJsonPath,
-        cdnPath: "https://fastly.jsdelivr.net/gh/fghrsh/live2d_api/",
-        tools: ["hitokoto", "asteroids", "switch-model", "switch-texture", "photo", "info", "quit"]
-      });
-    });
-  }
-</script>
-
-<script>
-  
-  document.addEventListener('DOMContentLoaded', function () {
-    
-    const observer = new MutationObserver(function () {
-      const waifuElement = document.getElementById('waifu');
-      if (waifuElement && !waifuElement.hasAttribute('draggable-enabled')) {
-        waifuElement.setAttribute('draggable-enabled', 'true');
-        enableDragging(waifuElement);
-        observer.disconnect();
-      }
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
-
-    
-    setTimeout(function () {
-      const waifuElement = document.getElementById('waifu');
-      if (waifuElement && !waifuElement.hasAttribute('draggable-enabled')) {
-        enableDragging(waifuElement);
-      }
-    }, 6000);
-  });
-
-  function enableDragging(waifuElement) {
-    let isDragging = false;
-    let startX = 0;
-    let startY = 0;
-    let currentX = 0;
-    let currentY = 0;
-
-    
-    const computedStyle = window.getComputedStyle(waifuElement);
-    let initialRight = parseFloat(computedStyle.right) || 10;
-    let initialBottom = parseFloat(computedStyle.bottom) || 0;
-
-    
-    waifuElement.addEventListener('mousedown', function (e) {
-      
-      if (e.target.closest('#waifu-tool')) {
-        return;
-      }
-
-      isDragging = true;
-      startX = e.clientX;
-      startY = e.clientY;
-
-      
-      const rect = waifuElement.getBoundingClientRect();
-      currentX = rect.left;
-      currentY = rect.top;
-
-      
-      e.stopPropagation();
-    });
-
-    document.addEventListener('mousemove', function (e) {
-      if (isDragging) {
-        const deltaX = e.clientX - startX;
-        const deltaY = e.clientY - startY;
-
-        
-        const newX = currentX + deltaX;
-        const newY = currentY + deltaY;
-
-        
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
-        const waifuWidth = waifuElement.offsetWidth;
-        const waifuHeight = waifuElement.offsetHeight;
-
-        const clampedX = Math.max(0, Math.min(viewportWidth - waifuWidth, newX));
-        const clampedY = Math.max(0, Math.min(viewportHeight - waifuHeight, newY));
-
-        
-        waifuElement.style.left = clampedX + 'px';
-        waifuElement.style.top = clampedY + 'px';
-        waifuElement.style.right = 'auto';
-        waifuElement.style.bottom = 'auto';
-
-        
-        e.stopPropagation();
-      }
-    });
-
-    document.addEventListener('mouseup', function (e) {
-      if (isDragging) {
-        isDragging = false;
-        e.stopPropagation();
-      }
-    });
-
-    
-    waifuElement.addEventListener('touchstart', function (e) {
-      if (e.target.closest('#waifu-tool')) {
-        return;
-      }
-
-      isDragging = true;
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
-
-      const rect = waifuElement.getBoundingClientRect();
-      currentX = rect.left;
-      currentY = rect.top;
-
-      e.stopPropagation();
-    });
-
-    document.addEventListener('touchmove', function (e) {
-      if (isDragging) {
-        const deltaX = e.touches[0].clientX - startX;
-        const deltaY = e.touches[0].clientY - startY;
-
-        const newX = currentX + deltaX;
-        const newY = currentY + deltaY;
-
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
-        const waifuWidth = waifuElement.offsetWidth;
-        const waifuHeight = waifuElement.offsetHeight;
-
-        const clampedX = Math.max(0, Math.min(viewportWidth - waifuWidth, newX));
-        const clampedY = Math.max(0, Math.min(viewportHeight - waiguHeight, newY));
-
-        waifuElement.style.left = clampedX + 'px';
-        waifuElement.style.top = clampedY + 'px';
-        waifuElement.style.right = 'auto';
-        waifuElement.style.bottom = 'auto';
-
-        e.stopPropagation();
-      }
-    });
-
-    document.addEventListener('touchend', function (e) {
-      if (isDragging) {
-        isDragging = false;
-        e.stopPropagation();
-      }
-    });
-  }
-</script>
     </body>
 </html>

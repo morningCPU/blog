@@ -3,7 +3,7 @@ author = "morning"
 title = "使用github+hugo创建个人博客"
 description = "用hugo创建静态博客页面，并通过github进行自动部署"
 date = "2026-01-28"
-image = "title.webp"
+image = "images/title.webp"
 readingtime=true
 math= false
 
@@ -31,7 +31,7 @@ https://letere-gzj.github.io/hugo-stack
 点击上方github进入仓库    
 点击tag选择需要的版本进行下载，注意要点进去，里面有不同的类型  
 
-![hugo](image.png)
+![hugo](images/image.png)
 
 这里下载版本是 extended-0.131.0   
 最好用同样的版本，不然依照这个教程会有些问题(有些函数，变量之类的可能变了)   
@@ -58,20 +58,20 @@ ex. `hugo new site blog`
 theme: hugo-theme-stack
 ```
 
-![theme](image-1.png)
+![theme](images/image-1.png)
 
 ### 2.4 启动
 **1.** 将hugo目录中的hugo.exe复制到blog中(因为没有配置环境变量又要使用hugo)   
-也没有必要配置环境变量，直接使用也方便
+也没有必要配置环境变量，直接使用也方便   
 **2.** 进入新建的项目 `cd blog`   
-**3.** 使用命令 `hugo server -D` 启动
+**3.** 使用命令 `hugo server -D` 启动   
 **4.** 进入提示的网址
 
-![web](image-2.png)
+![web](images/image-2.png)
 
 按住ctrl点击就可以浏览器打开
 
-![example](image-3.png)
+![example](images/image-3.png)
 
 差不多这样(有些有改了没有复原，不要在意~)
 
@@ -79,7 +79,7 @@ theme: hugo-theme-stack
 
 ## 3. 修改配置
 ### 3.1 完整的hugo.yaml配置文件
-[hugo.yaml](hugo.txt)
+[hugo.yaml](resources/hugo.txt)
 ### 3.2 详细说明
 **1.** baseurl 下面配置github自动部署有用   
 **2.** languageCode 网站的语言，告诉浏览器自己用的是什么语言   
@@ -88,12 +88,12 @@ theme: hugo-theme-stack
 **5.** title 名字   
 浏览器标签这里   
 
-![title](image-4.png)
+![title](images/image-4.png)
 
 **6.** copyright 版权声明   
 下面这里   
 
-![copyright](image-5.png)
+![copyright](images/image-5.png)
 
 **7.** DefaultContentLanguage 创建的默认语言   
 hugo文件格式为index.language.md   
@@ -101,7 +101,7 @@ hugo文件格式为index.language.md
 **8.** hasCJKLanguage 如果使用中文就改为true   
 **9.** languages 配置不同语言显示的主页
 
-![languages](image-6.png)
+![languages](images/image-6.png)
 
 ```yaml
 zh-cn:
@@ -117,7 +117,7 @@ footer: # 角标
 ```
 下面那里
 
-![footer](image-7.png)
+![footer](images/image-7.png)
 
 ```yaml
 sidebar: # 侧边栏设置
@@ -186,7 +186,7 @@ menu:
 ex. `hugo new content post/test/index.md` (因为设置了默认所以就不写language了)   
 (name是文件名，language是语言，md是文件格式)
 
-![file](image-8.png)
+![file](images/image-8.png)
 
 **2.** 可以使用code或者其他打开目录   
 这里就 `code E:\\library\\hugo\\blog\\content\\post\\test`
@@ -335,22 +335,22 @@ blog\assets\scss\custom.scss中写入
 
 ## 7. 评论
 ### 7.1 utterances
-**1.** github安装utterances
-地址：https://github.com/apps/utterances
-**2.** 修改配置文件
-hugo.yaml->comments->provider   
-打开并使用utterances   
-utterances设置仓库   
+**1.** github安装utterances   
+地址：https://github.com/apps/utterances   
+**2.** 修改配置文件   
+hugo.yaml->comments->provider      
+打开并使用utterances      
+utterances设置仓库      
 ### 7.2 giscus
 **1.** github安装giscus
-https://github.com/apps/giscus
-**2.** 配置
-https://giscus.app/zh-CN
-**3.** 修改配置文件
-hugo.yaml->comments->provider   
-打开并使用giscus   
-配置giscus     
-**4.** 注意事项
-1. 确保仓库是公开的
-2. 仓库开启discussions(仓库->settings->general->features)
-3. 配置映射关系pathname,discussion分类，其他默认就好
+https://github.com/apps/giscus   
+**2.** 配置   
+https://giscus.app/zh-CN   
+**3.** 修改配置文件   
+hugo.yaml->comments->provider      
+打开并使用giscus
+配置giscus        
+**4.** 注意事项   
+1. 确保仓库是公开的   
+2. 仓库开启discussions(仓库->settings->general->features)   
+3. 配置映射关系pathname,discussion分类，其他默认就好   

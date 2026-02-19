@@ -63,7 +63,6 @@
 
 /* 悬停效果：移除位移，保留稳定的反馈 */
 .widget--toc #TableOfContents li:hover:not(.active-class) {
-    background-color: #f2f5f8 !important;
     /* 可感知但不突兀的背景 */
     color: #555 !important;
     /* 文字轻微提亮 */
@@ -105,7 +104,41 @@
     display: block;
     background: url(../icons/macOS-code-header.svg) no-repeat 0;
     background-size: contain;
-    height: 18px;
-    margin-top: -10px;
-    margin-bottom: 10px;
+    height: 13px;
+    margin-top: -16px;
+    margin-bottom: 16px;
+}
+
+/* --- 调整右侧边栏宽度，增大主内容区 --- */
+@media (min-width: 1024px) {
+    .container.extended {
+        --right-sidebar-max-width: 20%;
+    }
+}
+
+@media (min-width: 1280px) {
+    .container.extended {
+        --right-sidebar-max-width: 15%;
+    }
+}
+
+/* --- 行内代码样式 --- */
+.article-content code {
+    color: #7d63bf;
+    background-color: #ffffff5e;
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    // border: 1px solid #e0e0e0;
+}
+
+/* --- Markdown 分割线样式 --- */
+.article-content hr {
+    width: 70%;
+    margin: 50px auto;
+    background: #f3682df3;
+    height: 3px;
+    border-radius: 2px;
+    border: 0;
+    opacity: 0.55;
 }

@@ -1,0 +1,31 @@
+{{- $monoRegular := resources.Get "font/JetBrains-Mono/JetBrainsMono-Regular-2.ttf" -}}
+{{- $monoMedium := resources.Get "font/JetBrains-Mono/JetBrainsMono-Medium-3.ttf" -}}
+{{- $monoBold := resources.Get "font/JetBrains-Mono/JetBrainsMono-Bold-7.ttf" -}}
+{{- with $monoRegular }}
+<link rel="preload" href="{{ .RelPermalink }}" as="font" type="font/ttf" crossorigin>
+<style>
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('{{ .RelPermalink }}') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('{{ $monoMedium.RelPermalink }}') format('truetype');
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('{{ $monoBold.RelPermalink }}') format('truetype');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+  }
+</style>
+{{- end }}

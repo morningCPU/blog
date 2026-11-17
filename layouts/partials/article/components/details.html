@@ -1,0 +1,78 @@
+<div class="article-details">
+    <nav class="article-breadcrumb" aria-label="面包屑导航">
+        <a href="{{ .Site.Home.RelPermalink }}">笔记索引</a>
+        {{ if eq .Section "post" }}
+            {{ with .GetTerms "categories" }}
+                {{ with index . 0 }}
+                    <span class="article-breadcrumb-sep" aria-hidden="true">/</span>
+                    <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                {{ end }}
+            {{ end }}
+            <span class="article-breadcrumb-sep article-breadcrumb-sep--current" aria-hidden="true">/</span>
+            <span class="article-breadcrumb-current" aria-current="page">阅读</span>
+        {{ else }}
+            <span class="article-breadcrumb-sep article-breadcrumb-sep--current" aria-hidden="true">/</span>
+            <span class="article-breadcrumb-current" aria-current="page">{{ .Title }}</span>
+        {{ end }}
+    </nav>
+
+    {{ if .Params.categories }}
+    <header class="article-category">
+        {{ range (.GetTerms "categories") }}
+            <a href="{{ .RelPermalink }}" {{ with .Params.style }}style="background-color: {{ .background }}; color: {{ .color }};"{{ end }}>
+                {{ .LinkTitle }}
+            </a>
+        {{ end }}
+    </header>
+    {{ end }}
+
+    <div class="article-title-wrapper">
+        <h1 class="article-title">{{ .Title }}</h1>
+
+        {{ with .Params.description }}
+        <p class="article-subtitle">{{ . }}</p>
+        {{ end }}
+    </div>
+
+    {{ $showReadingTime := and (eq .Section "post") (.Params.readingTime | default (.Site.Params.article.readingTime)) }}
+    {{ $showDate := not .Date.IsZero }}
+    {{ $showFooter := or $showDate $showReadingTime }}
+    {{ if $showFooter }}
+    <footer class="article-time">
+        {{ if $showDate }}
+            <div>
+                {{ partial "helper/icon" "date" }}
+                <time class="article-time--published" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+                    {{- .Date.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
+                </time>
+            </div>
+        {{ end }}
+
+        {{ if $showReadingTime }}
+            <div>
+                {{ partial "helper/icon" "clock" }}
+                <time class="article-time--reading">
+                    {{ T "article.readingTime" .ReadingTime }}
+                </time>
+            </div>
+        {{ end }}
+
+        {{ if and (eq .Section "post") .WordCount }}
+            <div class="article-wordcount">
+                <span>{{ .WordCount }} 字</span>
+            </div>
+        {{ end }}
+    </footer>
+    {{ end }}
+
+    {{ if .IsTranslated }}
+        <footer class="article-translations">
+            {{ partial "helper/icon" "language" }}
+            <div>
+                {{ range .Translations }}
+                    <a href="{{ .Permalink }}" class="link">{{ .Language.LanguageName }}</a>
+                {{ end }}
+            </div>
+        </footer>
+    {{ end }}
+</div>

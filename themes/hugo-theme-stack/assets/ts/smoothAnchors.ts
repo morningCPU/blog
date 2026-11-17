@@ -23,11 +23,12 @@ function setupSmoothAnchors() {
 
             const targetId = decodeURI(aElement.getAttribute("href").substring(1)),
                 target = document.getElementById(targetId) as HTMLElement,
-                offset = target.getBoundingClientRect().top - document.documentElement.getBoundingClientRect().top;
+                anchorOffset = 34,
+                offset = target.getBoundingClientRect().top - document.documentElement.getBoundingClientRect().top - anchorOffset;
 
             window.history.pushState({}, "", aElement.getAttribute("href"));
             scrollTo({
-                top: offset,
+                top: Math.max(0, offset),
                 behavior: "smooth"
             });
         });

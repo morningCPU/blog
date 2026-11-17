@@ -1,20 +1,3 @@
-<!-- 本地字体：避免外部字体请求，保证排版稳定 -->
-<style>
-  @font-face {
-    font-family: 'Source Han Sans CN';
-    src: url('{{ (resources.Get "font/SiYuanHeiTi-CN-VF/SourceHanSansCN-VF-2.otf").Permalink }}') format('opentype');
-    font-weight: 100 900;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'JetBrains Mono';
-    src: url('{{ (resources.Get "font/JetBrains-Mono/JetBrainsMono-Regular-2.ttf").Permalink }}') format('truetype');
-    font-weight: 400;
-    font-display: swap;
-  }
-</style>
-
 <!-- 阅读进度 -->
 <div id="reading-progress" aria-hidden="true"></div>
 <style>

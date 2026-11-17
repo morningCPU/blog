@@ -63,8 +63,8 @@ let Stack = {
          * Add copy button to code block
         */
         const highlights = document.querySelectorAll('.article-content div.highlight');
-        const copyText = `Copy`,
-            copiedText = `Copied!`;
+        const copyText = `复制`,
+            copiedText = `已复制`;
 
         highlights.forEach(highlight => {
             const copyButton = document.createElement('button');

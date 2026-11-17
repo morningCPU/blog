@@ -60,7 +60,8 @@
     <ol class="menu" id="main-menu">
         {{ $currentPage := . }}
         {{ range .Site.Menus.main }}
-        {{ $active := or (eq $currentPage.Title .Name) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
+        {{ $inNotes := eq $currentPage.Section "post" }}
+        {{ $active := or (eq $currentPage.Title .Name) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) (and $inNotes (eq .Identifier "home")) }}
         <li {{ if $active }} class='current' {{ end }}>
             <a href='{{ .URL }}' {{ if eq .Params.newTab true }}target="_blank"{{ end }}>
                 {{ $icon := default .Pre .Params.Icon }}

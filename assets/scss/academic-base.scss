@@ -9,8 +9,8 @@
     --academic-paper-deep: #e2e9ee;
     --academic-card: #ffffff;
     --academic-ink: #17212b;
-    --academic-ink-soft: #46525f;
-    --academic-ink-muted: #5f6b77;
+    --academic-ink-soft: #3d4854;
+    --academic-ink-muted: #66727e;
     --academic-rule: #d4dce3;
     --academic-rule-strong: #a8b4c0;
     --academic-accent: #1f4e79;
@@ -20,11 +20,13 @@
     --academic-table-even: #f7f9fb;
     --academic-on-accent: #ffffff;
 
-    --academic-serif: "Charter", "Bitstream Charter", "Sitka Text", Cambria,
-        "Noto Serif CJK SC", "Songti SC", Georgia, serif;
-    --academic-sans: "Source Han Sans CN", "Noto Sans CJK SC", "PingFang SC",
+    --academic-serif: "Sitka Text", "Charter", "Bitstream Charter",
+        "Noto Serif SC", "Source Han Serif SC", "Noto Serif CJK SC",
+        "Songti SC", Cambria, Georgia, serif;
+    --academic-sans: "Noto Sans SC", "Source Han Sans SC", "PingFang SC",
         "Microsoft YaHei UI", "Segoe UI", sans-serif;
-    --academic-mono: "JetBrains Mono", "Cascadia Code", Consolas, "Courier New", monospace;
+    --academic-mono: "JetBrains Mono", "Cascadia Mono", "Cascadia Code", Consolas,
+        "Courier New", monospace;
 
     --body-background: var(--academic-paper);
     --body-text-color: var(--academic-ink-soft);
@@ -47,9 +49,10 @@
     --shadow-l4: 0 10px 30px rgba(31, 39, 46, 0.07);
 
     --base-font-family: var(--academic-sans);
-    --article-font-family: var(--academic-sans);
-    --article-font-size: 1.66rem;
-    --article-line-height: 1.92;
+    --article-font-family: var(--academic-serif);
+    --article-font-size: 1.8rem;
+    --article-line-height: 1.78;
+    --article-measure: 920px;
     --code-font-family: var(--academic-mono);
 
     --blockquote-border-size: 2px;
@@ -140,7 +143,9 @@
 body {
     color: var(--academic-ink-soft);
     font-family: var(--academic-sans);
-    letter-spacing: 0.01em;
+    font-synthesis: none;
+    font-optical-sizing: auto;
+    letter-spacing: 0;
 }
 
 a {
@@ -169,19 +174,25 @@ a.link:hover {
     font-family: var(--academic-serif);
     font-size: 1.7rem;
     font-weight: 600;
-    letter-spacing: 0.015em;
+    letter-spacing: 0;
     text-transform: none;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1024px) and (max-width: 1279px) {
     .container.extended {
-        --right-sidebar-max-width: 22%;
+        --right-sidebar-max-width: 0;
+    }
+
+    .container.extended .right-sidebar {
+        display: none;
     }
 }
 
 @media (min-width: 1280px) {
     .container.extended {
-        --right-sidebar-max-width: 20%;
+        max-width: 1600px;
+        --left-sidebar-max-width: clamp(176px, 13vw, 200px);
+        --right-sidebar-max-width: clamp(220px, 16vw, 260px);
     }
 }
 
@@ -191,7 +202,7 @@ a.link:hover {
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 18px;
+    scroll-padding-top: 32px;
 }
 
 @keyframes academic-rise {
@@ -241,6 +252,17 @@ html {
 
 .left-sidebar {
     animation: academic-fade 0.45s ease both;
+}
+
+.left-sidebar #main-menu {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.left-sidebar #main-menu::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
 }
 
 .left-sidebar #main-menu li a span {

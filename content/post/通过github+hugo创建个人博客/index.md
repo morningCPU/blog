@@ -25,8 +25,8 @@ https://letere-gzj.github.io/hugo-stack
 
 ---
 
-## 1 资源准备
-### 1.1 下载hugo
+## **1.** 资源准备
+### **1.1** 下载hugo
 下载地址 https://gohugo.io/
 点击上方github进入仓库    
 点击tag选择需要的版本进行下载，注意要点进去，里面有不同的类型  
@@ -35,19 +35,19 @@ https://letere-gzj.github.io/hugo-stack
 
 这里下载版本是 extended-0.131.0   
 最好用同样的版本，不然依照这个教程会有些问题(有些函数，变量之类的可能变了)   
-### 1.2 下载主题
+### **1.2** 下载主题
 hugo页面上方点击Themes
 这里选择stack-3.26.0
 
 ---
 
-## 2 准备工作
-### 2.1 创建项目
+## **2.** 准备工作
+### **2.1** 创建项目
 cmd使用命令 `hugo new site name`(注意在hugo所在文件夹使用cmd)   
 ex. `hugo new site blog`   
-### 2.2 设置主题
+### **2.2** 设置主题
 将上面下载好的主题解压到 hugo/blog/themes
-### 2.3 使用样例
+### **2.3** 使用样例
 **1.** 在解压的主题文件中可以发现exampleSite，这是示例文件   
 将其中的content和hugo.yaml复制到项目主文件夹(也就是hugo/blog)   
 **2.** 删除多余的hugo.toml   
@@ -60,7 +60,7 @@ theme: hugo-theme-stack
 
 ![theme](images/image-1.png)
 
-### 2.4 启动
+### **2.4** 启动
 **1.** 将hugo目录中的hugo.exe复制到blog中(因为没有配置环境变量又要使用hugo)   
 也没有必要配置环境变量，直接使用也方便   
 **2.** 进入新建的项目 `cd blog`   
@@ -77,10 +77,10 @@ theme: hugo-theme-stack
 
 ---
 
-## 3. 修改配置
-### 3.1 完整的hugo.yaml配置文件
+## **3.** 修改配置
+### **3.1** 完整的hugo.yaml配置文件
 [hugo.yaml](resources/hugo.txt)
-### 3.2 详细说明
+### **3.2** 详细说明
 **1.** baseurl 下面配置github自动部署有用   
 **2.** languageCode 网站的语言，告诉浏览器自己用的是什么语言   
 **3.** theme 使用的主题   
@@ -181,7 +181,7 @@ menu:
 
 ---
 
-## 4. 使用博客
+## **4.** 使用博客
 **1.** 命令`hugo new content post/name/index.language.md`创建一个文件   
 ex. `hugo new content post/test/index.md` (因为设置了默认所以就不写language了)   
 (name是文件名，language是语言，md是文件格式)
@@ -220,18 +220,18 @@ draft = true
 
 ---
 
-## 5. github自动部署
-### 5.1 github创建仓库   
+## **5.** github自动部署
+### **5.1** github创建仓库
 比如仓库名为blog   
-### 5.2 设置访问token   
+### **5.2** 设置访问token
 头像->settings->Developer settings->personal access tokens->tokens(basic)   
-### 5.3 设置仓库变量   
+### **5.3** 设置仓库变量
 + 用于安全访问token   
 仓库->settings->secrets and variables->actions->repository secrets   
-### 5.4 本地创建仓库
+### **5.4** 本地创建仓库
 + 在blog下创建仓库
 + 关联远程仓库
-### 5.5 创建工作流配置文件
+### **5.5** 创建工作流配置文件
 + 创建blog/.github/workflows/blog.yaml
 ```yaml
 name: deploy
@@ -270,22 +270,22 @@ jobs:
               commit_message: auto deploy
 ```
 + hugo-version，PERSONAL_TOKEN，EXTERNAL_REPOSITORY改一下
-### 5.6 创建.gitignore文件
+### **5.6** 创建.gitignore文件
 ```txt
 ./public
 ./resources
 ./.hugo_build.lock
 ./hugo.exe
 ```
-### 5.7 github设置action
+### **5.7** github设置action
 仓库->settings->pages->branch->选择分支->save   
-### 5.8 提交
+### **5.8** 提交
 需要`git push -f`强制提交，因为action会改变提交内容   
 千万不要git pull，里面的内容是不一样的
 
 ---
 
-## 6. 目录的修改
+## **6.** 目录的修改
 + 要注意要二级标题目录才生效   
 改为无序列表   
 blog\assets\scss\custom.scss中写入   
@@ -333,15 +333,15 @@ blog\assets\scss\custom.scss中写入
 
 ---
 
-## 7. 评论
-### 7.1 utterances
+## **7.** 评论
+### **7.1** utterances
 **1.** github安装utterances   
 地址：https://github.com/apps/utterances   
 **2.** 修改配置文件   
 hugo.yaml->comments->provider      
 打开并使用utterances      
 utterances设置仓库      
-### 7.2 giscus
+### **7.2** giscus
 **1.** github安装giscus
 https://github.com/apps/giscus   
 **2.** 配置   

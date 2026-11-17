@@ -31,9 +31,10 @@
     margin: 0 0 1.1em;
     color: var(--academic-accent);
     font-family: var(--academic-mono);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 500;
     letter-spacing: 0.22em;
+    line-height: 18px;
     text-transform: uppercase;
 }
 
@@ -91,9 +92,10 @@
     margin: 0;
     color: var(--academic-ink-muted);
     font-family: var(--academic-mono);
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 400;
     letter-spacing: 0.16em;
+    line-height: 16px;
     text-transform: uppercase;
 }
 
@@ -176,8 +178,9 @@
 .academic-index-head span {
     color: var(--academic-ink-muted);
     font-family: var(--academic-mono);
-    font-size: 1.05rem;
+    font-size: 1.2rem;
     letter-spacing: 0.12em;
+    line-height: 18px;
     text-transform: uppercase;
 }
 
@@ -201,9 +204,9 @@
     padding-top: 0.45em;
     color: var(--academic-ink-muted);
     font-family: var(--academic-mono);
-    font-size: 1.08rem;
+    font-size: 1.2rem;
     letter-spacing: 0.04em;
-    line-height: 1.65;
+    line-height: 18px;
 }
 
 .academic-entry-no {
@@ -213,7 +216,7 @@
 .academic-entry-title {
     margin: 0 0 0.4em;
     font-family: var(--academic-serif);
-    font-size: clamp(1.95rem, 2.2vw, 2.35rem);
+    font-size: clamp(2rem, 2.2vw, 2.4rem);
     font-weight: 600;
     letter-spacing: -0.005em;
     line-height: 1.4;
@@ -244,7 +247,7 @@
     margin: 0 0 1.15em;
     color: var(--academic-ink-soft);
     font-size: 1.5rem;
-    line-height: 1.78;
+    line-height: 27px;
 }
 
 .academic-entry-footer {
@@ -260,10 +263,11 @@
     border: 1px solid var(--academic-rule-strong);
     border-radius: 1px;
     color: var(--academic-ink-muted);
-    font-family: var(--academic-mono);
-    font-size: 1.05rem;
-    letter-spacing: 0.08em;
-    line-height: 1.8;
+    font-family: var(--academic-sans);
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 18px;
     text-transform: uppercase;
     transition: border-color 0.2s ease, color 0.2s ease,
         background-color 0.2s ease, transform 0.2s ease;
@@ -284,9 +288,11 @@
 .academic-entry-more {
     margin-left: auto;
     color: var(--academic-accent);
-    font-family: var(--academic-mono);
-    font-size: 1.1rem;
-    letter-spacing: 0.05em;
+    font-family: var(--academic-sans);
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 20px;
     white-space: nowrap;
 }
 
@@ -327,15 +333,15 @@
     padding-top: 0.75em;
     border-top: 1px solid var(--academic-rule);
     color: var(--academic-ink-soft);
-    font-size: 1.22rem;
-    line-height: 1.7;
+    font-size: 1.3rem;
+    line-height: 21px;
 }
 
 .about-note {
     margin: 0.75em 0 0;
     color: var(--academic-ink-muted);
-    font-size: 1.22rem;
-    line-height: 1.72;
+    font-size: 1.3rem;
+    line-height: 21px;
 }
 
 .about-links {
@@ -376,9 +382,11 @@
     display: inline-block;
     margin-top: 1em;
     color: var(--academic-accent);
-    font-family: var(--academic-mono);
-    font-size: 1.05rem;
-    letter-spacing: 0.04em;
+    font-family: var(--academic-sans);
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 18px;
 }
 
 .academic-link-section {
@@ -518,17 +526,18 @@
 
 .left-sidebar .site-description {
     color: var(--academic-ink-muted);
-    font-family: var(--academic-mono);
-    font-size: 1.02rem;
-    letter-spacing: 0.08em;
-    line-height: 1.6;
-    text-transform: uppercase;
+    font-family: var(--academic-sans);
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 22px;
+    text-transform: none;
 }
 
 .left-sidebar #main-menu {
-    gap: 17px;
+    gap: 18px;
     color: var(--academic-ink-soft);
-    font-size: 1.32rem;
+    font-size: 1.4rem;
 }
 
 .left-sidebar #main-menu li a {

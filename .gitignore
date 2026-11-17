@@ -1,5 +1,11 @@
-./public
-./resources
-./.hugo_build.lock
-./artical_ex
-./hugo.exe
+# Hugo 构建产物（可随时重建）
+/public/
+/resources/
+/.hugo_build.lock
+
+# 本地工具与临时文件
+/hugo.exe
+/artical_ex/
+*.log
+Thumbs.db
+.DS_Store

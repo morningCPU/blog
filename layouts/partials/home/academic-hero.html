@@ -1,0 +1,30 @@
+{{- $a := default (dict
+    "kicker" "RESEARCH NOTES"
+    "headline" "学习与研究笔记"
+    "lede" "记录工程问题、证据与解法。"
+    "affiliation" "Engineering Notes"
+    "focus" "Web Engineering / Static Sites"
+) .Site.Params.academic -}}
+{{- $posts := where .Site.RegularPages "Type" "in" .Site.Params.mainSections -}}
+{{- $visible := where $posts "Params.hidden" "!=" true -}}
+{{- $last := "" -}}
+{{- with $visible -}}
+    {{- $last = (index (sort . "Lastmod" "desc") 0).Lastmod -}}
+{{- end -}}
+
+<section class="academic-hero">
+    <p class="academic-kicker">{{ $a.kicker }}</p>
+    <h1 class="academic-headline">{{ $a.headline }}</h1>
+    <p class="academic-lede">{{ $a.lede }}</p>
+    <div class="academic-meta-row">
+        <span>{{ $a.affiliation }}</span>
+        <span class="academic-meta-sep" aria-hidden="true">/</span>
+        <span>{{ $a.focus }}</span>
+    </div>
+    <dl class="academic-stats">
+        <div><dt>Notes</dt><dd>{{ len $visible }}</dd></div>
+        <div><dt>Topics</dt><dd>{{ len .Site.Taxonomies.categories }}</dd></div>
+        <div><dt>Tags</dt><dd>{{ len .Site.Taxonomies.tags }}</dd></div>
+        <div class="academic-stats-last"><dt>Last update</dt><dd>{{ with $last }}{{ .Format "2006-01-02" }}{{ else }}—{{ end }}</dd></div>
+    </dl>
+</section>

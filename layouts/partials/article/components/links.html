@@ -1,0 +1,23 @@
+{{- $links := .Params.links -}}
+{{- with $links -}}
+<section class="academic-link-section" aria-label="资料索引">
+    <header class="academic-link-section-head">
+        <h2>资料索引</h2>
+        <span>{{ len . }} resources</span>
+    </header>
+    <div class="academic-link-list">
+        {{ range $i, $link := . }}
+            {{- $host := (urls.Parse $link.website).Host -}}
+            <a class="academic-link-item" href="{{ $link.website }}" target="_blank" rel="noopener" data-reveal>
+                <span class="academic-link-index">{{ printf "%02d" (add $i 1) }}</span>
+                <span class="academic-link-body">
+                    <span class="academic-link-title">{{ $link.title }}</span>
+                    {{ with $link.description }}<span class="academic-link-desc">{{ . }}</span>{{ end }}
+                    <span class="academic-link-domain">{{ $host }}</span>
+                </span>
+                <span class="academic-link-arrow" aria-hidden="true">↗</span>
+            </a>
+        {{ end }}
+    </div>
+</section>
+{{- end -}}

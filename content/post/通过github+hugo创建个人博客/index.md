@@ -1,7 +1,7 @@
 +++
 author = "morning"
-title = "使用github+hugo创建个人博客"
-description = "用hugo创建静态博客页面，并通过github进行自动部署"
+title = "使用 GitHub + Hugo 创建个人博客"
+description = "用 Hugo 构建静态博客，并通过 GitHub 自动部署的完整流程"
 date = "2026-01-28"
 image = "images/title.webp"
 readingtime=true
@@ -11,7 +11,7 @@ categories = [
     "github",
     "hugo"
 ]
-tags = []
+tags = ["GitHub Actions", "静态站点", "自动化部署"]
 slug= "001"
 +++
 
@@ -353,4 +353,4 @@ hugo.yaml->comments->provider
 **4.** 注意事项   
 1. 确保仓库是公开的   
 2. 仓库开启discussions(仓库->settings->general->features)   
-3. 配置映射关系pathname,discussion分类，其他默认就好   
+3. 配置映射关系pathname,discussion分类，其他默认就好

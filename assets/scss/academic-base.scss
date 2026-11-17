@@ -1,0 +1,312 @@
+/* =========================================================
+   Academic reading theme — foundations
+   ========================================================= */
+
+:root {
+    color-scheme: light;
+
+    --academic-paper: #eef2f5;
+    --academic-paper-deep: #e2e9ee;
+    --academic-card: #ffffff;
+    --academic-ink: #17212b;
+    --academic-ink-soft: #46525f;
+    --academic-ink-muted: #5f6b77;
+    --academic-rule: #d4dce3;
+    --academic-rule-strong: #a8b4c0;
+    --academic-accent: #1f4e79;
+    --academic-accent-dark: #143a5c;
+    --academic-accent-wash: rgba(31, 78, 121, 0.07);
+    --academic-code-bg: #f3f6f8;
+    --academic-table-even: #f7f9fb;
+    --academic-on-accent: #ffffff;
+
+    --academic-serif: "Charter", "Bitstream Charter", "Sitka Text", Cambria,
+        "Noto Serif CJK SC", "Songti SC", Georgia, serif;
+    --academic-sans: "Source Han Sans CN", "Noto Sans CJK SC", "PingFang SC",
+        "Microsoft YaHei UI", "Segoe UI", sans-serif;
+    --academic-mono: "JetBrains Mono", "Cascadia Code", Consolas, "Courier New", monospace;
+
+    --body-background: var(--academic-paper);
+    --body-text-color: var(--academic-ink-soft);
+    --accent-color: var(--academic-accent);
+    --accent-color-darker: var(--academic-accent-dark);
+    --accent-color-text: var(--academic-on-accent);
+
+    --card-background: var(--academic-card);
+    --card-background-selected: var(--academic-paper-deep);
+    --card-text-color-main: var(--academic-ink);
+    --card-text-color-secondary: var(--academic-ink-soft);
+    --card-text-color-tertiary: var(--academic-ink-muted);
+    --card-separator-color: var(--academic-rule);
+    --card-border-radius: 2px;
+    --tag-border-radius: 1px;
+
+    --shadow-l1: 0 1px 0 rgba(31, 39, 46, 0.035);
+    --shadow-l2: 0 2px 10px rgba(31, 39, 46, 0.055);
+    --shadow-l3: 0 4px 18px rgba(31, 39, 46, 0.06);
+    --shadow-l4: 0 10px 30px rgba(31, 39, 46, 0.07);
+
+    --base-font-family: var(--academic-sans);
+    --article-font-family: var(--academic-sans);
+    --article-font-size: 1.66rem;
+    --article-line-height: 1.92;
+    --code-font-family: var(--academic-mono);
+
+    --blockquote-border-size: 2px;
+    --blockquote-background-color: transparent;
+    --heading-border-size: 0px;
+    --link-background-color: 31, 78, 121;
+    --link-background-opacity: 0.08;
+    --link-background-opacity-hover: 0.12;
+
+    --pre-background-color: var(--academic-code-bg);
+    --pre-text-color: var(--academic-ink);
+    --code-background-color: var(--academic-accent-wash);
+    --code-text-color: var(--academic-accent-dark);
+    --table-border-color: var(--academic-rule);
+    --tr-even-background-color: var(--academic-table-even);
+    --kbd-border-color: var(--academic-rule-strong);
+
+    --section-separation: 32px;
+    --menu-icon-separation: 15px;
+    --card-padding: 22px;
+}
+
+@media (min-width: 768px) {
+    :root {
+        --card-padding: 32px;
+    }
+}
+
+@media (min-width: 1280px) {
+    :root {
+        --card-padding: 40px;
+    }
+}
+
+:root[data-scheme="light"] {
+    --pre-background-color: var(--academic-code-bg);
+    --pre-text-color: var(--academic-ink);
+}
+
+:root[data-scheme="dark"] {
+    color-scheme: dark;
+
+    --academic-paper: #10151a;
+    --academic-paper-deep: #192027;
+    --academic-card: #151c23;
+    --academic-ink: #e6ebef;
+    --academic-ink-soft: #bcc6cf;
+    --academic-ink-muted: #8b97a2;
+    --academic-rule: #2b343d;
+    --academic-rule-strong: #3f4b56;
+    --academic-accent: #85b4dd;
+    --academic-accent-dark: #a8cbea;
+    --academic-accent-wash: rgba(133, 180, 221, 0.12);
+    --academic-code-bg: #0d1217;
+    --academic-table-even: #1a2128;
+    --academic-on-accent: #10151a;
+
+    --body-background: var(--academic-paper);
+    --body-text-color: var(--academic-ink-soft);
+    --accent-color: var(--academic-accent);
+    --accent-color-darker: var(--academic-accent-dark);
+    --accent-color-text: var(--academic-on-accent);
+    --card-background: var(--academic-card);
+    --card-background-selected: var(--academic-paper-deep);
+    --card-text-color-main: var(--academic-ink);
+    --card-text-color-secondary: var(--academic-ink-soft);
+    --card-text-color-tertiary: var(--academic-ink-muted);
+    --card-separator-color: var(--academic-rule);
+    --pre-background-color: var(--academic-code-bg);
+    --pre-text-color: var(--academic-ink);
+    --code-background-color: rgba(133, 180, 221, 0.14);
+    --code-text-color: var(--academic-accent-dark);
+    --table-border-color: var(--academic-rule);
+    --tr-even-background-color: var(--academic-table-even);
+    --blockquote-background-color: transparent;
+}
+
+::selection {
+    background: var(--academic-accent);
+    color: var(--academic-on-accent);
+}
+
+:focus-visible {
+    outline: 1px solid var(--academic-accent);
+    outline-offset: 3px;
+}
+
+body {
+    color: var(--academic-ink-soft);
+    font-family: var(--academic-sans);
+    letter-spacing: 0.01em;
+}
+
+a {
+    color: var(--academic-accent);
+}
+
+a:hover {
+    color: var(--academic-accent-dark);
+}
+
+a.link {
+    box-shadow: none;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--academic-rule-strong);
+}
+
+a.link:hover {
+    box-shadow: none;
+    text-decoration-color: currentColor;
+}
+
+.section-title {
+    color: var(--academic-ink);
+    font-family: var(--academic-serif);
+    font-size: 1.7rem;
+    font-weight: 600;
+    letter-spacing: 0.015em;
+    text-transform: none;
+}
+
+@media (min-width: 1024px) {
+    .container.extended {
+        --right-sidebar-max-width: 22%;
+    }
+}
+
+@media (min-width: 1280px) {
+    .container.extended {
+        --right-sidebar-max-width: 20%;
+    }
+}
+
+.main-container {
+    padding-bottom: 28px;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 18px;
+}
+
+@keyframes academic-rise {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes academic-fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes academic-rule-in {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.reveal-pending {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+}
+
+.reveal-pending.is-revealed {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition:
+        opacity 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms),
+        transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms);
+}
+
+.left-sidebar {
+    animation: academic-fade 0.45s ease both;
+}
+
+.left-sidebar #main-menu li a span {
+    position: relative;
+    flex: 0 1 auto;
+}
+
+.left-sidebar #main-menu li a span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    height: 1px;
+    background: var(--academic-accent);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.24s ease;
+}
+
+.left-sidebar #main-menu li a:hover span::after,
+.left-sidebar #main-menu li.current a span::after {
+    transform: scaleX(1);
+}
+
+.right-sidebar > * {
+    animation: academic-fade 0.5s ease both;
+}
+
+.right-sidebar > *:nth-child(1) {
+    animation-delay: 0.04s;
+}
+
+.right-sidebar > *:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.right-sidebar > *:nth-child(3) {
+    animation-delay: 0.16s;
+}
+
+.right-sidebar > *:nth-child(4) {
+    animation-delay: 0.22s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .reveal-pending {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media print {
+    .reveal-pending {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}

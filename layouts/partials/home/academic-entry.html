@@ -1,0 +1,29 @@
+{{- $page := .Page -}}
+{{- $pag := .Paginator -}}
+{{- $n := add (mul (sub $pag.PageNumber 1) $pag.PageSize) .Index 1 -}}
+<article class="academic-entry" data-reveal>
+    <div class="academic-entry-meta">
+        <span class="academic-entry-no">[{{ printf "%02d" $n }}]</span>
+        <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "2006-01-02" }}</time>
+        <span>{{ $page.ReadingTime }} min</span>
+    </div>
+    <div class="academic-entry-body">
+        <h3 class="academic-entry-title"><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h3>
+        {{ with $page.Description }}
+            <p class="academic-entry-abstract">{{ . }}</p>
+        {{ else }}
+            {{ with $page.Summary }}
+                <p class="academic-entry-abstract">{{ . | plainify | truncate 180 }}</p>
+            {{ end }}
+        {{ end }}
+        <div class="academic-entry-footer">
+            {{ range $page.GetTerms "categories" }}
+                <a class="academic-chip" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+            {{ end }}
+            {{ range first 3 ($page.GetTerms "tags") }}
+                <a class="academic-chip academic-chip--tag" href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>
+            {{ end }}
+            <a class="academic-entry-more" href="{{ $page.RelPermalink }}">阅读全文 <span aria-hidden="true">→</span></a>
+        </div>
+    </div>
+</article>

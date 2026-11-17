@@ -1,0 +1,28 @@
+{{ define "main" }}
+    {{ partial "home/academic-hero.html" . }}
+
+    {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+    {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
+    {{ $filtered := ($pages | intersect $notHidden) }}
+    {{ $pag := .Paginate ($filtered) }}
+
+    <section class="academic-index" aria-label="研究笔记列表">
+        <header class="academic-index-head">
+            <h2>研究笔记</h2>
+            <span>{{ len $filtered }} entries · {{ $pag.TotalPages }} pages</span>
+        </header>
+
+        {{ range $index, $element := $pag.Pages }}
+            {{ partial "home/academic-entry.html" (dict "Page" $element "Index" $index "Paginator" $pag) }}
+        {{ else }}
+            <p class="academic-empty">暂无已发布笔记。</p>
+        {{ end }}
+    </section>
+
+    {{- partial "pagination.html" . -}}
+    {{- partial "footer/footer" . -}}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}

@@ -1,7 +1,7 @@
 +++
 author = "morning"
-title = 'Tailwind'
-description = "How to start using Tailwind CSS"
+title = 'Tailwind CSS 使用笔记'
+description = "在 Node.js 项目中配置 Tailwind CSS 与 PostCSS 的实践记录"
 date = 2026-02-19T17:41:44+08:00
 image = "images/title.webp"
 
@@ -9,7 +9,7 @@ readingtime=true
 math= false
 
 categories = ["tailwindcss"]
-tags = []
+tags = ["PostCSS", "前端工程"]
 
 slug= "002"
 

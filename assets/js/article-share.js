@@ -53,6 +53,7 @@
         document.querySelectorAll("[data-share-root]"),
         function (root) {
             var url = root.getAttribute("data-share-url");
+            var isDraft = root.getAttribute("data-share-draft") === "true";
             var feedback = root.querySelector("[data-share-feedback]");
             var copyButton = root.querySelector("[data-share-copy]");
             var copyLabel = root.querySelector("[data-copy-label]");
@@ -78,7 +79,12 @@
             if (copyButton) {
                 copyButton.addEventListener("click", function () {
                     copyText(url).then(function () {
-                        setFeedback("链接已复制到剪贴板。", false);
+                        setFeedback(
+                            isDraft
+                                ? "已复制线上链接；文章仍是草稿，发布后卡片才有效。"
+                                : "链接已复制到剪贴板。",
+                            isDraft
+                        );
                         if (copyLabel) {
                             window.clearTimeout(copyTimer);
                             copyLabel.textContent = "已复制";

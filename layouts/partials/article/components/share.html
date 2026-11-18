@@ -1,7 +1,15 @@
+{{- $page := . -}}
 {{- $card := partialCached "share/card.html" . .RelPermalink -}}
+{{- $shareURL := .Permalink -}}
+{{- if hugo.IsServer -}}
+    {{- with site.Params.share.productionBaseURL -}}
+        {{- $shareURL = printf "%s%s" (strings.TrimSuffix "/" .) $page.RelPermalink -}}
+    {{- end -}}
+{{- end -}}
 
 <section class="article-share" data-share-root
-    data-share-url="{{ .Permalink }}"
+    data-share-url="{{ $shareURL }}"
+    data-share-draft="{{ if .Draft }}true{{ else }}false{{ end }}"
     aria-labelledby="article-share-title">
     <div class="article-share-head">
         <div>

@@ -9,7 +9,7 @@ readingtime = false
 categories = ["AI"]
 tags = ["AI"]
 
-slug = ""
+slug = "003"
 
 series = []
 aliases = []

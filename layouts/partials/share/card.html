@@ -1,18 +1,25 @@
 {{- $base := resources.Get "share/share-card-base.png" -}}
 {{- $font := resources.Get "font/NotoSansSC-Share.ttf" -}}
+{{- $page := . -}}
+{{- $shareURL := .Permalink -}}
+{{- if hugo.IsServer -}}
+    {{- with site.Params.share.productionBaseURL -}}
+        {{- $shareURL = printf "%s%s" (strings.TrimSuffix "/" .) $page.RelPermalink -}}
+    {{- end -}}
+{{- end -}}
 
 {{- $title := strings.Trim (plainify .Title) " \n\t\r" -}}
 
 {{- $titleLength := strings.RuneCount $title -}}
 {{- $titleSize := 58 -}}
-{{- $titleLimit := 17 -}}
+{{- $titleLimit := 14 -}}
 {{- if gt $titleLength 28 -}}
     {{- $titleSize = 50 -}}
-    {{- $titleLimit = 19 -}}
+    {{- $titleLimit = 16 -}}
 {{- end -}}
 {{- if gt $titleLength 56 -}}
     {{- $titleSize = 42 -}}
-    {{- $titleLimit = 23 -}}
+    {{- $titleLimit = 19 -}}
 {{- end -}}
 
 {{- $titleText := partial "share/wrap.html" (dict
@@ -21,7 +28,7 @@
 
 {{- $description := strings.Trim (default (.Summary | plainify) .Description) " \n\t\r" -}}
 {{- $descriptionText := partial "share/wrap.html" (dict
-    "text" $description "limit" 44 "maxLines" 3
+    "text" $description "limit" 34 "maxLines" 3
 ) -}}
 
 {{- $titleLines := split $titleText "\n" -}}
@@ -34,7 +41,7 @@
         {{- $meta = printf "%s  ·  %s" $meta .LinkTitle -}}
     {{- end -}}
 {{- end -}}
-{{- $siteAddress := .Site.BaseURL | replaceRE "^https?://" "" | strings.TrimSuffix "/" -}}
+{{- $siteAddress := $shareURL -}}
 
 {{- $card := $base -}}
 {{- $card = $card.Filter (images.Text "MORNING CPU  /  RESEARCH NOTE" (dict
@@ -51,11 +58,20 @@
     )) -}}
 {{- end -}}
 {{- $card = $card.Filter (images.Text $meta (dict
-    "color" "#55616c" "size" 20 "x" 100 "y" 523 "font" $font
+    "color" "#55616c" "size" 20 "x" 100 "y" 548 "font" $font
 )) -}}
 {{- $card = $card.Filter (images.Text $siteAddress (dict
-    "color" "#55616c" "size" 20 "x" 790 "y" 523 "font" $font
+    "color" "#55616c" "size" 20 "x" 690 "y" 548 "font" $font
 )) -}}
+
+{{- $qrKey := printf "share/qr/%s.png" (md5 $shareURL) -}}
+{{- with resources.Get $qrKey -}}
+    {{- $qr := .Resize "160x160" -}}
+    {{- $card = $card.Filter (images.Overlay $qr 980 310) -}}
+    {{- $card = $card.Filter (images.Text "扫码阅读" (dict
+        "color" "#1f4e79" "size" 18 "x" 1024 "y" 280 "font" $font
+    )) -}}
+{{- end -}}
 
 {{- $result := dict
     "resource" $card

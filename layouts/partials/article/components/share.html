@@ -1,7 +1,7 @@
 {{- $card := partialCached "share/card.html" . .RelPermalink -}}
 
 <section class="article-share" data-share-root
-    data-share-url="{{ .Permalink }}" data-share-title="{{ .Title }}"
+    data-share-url="{{ .Permalink }}"
     aria-labelledby="article-share-title">
     <div class="article-share-head">
         <div>
@@ -16,21 +16,16 @@
     </div>
 
     <div class="article-share-actions">
-        <button type="button" class="article-share-button" data-share-native hidden>
-            {{ partial "helper/icon" "share" }}
-            <span>系统分享</span>
-        </button>
         <button type="button" class="article-share-button" data-share-copy>
             {{ partial "helper/icon" "link" }}
             <span data-copy-label>复制链接</span>
         </button>
         {{ with $card }}
-        <a class="article-share-button article-share-button--download"
-            href="{{ .permalink }}"
-            download="{{ $.File.ContentBaseName }}-share-card.png">
-            {{ partial "helper/icon" "download" }}
-            <span>保存卡片</span>
-        </a>
+        <button type="button" class="article-share-button"
+            data-copy-image data-card-url="{{ .permalink }}">
+            {{ partial "helper/icon" "copy" }}
+            <span data-card-copy-label>复制卡片</span>
+        </button>
         {{ end }}
     </div>
     <p class="article-share-feedback" data-share-feedback role="status" aria-live="polite"></p>

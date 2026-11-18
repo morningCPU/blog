@@ -1,0 +1,63 @@
+{{- $base := resources.Get "share/share-thumb-base.png" -}}
+{{- $font := resources.Get "font/NotoSansSC-Share.ttf" -}}
+{{- $title := strings.Trim (plainify .Title) " \n\t\r" -}}
+{{- $titleLength := strings.RuneCount $title -}}
+{{- $titleSize := 38 -}}
+{{- $titleLimit := 12 -}}
+{{- if gt $titleLength 18 -}}
+    {{- $titleSize = 30 -}}
+    {{- $titleLimit = 16 -}}
+{{- end -}}
+{{- if gt $titleLength 36 -}}
+    {{- $titleSize = 27 -}}
+    {{- $titleLimit = 18 -}}
+{{- end -}}
+
+{{- $titleText := partial "share/wrap.html" (dict
+    "text" $title "limit" $titleLimit "maxLines" 3
+) -}}
+{{- $description := strings.Trim (default (.Summary | plainify) .Description) " \n\t\r" -}}
+{{- $descriptionText := partial "share/wrap.html" (dict
+    "text" $description "limit" 25 "maxLines" 3
+) -}}
+{{- $titleLines := split $titleText "\n" -}}
+{{- $descriptionY := add 112 (mul (len $titleLines) (add $titleSize 10)) -}}
+{{- $descriptionY = add $descriptionY 18 -}}
+
+{{- $meta := .Date.Format "2006.01.02" -}}
+{{- with .GetTerms "categories" -}}
+    {{- with index . 0 -}}
+        {{- $meta = printf "%s  ·  %s" $meta .LinkTitle -}}
+    {{- end -}}
+{{- end -}}
+{{- $siteAddress := .Site.BaseURL | replaceRE "^https?://" "" | strings.TrimSuffix "/" -}}
+
+{{- $thumb := $base -}}
+{{- $thumb = $thumb.Filter (images.Text "MORNING CPU / NOTE" (dict
+    "color" "#1f4e79" "size" 14 "x" 52 "y" 56 "font" $font
+)) -}}
+{{- $thumb = $thumb.Filter (images.Text $titleText (dict
+    "color" "#17212b" "size" $titleSize "x" 52 "y" 108
+    "font" $font "linespacing" 10
+)) -}}
+{{- if $descriptionText -}}
+    {{- $thumb = $thumb.Filter (images.Text $descriptionText (dict
+        "color" "#3d4854" "size" 17 "x" 52 "y" $descriptionY
+        "font" $font "linespacing" 8
+    )) -}}
+{{- end -}}
+{{- $thumb = $thumb.Filter (images.Text $meta (dict
+    "color" "#55616c" "size" 15 "x" 52 "y" 492 "font" $font
+)) -}}
+{{- $thumb = $thumb.Filter (images.Text $siteAddress (dict
+    "color" "#55616c" "size" 15 "x" 52 "y" 536 "font" $font
+)) -}}
+
+{{- $result := dict
+    "permalink" $thumb.RelPermalink
+    "alt" (printf "分享缩略图：%s" $title)
+    "width" 600
+    "height" 600
+}}
+
+{{ return $result }}

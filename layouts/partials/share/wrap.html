@@ -10,6 +10,14 @@
         {{- break -}}
     {{- end -}}
     {{- $take := cond (gt $count $limit) $limit $count -}}
+    {{- if and (gt $count $limit) (ne (substr $rest $take 1) " ") -}}
+        {{- $candidate := substr $rest 0 $take -}}
+        {{- $words := split $candidate " " -}}
+        {{- if gt (len $words) 1 -}}
+            {{- $prefixWords := first (sub (len $words) 1) $words -}}
+            {{- $take = strings.RuneCount (delimit $prefixWords " ") -}}
+        {{- end -}}
+    {{- end -}}
     {{- $line := strings.Trim (substr $rest 0 $take) " \n\t\r" -}}
     {{- $rest = strings.Trim (substr $rest $take) " \n\t\r" -}}
     {{- $lines = $lines | append $line -}}

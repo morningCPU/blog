@@ -4,8 +4,8 @@ title = "使用 GitHub + Hugo 创建个人博客"
 description = "用 Hugo 构建静态博客，并通过 GitHub 自动部署的完整流程"
 date = "2026-01-28"
 image = "assets/title.webp"
-readingtime=true
-math= false
+readingtime = false
+math = true
 
 categories = [
     "github",
@@ -203,8 +203,8 @@ description = ""
 date = {{ .Date }}
 image = "title.jpg"
 
-readingtime=true
-math= false
+readingtime = false
+math = true
 
 categories = []
 tags = []

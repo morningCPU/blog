@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="{{ "katex/katex.min.css" | relURL }}">
+<script defer src="{{ "katex/katex.min.js" | relURL }}"></script>
+<script defer src="{{ "katex/contrib/auto-render.min.js" | relURL }}"></script>
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+        if (typeof renderMathInElement !== "function") return;
+
+        renderMathInElement(document.querySelector(".article-content") || document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"],
+            throwOnError: false
+        });
+    });
+</script>

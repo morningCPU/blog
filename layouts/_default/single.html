@@ -31,6 +31,16 @@
         {{ partial "comments/include" . }}
     {{ end }}
 
+    {{- with resources.Get "js/article-image-lightbox.js" -}}
+        {{- $lightbox := . | minify | fingerprint "sha256" -}}
+        <script type="text/javascript" src="{{ $lightbox.RelPermalink }}" integrity="{{ $lightbox.Data.Integrity }}" defer></script>
+    {{- end -}}
+
+    {{- with resources.Get "js/article-checklist.js" -}}
+        {{- $checklist := . | minify | fingerprint "sha256" -}}
+        <script type="text/javascript" src="{{ $checklist.RelPermalink }}" integrity="{{ $checklist.Data.Integrity }}" defer></script>
+    {{- end -}}
+
     {{ partialCached "footer/footer" . }}
 {{ end }}
 

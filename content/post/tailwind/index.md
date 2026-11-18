@@ -5,8 +5,8 @@ description = "在 Node.js 项目中配置 Tailwind CSS 与 PostCSS 的实践记
 date = 2026-02-19T17:41:44+08:00
 image = "assets/title.webp"
 
-readingtime=true
-math= false
+readingtime = false
+math = true
 
 categories = ["tailwindcss"]
 tags = ["PostCSS", "前端工程"]

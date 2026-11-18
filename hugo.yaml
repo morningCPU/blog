@@ -72,9 +72,9 @@ params:
 
     article:
         headingAnchor: true
-        math: false
+        math: true
         toc: true
-        readingTime: true
+        readingTime: false
         license:
             enabled: true
             default: "本文采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议。"
@@ -232,6 +232,16 @@ markup:
             ## Set to true if you have HTML content inside Markdown
             unsafe: true
             hardWraps: true
+        extensions:
+            passthrough:
+                enable: true
+                delimiters:
+                    inline:
+                        - ["$", "$"]
+                        - ['\(', '\)']
+                    block:
+                        - ["$$", "$$"]
+                        - ['\[', '\]']
     tableOfContents:
         endLevel: 4
         ordered: true

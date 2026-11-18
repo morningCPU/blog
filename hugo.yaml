@@ -52,14 +52,14 @@ params:
 
     footer:
         since: 2026
-        customText: "研究笔记 · 以问题、证据与可复现实践为中心"
+        customText: "Learning ......"
 
     dateFormat:
         published: 2006-01-02
         lastUpdated: 2006-01-02 15:04
 
     sidebar:
-        subtitle: 计算、系统与写作笔记
+        subtitle: 学习笔记
         avatar:
             enabled: true
             local: true
@@ -67,8 +67,8 @@ params:
         compact: true
 
     academic:
-        headline: "学习与研究笔记"
-        lede: "记录 Web 工程、系统设计与工具链中的问题、证据与解法。"
+        headline: "LearningHub-Blog"
+        lede: "学了的、有用的、好玩的"
 
     article:
         headingAnchor: true

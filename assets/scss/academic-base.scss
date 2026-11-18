@@ -280,6 +280,12 @@ html {
     animation: academic-fade 0.45s ease both;
 }
 
+@media (min-width: 768px) {
+    .main-container .left-sidebar {
+        transform: translateX(-8px);
+    }
+}
+
 .left-sidebar #main-menu {
     -ms-overflow-style: none;
     scrollbar-width: none;

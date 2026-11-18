@@ -67,15 +67,12 @@ params:
         compact: true
 
     academic:
-        kicker: "MORNING CPU · RESEARCH NOTES"
         headline: "学习与研究笔记"
         lede: "记录 Web 工程、系统设计与工具链中的问题、证据与解法。"
-        affiliation: "Engineering Notes"
-        focus: "Web Engineering / Static Sites / Developer Tools"
 
     article:
         headingAnchor: true
-        math: true
+        math: false
         toc: true
         readingTime: true
         license:
@@ -168,14 +165,7 @@ params:
     # 装饰
     widgets:
         homepage:
-            - type: about
             - type: search
-            - type: archives
-              params:
-                  limit: 5
-            - type: categories
-              params:
-                  limit: 5
         page:
             - type: toc
 

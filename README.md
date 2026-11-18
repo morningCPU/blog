@@ -9,7 +9,7 @@
   - Source: `Deploy from a branch`
   - Branch: `gh-pages` / `(root)`
 - 构建命令为 `hugo --minify --gc`，草稿（`draft = true`）不会发布到线上。
-- 新文章默认不引用封面；如需统一默认封面，可放置 `static/images/title.webp`，管理器会复制到新文章目录。
+- 新文章默认不引用封面；如需统一默认封面，可放置 `assets/title.webp`，管理器会复制到新文章目录的 `assets/`。
 - `public/`、`resources/`、`.hugo_build.lock`、`hugo.exe` 已在 `.gitignore` 中忽略。
   如果它们之前已被 Git 跟踪，需要执行一次：
 
@@ -17,3 +17,9 @@
   git rm -r --cached public resources hugo.exe .hugo_build.lock
   git commit -m "chore: stop tracking generated files"
   ```
+
+## 文章分享
+
+- 文章页提供系统分享、复制链接和分享卡片下载。
+- 构建时会按文章标题、摘要、发布日期和分类自动生成 1200×630 分享卡片。
+- 分享卡片会自动写入 `og:image` 和 `twitter:image`，链接预览无需手动配图。

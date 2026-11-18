@@ -1,0 +1,48 @@
+{{ define "body-class" }}template-search{{ end }}
+{{ define "head" }}
+    {{- with .OutputFormats.Get "json" -}}
+        <link rel="preload" href="{{ .RelPermalink }}" as="fetch" crossorigin="anonymous">
+    {{- end -}}
+{{ end }}
+{{ define "main" }}
+<form action="{{ .RelPermalink }}" class="search-form"{{ with .OutputFormats.Get "json" -}} data-json="{{ .RelPermalink }}"{{- end }}>
+    <p>
+        <label for="search-keyword">{{ T "search.title" }}</label>
+        <input id="search-keyword" name="keyword" type="search" autocomplete="off" inputmode="search" placeholder="{{ T `search.placeholder` }}" />
+        <button type="submit" title="{{ T `search.title` }}" aria-label="{{ T `search.title` }}">
+            {{ partial "helper/icon" "search" }}
+        </button>
+    </p>
+</form>
+
+<div class="search-result">
+    <h3 class="search-result--title section-title"></h3>
+    <div class="search-result--list article-list--compact"></div>
+</div>
+
+<p class="search-empty" id="search-empty">输入关键词，检索站内的笔记、分类与标签。</p>
+
+<script>
+    window.searchResultTitleTemplate = "{{ T `search.resultTitle` }}"
+</script>
+
+<script>
+    // 有结果时隐藏空状态提示；清空检索后恢复
+    (function () {
+        var list = document.querySelector('.search-result--list');
+        var empty = document.getElementById('search-empty');
+        if (!list || !empty) return;
+        function sync() {
+            empty.classList.toggle('is-hidden', list.children.length > 0);
+        }
+        new MutationObserver(sync).observe(list, { childList: true });
+        sync();
+    })();
+</script>
+
+{{- $opts := dict "minify" hugo.IsProduction "JSXFactory" "createElement" -}}
+{{- $searchScript := resources.Get "ts/search.tsx" | js.Build $opts -}}
+<script type="text/javascript" src="{{ $searchScript.RelPermalink }}" defer></script>
+
+{{ partialCached "footer/footer" . }}
+{{ end }}

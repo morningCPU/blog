@@ -20,10 +20,6 @@
             {{ range $page.GetTerms "categories" }}
                 <a class="academic-chip" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
             {{ end }}
-            {{ range first 3 ($page.GetTerms "tags") }}
-                <a class="academic-chip academic-chip--tag" href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>
-            {{ end }}
-            <a class="academic-entry-more" href="{{ $page.RelPermalink }}">阅读全文 <span aria-hidden="true">→</span></a>
         </div>
     </div>
 </article>

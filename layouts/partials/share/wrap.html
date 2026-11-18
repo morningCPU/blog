@@ -1,0 +1,25 @@
+{{- $text := strings.Trim (plainify (.text | default "")) " \n\t\r" -}}
+{{- $limit := .limit | default 20 -}}
+{{- $maxLines := .maxLines | default 3 -}}
+{{- $lines := slice -}}
+{{- $rest := $text -}}
+
+{{- range $index := seq 1 $maxLines -}}
+    {{- $count := strings.RuneCount $rest -}}
+    {{- if eq $count 0 -}}
+        {{- break -}}
+    {{- end -}}
+    {{- $take := cond (gt $count $limit) $limit $count -}}
+    {{- $line := strings.Trim (substr $rest 0 $take) " \n\t\r" -}}
+    {{- $rest = strings.Trim (substr $rest $take) " \n\t\r" -}}
+    {{- $lines = $lines | append $line -}}
+{{- end -}}
+
+{{- $remaining := strings.Trim $rest " \n\t\r" -}}
+{{- if and (gt (strings.RuneCount $remaining) 0) (gt (len $lines) 0) -}}
+    {{- $lastIndex := sub (len $lines) 1 -}}
+    {{- $lastLine := printf "%s…" (strings.TrimSuffix "…" (index $lines $lastIndex)) -}}
+    {{- $lines = first $lastIndex $lines | append $lastLine -}}
+{{- end -}}
+
+{{- return (delimit $lines "\n") -}}

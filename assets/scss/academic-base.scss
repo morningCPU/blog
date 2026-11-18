@@ -1,6 +1,6 @@
-/* =========================================================
-   Academic reading theme — foundations
-   ========================================================= */
+/* Hallmark · redesign: restyle · brand kept (academic blue, serif/sans/mono) · genre editorial · job: read notes · hero: Settled · nav: left sidebar · footer: theme footer · posture: Restrained · scope: site
+   critique: P4 H4 E4 S4 R4 V3 · weakest: V, entries share the Stack compact list; led with the numbered index rows that are this blog's own record
+   answered F16 · selection, caret and scrollbar themed on the committed palette */
 
 :root {
     color-scheme: light;
@@ -10,7 +10,7 @@
     --academic-card: #ffffff;
     --academic-ink: #17212b;
     --academic-ink-soft: #3d4854;
-    --academic-ink-muted: #66727e;
+    --academic-ink-muted: #55616c;
     --academic-rule: #d4dce3;
     --academic-rule-strong: #a8b4c0;
     --academic-accent: #1f4e79;
@@ -21,8 +21,8 @@
     --academic-on-accent: #ffffff;
 
     --academic-serif: "Sitka Text", "Charter", "Bitstream Charter",
-        "Noto Serif SC", "Source Han Serif SC", "Noto Serif CJK SC",
-        "Songti SC", Cambria, Georgia, serif;
+        "Source Han Serif SC", "Noto Serif SC", "Noto Serif CJK SC",
+        "Songti SC", "SimSun", "STSong", "NSimSun", Cambria, Georgia, serif;
     --academic-sans: "Noto Sans SC", "Source Han Sans SC", "PingFang SC",
         "Microsoft YaHei UI", "Segoe UI", sans-serif;
     --academic-mono: "JetBrains Mono", "Cascadia Mono", "Cascadia Code", Consolas,
@@ -52,7 +52,17 @@
     --article-font-family: var(--academic-serif);
     --article-font-size: 1.8rem;
     --article-line-height: 1.78;
-    --article-measure: 920px;
+    --article-measure: 80rem;
+
+    --space-3xs: 2px;
+    --space-2xs: 4px;
+    --space-xs: 8px;
+    --space-sm: 12px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 40px;
+    --space-2xl: 64px;
+    --space-3xl: 96px;
     --code-font-family: var(--academic-mono);
 
     --blockquote-border-size: 2px;
@@ -135,9 +145,19 @@
     color: var(--academic-on-accent);
 }
 
+html,
+body {
+    overflow-x: clip;
+}
+
 :focus-visible {
-    outline: 1px solid var(--academic-accent);
-    outline-offset: 3px;
+    outline: 2px solid var(--academic-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+:active {
+    outline: none;
 }
 
 body {
@@ -146,6 +166,8 @@ body {
     font-synthesis: none;
     font-optical-sizing: auto;
     letter-spacing: 0;
+    caret-color: var(--academic-accent);
+    scrollbar-color: var(--academic-rule-strong) transparent;
 }
 
 a {
@@ -162,6 +184,8 @@ a.link {
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
     text-decoration-color: var(--academic-rule-strong);
+    transition: color 0.2s ease, text-decoration-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 a.link:hover {
@@ -176,6 +200,8 @@ a.link:hover {
     font-weight: 600;
     letter-spacing: 0;
     text-transform: none;
+    overflow-wrap: break-word;
+    min-width: 0;
 }
 
 @media (min-width: 1024px) and (max-width: 1279px) {

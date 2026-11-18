@@ -1,0 +1,40 @@
+{{- $card := partialCached "share/card.html" . .RelPermalink -}}
+
+<section class="article-share" data-share-root
+    data-share-url="{{ .Permalink }}" data-share-title="{{ .Title }}"
+    aria-labelledby="article-share-title">
+    <div class="article-share-head">
+        <div>
+            <span class="article-share-kicker">SHARE / 分享</span>
+            <h2 class="article-share-title" id="article-share-title">把这篇笔记分享出去</h2>
+        </div>
+        {{ with $card }}
+        <a class="article-share-card-link" href="{{ .permalink }}" target="_blank" rel="noopener">
+            分享卡片预览 <span aria-hidden="true">↗</span>
+        </a>
+        {{ end }}
+    </div>
+
+    <div class="article-share-actions">
+        <button type="button" class="article-share-button" data-share-native hidden>
+            {{ partial "helper/icon" "share" }}
+            <span>系统分享</span>
+        </button>
+        <button type="button" class="article-share-button" data-share-copy>
+            {{ partial "helper/icon" "link" }}
+            <span data-copy-label>复制链接</span>
+        </button>
+        {{ with $card }}
+        <a class="article-share-button article-share-button--download"
+            href="{{ .permalink }}"
+            download="{{ $.File.ContentBaseName }}-share-card.png">
+            {{ partial "helper/icon" "download" }}
+            <span>保存卡片</span>
+        </a>
+        {{ end }}
+    </div>
+    <p class="article-share-feedback" data-share-feedback role="status" aria-live="polite"></p>
+</section>
+
+{{- $shareScript := resources.Get "js/article-share.js" | minify | fingerprint "sha256" -}}
+<script src="{{ $shareScript.RelPermalink }}" integrity="{{ $shareScript.Data.Integrity }}" defer></script>

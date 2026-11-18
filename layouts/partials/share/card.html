@@ -1,0 +1,68 @@
+{{- $base := resources.Get "share/share-card-base.png" -}}
+{{- $font := resources.Get "font/NotoSansSC-Share.ttf" -}}
+
+{{- $title := strings.Trim (plainify .Title) " \n\t\r" -}}
+
+{{- $titleLength := strings.RuneCount $title -}}
+{{- $titleSize := 58 -}}
+{{- $titleLimit := 17 -}}
+{{- if gt $titleLength 28 -}}
+    {{- $titleSize = 50 -}}
+    {{- $titleLimit = 19 -}}
+{{- end -}}
+{{- if gt $titleLength 56 -}}
+    {{- $titleSize = 42 -}}
+    {{- $titleLimit = 23 -}}
+{{- end -}}
+
+{{- $titleText := partial "share/wrap.html" (dict
+    "text" $title "limit" $titleLimit "maxLines" 3
+) -}}
+
+{{- $description := strings.Trim (default (.Summary | plainify) .Description) " \n\t\r" -}}
+{{- $descriptionText := partial "share/wrap.html" (dict
+    "text" $description "limit" 44 "maxLines" 3
+) -}}
+
+{{- $titleLines := split $titleText "\n" -}}
+{{- $descriptionY := add 148 (mul (len $titleLines) (add $titleSize 14)) -}}
+{{- $descriptionY = add $descriptionY 24 -}}
+
+{{- $meta := .Date.Format "2006.01.02" -}}
+{{- with .GetTerms "categories" -}}
+    {{- with index . 0 -}}
+        {{- $meta = printf "%s  ·  %s" $meta .LinkTitle -}}
+    {{- end -}}
+{{- end -}}
+{{- $siteAddress := .Site.BaseURL | replaceRE "^https?://" "" | strings.TrimSuffix "/" -}}
+
+{{- $card := $base -}}
+{{- $card = $card.Filter (images.Text "MORNING CPU  /  RESEARCH NOTE" (dict
+    "color" "#1f4e79" "size" 21 "x" 100 "y" 78 "font" $font
+)) -}}
+{{- $card = $card.Filter (images.Text $titleText (dict
+    "color" "#17212b" "size" $titleSize "x" 100 "y" 140
+    "font" $font "linespacing" 14
+)) -}}
+{{- if $descriptionText -}}
+    {{- $card = $card.Filter (images.Text $descriptionText (dict
+        "color" "#3d4854" "size" 22 "x" 100 "y" $descriptionY
+        "font" $font "linespacing" 11
+    )) -}}
+{{- end -}}
+{{- $card = $card.Filter (images.Text $meta (dict
+    "color" "#55616c" "size" 20 "x" 100 "y" 523 "font" $font
+)) -}}
+{{- $card = $card.Filter (images.Text $siteAddress (dict
+    "color" "#55616c" "size" 20 "x" 790 "y" 523 "font" $font
+)) -}}
+
+{{- $result := dict
+    "resource" $card
+    "permalink" $card.RelPermalink
+    "alt" (printf "分享卡片：%s" $title)
+    "width" 1200
+    "height" 630
+}}
+
+{{ return $result }}

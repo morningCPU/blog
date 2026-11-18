@@ -1,29 +1,14 @@
 <div class="article-details">
+    {{ if eq .Section "post" }}
     <nav class="article-breadcrumb" aria-label="面包屑导航">
         <a href="{{ .Site.Home.RelPermalink }}">笔记索引</a>
-        {{ if eq .Section "post" }}
-            {{ with .GetTerms "categories" }}
-                {{ with index . 0 }}
-                    <span class="article-breadcrumb-sep" aria-hidden="true">/</span>
-                    <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-                {{ end }}
+        {{ with .GetTerms "categories" }}
+            {{ with index . 0 }}
+                <span class="article-breadcrumb-sep" aria-hidden="true">/</span>
+                <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
             {{ end }}
-            <span class="article-breadcrumb-sep article-breadcrumb-sep--current" aria-hidden="true">/</span>
-            <span class="article-breadcrumb-current" aria-current="page">阅读</span>
-        {{ else }}
-            <span class="article-breadcrumb-sep article-breadcrumb-sep--current" aria-hidden="true">/</span>
-            <span class="article-breadcrumb-current" aria-current="page">{{ .Title }}</span>
         {{ end }}
     </nav>
-
-    {{ if .Params.categories }}
-    <header class="article-category">
-        {{ range (.GetTerms "categories") }}
-            <a href="{{ .RelPermalink }}" {{ with .Params.style }}style="background-color: {{ .background }}; color: {{ .color }};"{{ end }}>
-                {{ .LinkTitle }}
-            </a>
-        {{ end }}
-    </header>
     {{ end }}
 
     <div class="article-title-wrapper">
@@ -54,12 +39,6 @@
                 <time class="article-time--reading">
                     {{ T "article.readingTime" .ReadingTime }}
                 </time>
-            </div>
-        {{ end }}
-
-        {{ if and (eq .Section "post") .WordCount }}
-            <div class="article-wordcount">
-                <span>{{ .WordCount }} 字</span>
             </div>
         {{ end }}
     </footer>

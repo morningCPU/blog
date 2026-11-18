@@ -1,41 +1,52 @@
 {{ $page := . }}
+{{ $isPost := eq .Section "post" }}
+{{ $prev := .PrevInSection }}
+{{ $next := .NextInSection }}
+{{ $hasPager := and $isPost (or $prev $next) }}
+{{ $hasTags := .Params.Tags }}
+{{ $hasLicense := and $isPost (and (.Site.Params.article.license.enabled) (not (eq .Params.license false))) }}
+{{ $hasLastmod := and $isPost (ne .Lastmod .Date) }}
+{{ $hasShare := $isPost }}
+
+{{ if or $hasPager $hasTags $hasLicense $hasLastmod $hasShare }}
 <footer class="article-footer">
-    {{ if eq .Section "post" }}
-        {{ $prev := .PrevInSection }}
-        {{ $next := .NextInSection }}
-        {{ if or $prev $next }}
-        <nav class="article-pager" aria-label="相邻笔记">
-            {{ with $prev }}
-            <a class="article-pager-link article-pager-link--prev" href="{{ .RelPermalink }}">
-                <span class="article-pager-label"><span aria-hidden="true">←</span> {{ if .Date.After $page.Date }}较新的笔记{{ else }}较早的笔记{{ end }}</span>
-                <span class="article-pager-title">{{ .Title }}</span>
-            </a>
-            {{ end }}
-            {{ with $next }}
-            <a class="article-pager-link article-pager-link--next" href="{{ .RelPermalink }}">
-                <span class="article-pager-label">{{ if .Date.After $page.Date }}较新的笔记{{ else }}较早的笔记{{ end }} <span aria-hidden="true">→</span></span>
-                <span class="article-pager-title">{{ .Title }}</span>
-            </a>
-            {{ end }}
-        </nav>
+    {{ if $hasPager }}
+    <nav class="article-pager" aria-label="相邻笔记">
+        {{ with $prev }}
+        <a class="article-pager-link article-pager-link--prev" href="{{ .RelPermalink }}">
+            <span class="article-pager-label"><span aria-hidden="true">←</span> {{ if .Date.After $page.Date }}较新的笔记{{ else }}较早的笔记{{ end }}</span>
+            <span class="article-pager-title">{{ .Title }}</span>
+        </a>
         {{ end }}
+        {{ with $next }}
+        <a class="article-pager-link article-pager-link--next" href="{{ .RelPermalink }}">
+            <span class="article-pager-label">{{ if .Date.After $page.Date }}较新的笔记{{ else }}较早的笔记{{ end }} <span aria-hidden="true">→</span></span>
+            <span class="article-pager-title">{{ .Title }}</span>
+        </a>
+        {{ end }}
+    </nav>
+    {{ end }}
+
+    {{ if $hasShare }}
+    {{ partial "article/components/share.html" . }}
     {{ end }}
 
     {{ partial "article/components/tags" . }}
 
-    {{ if and (.Site.Params.article.license.enabled) (not (eq .Params.license false)) }}
+    {{ if $hasLicense }}
     <section class="article-copyright">
         {{ partial "helper/icon" "copyright" }}
         <span>{{ default .Site.Params.article.license.default .Params.license | markdownify }}</span>
     </section>
     {{ end }}
 
-    {{- if ne .Lastmod .Date -}}
+    {{ if $hasLastmod }}
     <section class="article-lastmod">
         {{ partial "helper/icon" "clock" }}
         <span>
             {{ T "article.lastUpdatedOn" }} {{ .Lastmod.Format ( or .Site.Params.dateFormat.lastUpdated "Jan 02, 2006 15:04 MST" ) }}
         </span>
     </section>
-    {{- end -}}
+    {{ end }}
 </footer>
+{{ end }}

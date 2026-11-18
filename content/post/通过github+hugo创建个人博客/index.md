@@ -3,7 +3,7 @@ author = "morning"
 title = "使用 GitHub + Hugo 创建个人博客"
 description = "用 Hugo 构建静态博客，并通过 GitHub 自动部署的完整流程"
 date = "2026-01-28"
-image = "images/title.webp"
+image = "assets/title.webp"
 readingtime=true
 math= false
 
@@ -31,7 +31,7 @@ https://letere-gzj.github.io/hugo-stack
 点击上方github进入仓库    
 点击tag选择需要的版本进行下载，注意要点进去，里面有不同的类型  
 
-![hugo](images/image.png)
+![hugo](assets/image.png)
 
 这里下载版本是 extended-0.131.0   
 最好用同样的版本，不然依照这个教程会有些问题(有些函数，变量之类的可能变了)   
@@ -58,7 +58,7 @@ ex. `hugo new site blog`
 theme: hugo-theme-stack
 ```
 
-![theme](images/image-1.png)
+![theme](assets/image-1.png)
 
 ### **2.4** 启动
 **1.** 将hugo目录中的hugo.exe复制到blog中(因为没有配置环境变量又要使用hugo)   
@@ -67,11 +67,11 @@ theme: hugo-theme-stack
 **3.** 使用命令 `hugo server -D` 启动   
 **4.** 进入提示的网址
 
-![web](images/image-2.png)
+![web](assets/image-2.png)
 
 按住ctrl点击就可以浏览器打开
 
-![example](images/image-3.png)
+![example](assets/image-3.png)
 
 差不多这样(有些有改了没有复原，不要在意~)
 
@@ -88,12 +88,12 @@ theme: hugo-theme-stack
 **5.** title 名字   
 浏览器标签这里   
 
-![title](images/image-4.png)
+![title](assets/image-4.png)
 
 **6.** copyright 版权声明   
 下面这里   
 
-![copyright](images/image-5.png)
+![copyright](assets/image-5.png)
 
 **7.** DefaultContentLanguage 创建的默认语言   
 hugo文件格式为index.language.md   
@@ -101,7 +101,7 @@ hugo文件格式为index.language.md
 **8.** hasCJKLanguage 如果使用中文就改为true   
 **9.** languages 配置不同语言显示的主页
 
-![languages](images/image-6.png)
+![languages](assets/image-6.png)
 
 ```yaml
 zh-cn:
@@ -117,7 +117,7 @@ footer: # 角标
 ```
 下面那里
 
-![footer](images/image-7.png)
+![footer](assets/image-7.png)
 
 ```yaml
 sidebar: # 侧边栏设置
@@ -186,7 +186,7 @@ menu:
 ex. `hugo new content post/test/index.md` (因为设置了默认所以就不写language了)   
 (name是文件名，language是语言，md是文件格式)
 
-![file](images/image-8.png)
+![file](assets/image-8.png)
 
 **2.** 可以使用code或者其他打开目录   
 这里就 `code E:\\library\\hugo\\blog\\content\\post\\test`

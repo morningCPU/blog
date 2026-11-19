@@ -1,0 +1,8 @@
+{{- /* Publish page-bundle files that Hugo does not publish by default (e.g. HTML reports). */ -}}
+{{- $prefix := strings.TrimPrefix .Site.Home.RelPermalink .RelPermalink -}}
+{{- range .Resources -}}
+    {{- if not .RelPermalink -}}
+        {{- $published := resources.FromString (path.Join $prefix .Name) .Content -}}
+        {{- $render := $published.RelPermalink -}}
+    {{- end -}}
+{{- end -}}

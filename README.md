@@ -18,6 +18,12 @@
   git commit -m "chore: stop tracking generated files"
   ```
 
+## 文章附件
+
+- 每篇文章的 `index.md` 同级可以放任意文件夹和文件（如 `code/`、PDF、压缩包、HTML 报告），供正文链接使用。
+- 图片和普通附件由 Hugo 自动发布；`.html` 等默认不发布的文件会在构建时同步到文章 URL 下，可直接通过 `[报告](code/report.html)` 打开。
+- Markdown 链接里的反斜杠会自动转换为 `/`，指向文章目录内文件时会解析为实际发布地址。
+
 ## 文章分享
 
 - 文章页提供复制链接和复制分享卡片。

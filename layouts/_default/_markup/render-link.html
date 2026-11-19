@@ -1,0 +1,23 @@
+{{- $path := replace .Destination "\\" "/" -}}
+{{- $isExternal := or (strings.HasPrefix $path "http://") (strings.HasPrefix $path "https://") (strings.HasPrefix $path "//") (strings.HasPrefix $path "mailto:") (strings.HasPrefix $path "tel:") -}}
+{{- $clean := index (split (index (split $path "?") 0) "#") 0 -}}
+{{- $ext := lower (path.Ext $clean) -}}
+{{- $imageExts := slice ".apng" ".avif" ".bmp" ".gif" ".ico" ".jpeg" ".jpg" ".png" ".svg" ".tif" ".tiff" ".webp" -}}
+{{- $isImage := in $imageExts $ext -}}
+{{- $newTab := or $isExternal (and (ne $ext "") (not $isImage) (not (strings.HasPrefix $path "#"))) -}}
+{{- $href := $path -}}
+{{- if and (not $isExternal) (not (strings.HasPrefix $path "#")) (not (strings.HasPrefix $path "/")) -}}
+    {{- $lookup := strings.TrimPrefix "./" $path -}}
+    {{- $resource := .Page.Resources.Get $lookup -}}
+    {{- if not $resource -}}
+        {{- $resource = .Page.Resources.Get (lower $lookup) -}}
+    {{- end -}}
+    {{- with $resource -}}
+        {{- if .RelPermalink -}}
+            {{- $href = .RelPermalink -}}
+        {{- else -}}
+            {{- $href = path.Join $.Page.RelPermalink .Name -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+<a class="link" href="{{ $href | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $newTab }} target="_blank" rel="noopener"{{ end }}>{{ .Text | safeHTML }}</a>

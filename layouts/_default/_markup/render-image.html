@@ -1,12 +1,17 @@
-{{- $image := .Page.Resources.GetMatch (printf "%s" (.Destination | safeURL)) -}}
-{{- $Permalink := .Destination | relURL | safeURL -}}
+{{- $path := replace .Destination "\\" "/" -}}
+{{- $lookup := strings.TrimPrefix "./" $path -}}
+{{- $image := .Page.Resources.GetMatch $lookup -}}
+{{- if not $image -}}
+    {{- $image = .Page.Resources.GetMatch (lower $lookup) -}}
+{{- end -}}
+{{- $Permalink := $path | relURL | safeURL -}}
 {{- $alt := .PlainText | safeHTML -}}
 {{- $Width := 0 -}}
 {{- $Height := 0 -}}
 {{- $Srcset := "" -}}
 
 {{- if $image -}}
-    {{- $notSVG := ne (path.Ext .Destination) ".svg" -}}
+    {{- $notSVG := ne (path.Ext $path) ".svg" -}}
     {{- $Permalink = $image.RelPermalink -}}
 
     {{- if $notSVG -}}

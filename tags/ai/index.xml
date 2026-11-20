@@ -1,0 +1,1455 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AI on morningCPU</title><link>https://morningCPU.github.io/blog/tags/ai/</link><description>Recent content in AI on morningCPU</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>morningCPU</copyright><lastBuildDate>Wed, 18 Nov 2026 19:42:40 +0800</lastBuildDate><atom:link href="https://morningCPU.github.io/blog/tags/ai/index.xml" rel="self" type="application/rss+xml"/><item><title>一天快速了解机器学习</title><link>https://morningCPU.github.io/blog/p/003/</link><pubDate>Wed, 18 Nov 2026 19:42:40 +0800</pubDate><guid>https://morningCPU.github.io/blog/p/003/</guid><description>&lt;h1 id="一天快速了解机器学习">&lt;a href="#%e4%b8%80%e5%a4%a9%e5%bf%ab%e9%80%9f%e4%ba%86%e8%a7%a3%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0" class="header-anchor">&lt;/a>一天快速了解机器学习
+&lt;/h1>&lt;h2 id="0-学习内容">&lt;a href="#0-%e5%ad%a6%e4%b9%a0%e5%86%85%e5%ae%b9" class="header-anchor">&lt;/a>0. 学习内容
+&lt;/h2>&lt;blockquote>
+&lt;ol>
+&lt;li>机器学习基本概念&lt;/li>
+&lt;li>数学基础与优化&lt;/li>
+&lt;li>经典机器学习算法&lt;/li>
+&lt;li>基础学习与无监督学习&lt;/li>
+&lt;li>深度学习基础&lt;/li>
+&lt;li>模型训练与评估&lt;/li>
+&lt;li>研究前沿与应用&lt;/li>
+&lt;li>总结与讨论&lt;/li>
+&lt;/ol>
+&lt;/blockquote>
+&lt;h2 id="1-机器学习基本概念">&lt;a href="#1-%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5" class="header-anchor">&lt;/a>1. 机器学习基本概念
+&lt;/h2>&lt;h3 id="10-学习清单">&lt;a href="#10-%e5%ad%a6%e4%b9%a0%e6%b8%85%e5%8d%95" class="header-anchor">&lt;/a>1.0 学习清单
+&lt;/h3>&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> Machine Learning 的定义和基本原理&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> AI、Machine Learning、Deep Learning 的关系&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> 传统编程与机器学习的区别&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> 数据集（Dataset）&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> 特征（Features）与标签（Labels）&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> 样本（Samples）&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> 模型（Model）&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> 参数（Parameters）与超参数（Hyperparameters）&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> 训练集、验证集、测试集&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> Training、Validation、Inference 的区别&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> 模型泛化能力（Generalization）&lt;/li>
+&lt;/ul>
+&lt;h3 id="11-ml-machine-learning">&lt;a href="#11-ml-machine-learning" class="header-anchor">&lt;/a>1.1 ML (Machine Learning)
+&lt;/h3>&lt;p>人工智能的分支，让机器能够学习到数据规律，并通过学习到的规律进行预测，而不用人为的硬编码设定具体规则。&lt;/p>
+&lt;blockquote>
+&lt;p>举一个简单的例子。&lt;/p>
+&lt;p>假设我们希望计算机识别一封邮件是否为垃圾邮件。&lt;/p>
+&lt;p>&lt;strong>传统编程方式：&lt;/strong>&lt;/p>
+&lt;p>人工设定规则：&lt;/p>
+&lt;ul>
+&lt;li>如果包含大量广告词，标记为垃圾邮件。&lt;/li>
+&lt;li>如果包含可疑链接，标记为垃圾邮件。&lt;/li>
+&lt;li>如果发件人属于黑名单，标记为垃圾邮件。&lt;/li>
+&lt;/ul>
+&lt;p>程序按照人工制定的规则判断。&lt;/p>
+&lt;p>&lt;strong>机器学习方式：&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>收集大量邮件。&lt;/li>
+&lt;li>给邮件标记 Spam 或 Not Spam。&lt;/li>
+&lt;li>把邮件数据输入模型。&lt;/li>
+&lt;li>模型从数据中学习垃圾邮件的特征。&lt;/li>
+&lt;li>使用训练好的模型判断新邮件。&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1794891804250.png"
+width="1247"
+height="632"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1794891804250_hu3776296774766696491.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1794891804250_hu110776036421976202.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1794891804250"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1794891804250.png"
+>
+&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>人工预测 ： 输入 + 规则 得到结果，这个规则是人总结的&lt;/li>
+&lt;li>机器预测 ： 输入 + 相应结果 得到规则，进而可以通过得到的规则去进行预测，这个规则是机器自己学习的&lt;/li>
+&lt;/ul>
+&lt;h3 id="12-aimldl的关系">&lt;a href="#12-aimldl%e7%9a%84%e5%85%b3%e7%b3%bb" class="header-anchor">&lt;/a>1.2 AI、ML、DL的关系
+&lt;/h3>&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1794892037603.png"
+width="1701"
+height="1138"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1794892037603_hu13856872090727441056.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1794892037603_hu575524853851709606.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1794892037603"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1794892037603.png"
+>
+&lt;/p>
+&lt;ul>
+&lt;li>AI ： &lt;strong>让机器有人类智能&lt;/strong>&lt;/li>
+&lt;li>ML：让机器通过&lt;strong>数据学习&lt;/strong>的方式有人类智能&lt;/li>
+&lt;li>DL：让机器通过&lt;strong>多层神经网络学习&lt;/strong>这种数据学习的方式有人类智能&lt;/li>
+&lt;/ul>
+&lt;h3 id="13-ml的主要方式">&lt;a href="#13-ml%e7%9a%84%e4%b8%bb%e8%a6%81%e6%96%b9%e5%bc%8f" class="header-anchor">&lt;/a>1.3 ML的主要方式
+&lt;/h3>&lt;ul>
+&lt;li>监督学习&lt;/li>
+&lt;li>无监督学习&lt;/li>
+&lt;li>强化学习&lt;/li>
+&lt;/ul>
+&lt;h4 id="131-监督学习">&lt;a href="#131-%e7%9b%91%e7%9d%a3%e5%ad%a6%e4%b9%a0" class="header-anchor">&lt;/a>1.3.1 监督学习
+&lt;/h4>&lt;p>有标签的学习&lt;br>
+使用有预测结果的数据进行学习&lt;/p>
+&lt;blockquote>
+&lt;p>比如通过房屋面积和房间数量预测房价这个任务&lt;br>
+训练数据中本身就有房价信息&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1794892544619.png"
+width="1409"
+height="706"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1794892544619_hu15226495115775053822.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1794892544619_hu5395625415672891232.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1794892544619"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1794892544619.png"
+>
+&lt;/p>
+&lt;p>&lt;strong>监督学习主要有两种&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>(1) 分类&lt;/strong>&lt;/p>
+&lt;p>预测输入数据属于哪个类别&lt;/p>
+&lt;blockquote>
+&lt;ul>
+&lt;li>邮件是垃圾邮件还是正常邮件。&lt;/li>
+&lt;li>图片是猫还是狗。&lt;/li>
+&lt;li>患者是否患有某种疾病。&lt;/li>
+&lt;/ul>
+&lt;/blockquote>
+&lt;p>输出是离散的&lt;/p>
+&lt;blockquote>
+&lt;p>常见算法：Logistic Regression、SVM&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1794892675211.png"
+width="1419"
+height="1278"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1794892675211_hu6468095800149320677.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1794892675211_hu4851959741415207589.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1794892675211"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1794892675211.png"
+>
+&lt;/p>
+&lt;p>&lt;strong>(2) 回归&lt;/strong>&lt;/p>
+&lt;p>预测一个连续数值，也就是拟合&lt;/p>
+&lt;blockquote>
+&lt;ul>
+&lt;li>房价预测。&lt;/li>
+&lt;li>股票价格预测。&lt;/li>
+&lt;li>温度预测。&lt;/li>
+&lt;li>销售额预测。&lt;/li>
+&lt;/ul>
+&lt;/blockquote>
+&lt;p>输出是连续的&lt;/p>
+&lt;blockquote>
+&lt;p>常用算法：Linear Regression、Random Forest Regressor&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1794892814695.png"
+width="1701"
+height="1014"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1794892814695_hu10283648138861140984.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1794892814695_hu14549742284795095789.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1794892814695"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1794892814695.png"
+>
+&lt;/p>
+&lt;ul>
+&lt;li>可见有监督学习都是对结果有一定预期的，知道结果基本会是什么样子有什么标签，在意的一个确切的结果&lt;/li>
+&lt;/ul>
+&lt;h4 id="132-无监督学习">&lt;a href="#132-%e6%97%a0%e7%9b%91%e7%9d%a3%e5%ad%a6%e4%b9%a0" class="header-anchor">&lt;/a>1.3.2 无监督学习
+&lt;/h4>&lt;p>使用的数据是没有对应答案的，只是想要知道数据中存在的某种规律、划分&lt;/p>
+&lt;blockquote>
+&lt;p>例如：用户分群。&lt;/p>
+&lt;p>一家电商公司有 10,000 名用户，但没有提前给用户分类。&lt;/p>
+&lt;p>模型根据：&lt;/p>
+&lt;ul>
+&lt;li>消费金额&lt;/li>
+&lt;li>购买频率&lt;/li>
+&lt;li>浏览行为&lt;/li>
+&lt;li>商品偏好&lt;/li>
+&lt;/ul>
+&lt;p>自动将用户划分为不同群体。&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1794893039205.png"
+width="1701"
+height="958"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1794893039205_hu3846677294025553598.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1794893039205_hu2410679337716252729.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1794893039205"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1794893039205.png"
+>
+&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>主要是有以下几类&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>(1) 聚类&lt;/strong>&lt;/p>
+&lt;p>把相似的放一起&lt;/p>
+&lt;blockquote>
+&lt;p>常用算法：K-Means、DBSCAN、Hierarchical Clustering&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>(2) 降维&lt;/strong>&lt;/p>
+&lt;p>将高维信息映射到更低维，同时保留重要信息&lt;/p>
+&lt;blockquote>
+&lt;p>常用算法：PCA、t-SNE、UMAP&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1794893234761.png"
+width="1701"
+height="922"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1794893234761_hu2111920633383176968.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1794893234761_hu2742306381454002621.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1794893234761"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1794893234761.png"
+>
+&lt;/p>
+&lt;p>&lt;strong>(3) 关联规则学习&lt;/strong>&lt;/p>
+&lt;p>发现不同项目之间的关联&lt;/p>
+&lt;blockquote>
+&lt;p>购买面包的用户经常也会购买牛奶。&lt;/p>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>常用算法：Apriori、FP-Growth&lt;/p>
+&lt;/blockquote>
+&lt;h4 id="133-强化学习">&lt;a href="#133-%e5%bc%ba%e5%8c%96%e5%ad%a6%e4%b9%a0" class="header-anchor">&lt;/a>1.3.3 强化学习
+&lt;/h4>&lt;p>通过与环境进行交互，根据奖励和惩罚来学习最优决策&lt;/p>
+&lt;p>主要的组成如下：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>概念&lt;/th>
+&lt;th>含义&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Agent&lt;/td>
+&lt;td>智能体&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Environment&lt;/td>
+&lt;td>环境&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>State&lt;/td>
+&lt;td>当前状态&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Action&lt;/td>
+&lt;td>执行的动作&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Reward&lt;/td>
+&lt;td>奖励&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Policy&lt;/td>
+&lt;td>决策策略&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;blockquote>
+&lt;p>举例：训练机器人走路。&lt;/p>
+&lt;ol>
+&lt;li>Robot（Agent）尝试迈出一步。&lt;/li>
+&lt;li>Environment 提供反馈。&lt;/li>
+&lt;li>如果机器人保持平衡，获得正奖励。&lt;/li>
+&lt;li>如果机器人摔倒，获得负奖励。&lt;/li>
+&lt;li>Agent 根据反馈调整策略。&lt;/li>
+&lt;li>重复训练，最终学会稳定行走。&lt;/li>
+&lt;/ol>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>常用算法：Q-Learning、DQN、Policy Gradient、Actor-Critic、PPO&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>可见监督学习是学习一个得到结果的方法&lt;/li>
+&lt;li>无监督学习是学习规律与分布本身&lt;/li>
+&lt;li>强化学习是学习一个行动的策略&lt;/li>
+&lt;/ul>
+&lt;h3 id="14-机器学习核心术语">&lt;a href="#14-%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0%e6%a0%b8%e5%bf%83%e6%9c%af%e8%af%ad" class="header-anchor">&lt;/a>1.4 机器学习核心术语
+&lt;/h3>&lt;p>&lt;strong>数据集&lt;/strong>&lt;br>
+用于机器学习的数据集合&lt;/p>
+&lt;p>&lt;strong>样本&lt;/strong>&lt;br>
+一条独立的数据记录&lt;/p>
+&lt;p>&lt;strong>特征&lt;/strong>&lt;br>
+样本的输入变量&lt;/p>
+&lt;blockquote>
+&lt;p>比如对于房价预测：Area、Number of Bedrooms、Location &amp;hellip;&lt;/p>
+&lt;/blockquote>
+&lt;p>数学表示 $X = (x_1,x_2, \dots,x_n)$&lt;/p>
+&lt;p>&lt;strong>标签/目标&lt;/strong>&lt;br>
+监督学习中希望模型预测的正确答案，一般用 $y$ 表示&lt;/p>
+&lt;p>&lt;strong>模型&lt;/strong>&lt;br>
+从数据中学习到的输入和输出关系的函数&lt;br>
+&lt;/p>
+$$
+\hat{y} = f_\theta(X)
+$$
+&lt;p>&lt;strong>参数&lt;/strong>&lt;br>
+模型在训练过程中通过数据学习的变量(或者说变量的取值)&lt;/p>
+&lt;blockquote>
+&lt;p>例如对于一个线性回归模型&lt;br>
+&lt;/p>
+$$
+> \hat{y} = wx + b
+> $$
+&lt;p>&lt;br>
+模型会学习 $w,b$ 的值，从而得到这个函数，这个就是模型&lt;/p>
+&lt;/blockquote>
+&lt;p>模型训练的过程就是对参数的取值不对进行优化，尽可能符合要求&lt;/p>
+&lt;p>&lt;strong>超参数&lt;/strong>&lt;br>
+在训练前确定的，不由训练改变的参数，一般是人为确定或调参得到&lt;/p>
+&lt;h3 id="15-数据划分">&lt;a href="#15-%e6%95%b0%e6%8d%ae%e5%88%92%e5%88%86" class="header-anchor">&lt;/a>1.5 数据划分
+&lt;/h3>&lt;p>数据通常划分为三个部分&lt;br>
+训练集、验证集、测试集&lt;br>
+比例一般是8:1:1,根据需求而定&lt;/p>
+&lt;p>&lt;strong>(1) 训练集&lt;/strong>&lt;br>
+用于模型的训练&lt;/p>
+&lt;p>&lt;strong>(2) 验证集&lt;/strong>&lt;br>
+用于模型的选择和调试&lt;/p>
+&lt;p>&lt;strong>(3) 测试集&lt;/strong>&lt;br>
+用于最终的测试工作&lt;/p>
+&lt;h3 id="16-泛化能力">&lt;a href="#16-%e6%b3%9b%e5%8c%96%e8%83%bd%e5%8a%9b" class="header-anchor">&lt;/a>1.6 泛化能力
+&lt;/h3>&lt;p>模型在没有参与训练的新数据上，仍然能够保持良好预测表现的能力&lt;br>
+模型真正学习到数据的本质特征而不只是一些特殊的特征&lt;/p>
+&lt;p>&lt;strong>(1) 欠拟合&lt;/strong>&lt;br>
+没有学习到数据特征&lt;br>
+表现为训练集和测试集的表现都不好&lt;/p>
+&lt;p>&lt;strong>(2) 过拟合&lt;/strong>&lt;br>
+过渡训练，泛化能力不足&lt;br>
+表现为训练集表现好，测试集表现不好&lt;/p>
+&lt;p>&lt;strong>(3) 良好拟合&lt;/strong>&lt;br>
+学习到数据的本质特征，泛化能力好&lt;br>
+在训练集和测试集上的表现都好&lt;/p>
+&lt;h3 id="17-机器学习项目的工作过程">&lt;a href="#17-%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0%e9%a1%b9%e7%9b%ae%e7%9a%84%e5%b7%a5%e4%bd%9c%e8%bf%87%e7%a8%8b" class="header-anchor">&lt;/a>1.7 机器学习项目的工作过程
+&lt;/h3>&lt;p>下面以一般性的监督学习为例&lt;/p>
+&lt;ol>
+&lt;li>问题定义&lt;/li>
+&lt;li>收集数据&lt;/li>
+&lt;li>打标签&lt;/li>
+&lt;li>缺失值、异常值处理&lt;/li>
+&lt;li>特征工程&lt;/li>
+&lt;li>数据集划分&lt;/li>
+&lt;li>模型选择&lt;/li>
+&lt;li>模型训练&lt;/li>
+&lt;li>模型调整&lt;/li>
+&lt;li>模型测试&lt;/li>
+&lt;li>模型部署&lt;/li>
+&lt;li>使用&lt;/li>
+&lt;/ol>
+&lt;h3 id="18-问题">&lt;a href="#18-%e9%97%ae%e9%a2%98" class="header-anchor">&lt;/a>1.8 问题
+&lt;/h3>&lt;ul>
+&lt;li>
+&lt;p>监督学习和无监督学习有什么区别？&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>分类和回归有什么区别？&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>为什么机器学习需要训练集、验证集和测试集？&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>什么是模型泛化能力？&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="2-数学基础">&lt;a href="#2-%e6%95%b0%e5%ad%a6%e5%9f%ba%e7%a1%80" class="header-anchor">&lt;/a>2. 数学基础
+&lt;/h2>&lt;h3 id="20-清单">&lt;a href="#20-%e6%b8%85%e5%8d%95" class="header-anchor">&lt;/a>2.0 清单
+&lt;/h3>&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> 线性代数-数据表示、降维 : Vector、Matrix、Matrix Multiplication、Eigenvalues、Eigenvectors&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> 微积分-参数优化 : Derivative、Partial Derivative、Chain Rule、Gradient&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> 概率论-概率预测 : Probability、Conditional Probability、Bayes&amp;rsquo; Theorem&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> 统计学-数据分析 : Mean、Variance、Covariance、Distribution&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> 优化理论-模型训练 : Gradient Descent、Learning Rate、Loss Function&lt;/li>
+&lt;/ul>
+&lt;h3 id="21-线性代数">&lt;a href="#21-%e7%ba%bf%e6%80%a7%e4%bb%a3%e6%95%b0" class="header-anchor">&lt;/a>2.1 线性代数
+&lt;/h3>&lt;p>主要就是各种矩阵运算，通过矩阵可以对数据进行更加快速和便捷的处理&lt;/p>
+&lt;blockquote>
+&lt;p>例如：&lt;/p>
+&lt;p>你有一个学生的数据：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>学生&lt;/th>
+&lt;th>数学成绩&lt;/th>
+&lt;th>英语成绩&lt;/th>
+&lt;th>学习时长&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>A&lt;/td>
+&lt;td>90&lt;/td>
+&lt;td>85&lt;/td>
+&lt;td>5&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>B&lt;/td>
+&lt;td>80&lt;/td>
+&lt;td>92&lt;/td>
+&lt;td>4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>C&lt;/td>
+&lt;td>70&lt;/td>
+&lt;td>78&lt;/td>
+&lt;td>3&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>这些数据可以表示为一个矩阵：&lt;/p>
+&lt;p>$X= \begin{bmatrix} 90&amp;85&amp;5\\ 80&amp;92&amp;4\\ 70&amp;78&amp;3 \end{bmatrix}$&lt;/p>
+&lt;/blockquote>
+&lt;p>注意一下以下几个概念的对比，主要就是维度的不同&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>中文&lt;/th>
+&lt;th>阶数 (Rank)&lt;/th>
+&lt;th>Shape 示例&lt;/th>
+&lt;th>说明&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>标量&lt;/td>
+&lt;td>0 阶张量&lt;/td>
+&lt;td>&lt;code>()&lt;/code>&lt;/td>
+&lt;td>单个数字，如 loss=2.1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>向量&lt;/td>
+&lt;td>1 阶张量&lt;/td>
+&lt;td>&lt;code>(5,)&lt;/code>&lt;/td>
+&lt;td>一维数组&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>矩阵&lt;/td>
+&lt;td>2 阶张量&lt;/td>
+&lt;td>&lt;code>(3,4)&lt;/code>&lt;/td>
+&lt;td>行、列两个维度&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>张量&lt;/td>
+&lt;td>0/1/2/3/… 阶&lt;/td>
+&lt;td>&lt;code>(2,3,224,224)&lt;/code>&lt;/td>
+&lt;td>任意阶多维数组统称&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="211-向量">&lt;a href="#211-%e5%90%91%e9%87%8f" class="header-anchor">&lt;/a>2.1.1 向量
+&lt;/h4>&lt;p>用于表示一个样本或特征&lt;/p>
+&lt;p>一个样本可以表示为：&lt;br>
+&lt;/p>
+$$
+\mathbf{x} = [x_1,x_2,\dots,x_n]
+$$
+&lt;blockquote>
+&lt;p>注意前面的 &lt;strong>x&lt;/strong> 加粗表示向量，后面的 $x_i$ 没有加粗是标量&lt;/p>
+&lt;/blockquote>
+&lt;p>其中：&lt;/p>
+&lt;ul>
+&lt;li>$x_i$：第 i个特征&lt;/li>
+&lt;li>n ：特征数量&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>向量的常见操作&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>(1) 向量加法&lt;/strong>&lt;br>
+&lt;/p>
+$$
+\mathbf{a} + \mathbf{b}
+$$
+&lt;p>&lt;br>
+&lt;strong>(2) 向量数乘&lt;/strong>&lt;br>
+&lt;/p>
+$$
+c\mathbf{a}
+$$
+&lt;p>&lt;br>
+&lt;strong>(3) 向量长度(L2 Norm L2范数，就是欧几里得距离)&lt;/strong>&lt;br>
+&lt;/p>
+$$
+\|\mathbf{x}\|_2=
+\sqrt{\sum_{i=1}^{n}x_i^2}
+$$
+&lt;blockquote>
+&lt;p>例如：$\mathbf{x}=[3,4]$ , 则：$\|\mathbf{x}\|_2=\sqrt{3^2+4^2}=5$&lt;/p>
+&lt;/blockquote>
+&lt;h4 id="212-点积">&lt;a href="#212-%e7%82%b9%e7%a7%af" class="header-anchor">&lt;/a>2.1.2 点积
+&lt;/h4>&lt;p>对 $\mathbf{x}=[x_1,x_2,\dots,x_n]$ 和 $\mathbf{w}=[w_1,w_2,\dots,w_n]$&lt;/p>
+&lt;p>$\mathbf{x}\cdot\mathbf{w}=\sum_{i=1}^{n}{x_iw_i}$&lt;/p>
+&lt;blockquote>
+&lt;p>例如：$\mathbf{x}=[2,3] , \mathbf{w}=[4,5]$&lt;br>
+则：$\mathbf{x}\cdot\mathbf{w}=2\times4+3\times5=23$&lt;br>
+就是分别相乘再相加&lt;/p>
+&lt;/blockquote>
+&lt;h4 id="213-矩阵">&lt;a href="#213-%e7%9f%a9%e9%98%b5" class="header-anchor">&lt;/a>2.1.3 矩阵
+&lt;/h4>&lt;p>矩阵有行和列，行表示样本，列表示特征&lt;/p>
+&lt;p>&lt;strong>(1) 矩阵乘法&lt;/strong>&lt;/p>
+&lt;p>如果：$A\in\mathbb R^{m\times n}​$ ，$B\in\mathbb R^{n\times p}​$&lt;br>
+那么：$AB\in\mathbb R^{m\times p}​$&lt;/p>
+&lt;p>必须满足：&lt;strong>第一个矩阵的列数 = 第二个矩阵的行数。&lt;/strong>&lt;/p>
+&lt;p>如果不了解可以搜索相关视频，这里不详细解释具体运算细节&lt;/p>
+&lt;p>矩阵乘法的作用主要就是便捷进行大批量的计算&lt;/p>
+&lt;p>&lt;strong>(2) 转置&lt;/strong>&lt;/p>
+&lt;p>就是将行列交换&lt;/p>
+&lt;blockquote>
+&lt;p>例如：&lt;br>
+&lt;/p>
+$$
+> A= \begin{bmatrix} 1&amp;2\\ 3&amp;4\\ 5&amp;6 \end{bmatrix}
+> ,
+> A^T= \begin{bmatrix} 1&amp;3&amp;5\\ 2&amp;4&amp;6 \end{bmatrix}
+> $$
+&lt;/blockquote>
+&lt;p>&lt;strong>(3) 特征值和特征向量&lt;/strong>&lt;/p>
+&lt;p>$\mathbf{A}\mathbf v=\lambda\mathbf v$&lt;/p>
+&lt;p>其中：&lt;/p>
+&lt;ul>
+&lt;li>$\mathbf{A}$：矩阵&lt;/li>
+&lt;li>$\mathbf v​$：特征向量&lt;/li>
+&lt;li>$\lambda$：特征值&lt;/li>
+&lt;/ul>
+&lt;p>矩阵变换作用在某个特定方向的向量上时，向量方向保持不变，只改变长度&lt;br>
+就是说这个特征向量表示了一系列矩阵的本质特征，而特征值固定了一个特定的矩阵&lt;/p>
+&lt;h3 id="22-微积分">&lt;a href="#22-%e5%be%ae%e7%a7%af%e5%88%86" class="header-anchor">&lt;/a>2.2 微积分
+&lt;/h3>&lt;p>主要是反向传播的更新部分发挥作用&lt;/p>
+&lt;p>用于确定每个参数对损失需要负责多少&lt;/p>
+&lt;h4 id="221-导数">&lt;a href="#221-%e5%af%bc%e6%95%b0" class="header-anchor">&lt;/a>2.2.1 导数
+&lt;/h4>&lt;p>描述一个函数变化的速度&lt;/p>
+&lt;p>直观上导数表示 ：&lt;strong>当输入x 发生微小变化时，函数f(x)会变化多少&lt;/strong>&lt;/p>
+&lt;p>在机器学习中，变化的量只有参数 $\theta$&lt;br>
+模型的预测结果和计算得到的损失 $L(\theta)$ 取决于这些参数&lt;br>
+我们想要知道怎么能够将损失 $L(\theta)$ 减小&lt;br>
+那么我们就需要知道参数 $\theta$ 的变化对损失 $L(\theta)$ 的影响&lt;br>
+这个时候就需要导数了&lt;br>
+通过&lt;br>
+&lt;/p>
+$$
+\frac{dL}{d\theta}
+$$
+&lt;p>&lt;br>
+我们可以知道&lt;br>
+如果导数为正，增加参数可能会增加 Loss。&lt;br>
+如果导数为负，增加参数可能会减少 Loss。&lt;br>
+因此，导数为模型参数的更新提供方向信息。&lt;/p>
+&lt;blockquote>
+&lt;p>这里说可能是因为导数只是保证很微小的一段距离的变化的趋势，我们并不知道这个距离到底是多少&lt;/p>
+&lt;/blockquote>
+&lt;h4 id="222-偏导数">&lt;a href="#222-%e5%81%8f%e5%af%bc%e6%95%b0" class="header-anchor">&lt;/a>2.2.2 偏导数
+&lt;/h4>&lt;p>表示只改变一个变量，其他变量保持不变时，函数如何变化&lt;br>
+就是要知道每一个变量的影响，从而可以进行个性化的调整&lt;br>
+具体运算就是把其他变量当成常量就好&lt;/p>
+&lt;p>&lt;strong>(1) 梯度&lt;/strong>&lt;/p>
+&lt;p>由所有偏导数组成的向量&lt;br>
+在机器学习中表示为 $\nabla_\theta L(\theta)$&lt;br>
+表示 Loss 对模型参数的梯度&lt;/p>
+&lt;p>&lt;strong>(2) 链式法则&lt;/strong>&lt;/p>
+&lt;h1 id="fracpartial-lpartial-w_1">&lt;a href="#fracpartial-lpartial-w_1" class="header-anchor">&lt;/a>主要就是用于对各个参数求偏导，了解一下就好，使用库会自动计算&lt;br>
+深度神经网络由多个函数包裹组成&lt;br>
+$$
+\hat{y} = f_3(f_2(f_1(x)))\\
+f_1 = w_1x
+$$&lt;br>
+想要求参数 $w_1$ 的偏导的话：&lt;br>
+$$&lt;br>
+\frac{\partial L}{\partial w_1}
+&lt;/h1>&lt;p>\frac{\partial L}{\partial \hat y}&lt;br>
+\frac{\partial \hat y}{\partial h_2}&lt;br>
+\frac{\partial h_2}{\partial h_1}&lt;br>
+\frac{\partial h_1}{\partial w_1}&lt;br>
+$$&lt;br>
+其中 $h_i$ 表示 $w_1$ 所在的那个公式&lt;br>
+具体计算与原因不详细解释，可以自行学习&lt;/p>
+&lt;h3 id="23-概率论">&lt;a href="#23-%e6%a6%82%e7%8e%87%e8%ae%ba" class="header-anchor">&lt;/a>2.3 概率论
+&lt;/h3>&lt;p>主要就是各种基础算法，一些机器学习算法是基于一些基本概率论算法的&lt;/p>
+&lt;h4 id="231-基本概率">&lt;a href="#231-%e5%9f%ba%e6%9c%ac%e6%a6%82%e7%8e%87" class="header-anchor">&lt;/a>2.3.1 基本概率
+&lt;/h4>&lt;p>概率： $P(A)​$&lt;/p>
+&lt;h4 id="232-条件概率">&lt;a href="#232-%e6%9d%a1%e4%bb%b6%e6%a6%82%e7%8e%87" class="header-anchor">&lt;/a>2.3.2 条件概率
+&lt;/h4>$$
+P(A|B)=\frac{P(A\cap B)}{P(B)}
+$$
+&lt;p>表示在事件B发生的前提下A发生的概率&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1794979592636.png"
+width="1036"
+height="786"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1794979592636_hu10304522263741739455.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1794979592636_hu2208081968961680094.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1794979592636"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1794979592636.png"
+>
+&lt;/p>
+&lt;h4 id="233-贝叶斯定理">&lt;a href="#233-%e8%b4%9d%e5%8f%b6%e6%96%af%e5%ae%9a%e7%90%86" class="header-anchor">&lt;/a>2.3.3 贝叶斯定理
+&lt;/h4>&lt;p>根据先验概率求后验概率&lt;br>
+&lt;/p>
+$$
+P(A|B)=\frac{P(B|A)P(A)}{P(B)}
+$$
+&lt;p>&lt;br>
+其中：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>符号&lt;/th>
+&lt;th>含义&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>P(A)&lt;/td>
+&lt;td>Prior，先验概率&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>P(B|A)&lt;/td>
+&lt;td>Likelihood，似然&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>P(A|B)&lt;/td>
+&lt;td>Posterior，后验概率&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>P(B)&lt;/td>
+&lt;td>Evidence，证据&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>直观地理解是就是，本来有A，知道A的概率P(A)&lt;br>
+后面又有了一个新的证据B,我们想要知道在新加上这个证据B后的概率&lt;br>
+那么就是在B发生的基础上(除P(B))，A发生的概率&lt;br>
+但是这里使用的不是 $P(A\cap B)$ 而是 $P(B|A)P(A)$&lt;br>
+使用释然函数 $P(B|A)$ 表示的是B导致A发生的可能&lt;br>
+整体就是 $\frac{P(B|A)P(A)}{P(B)}$&lt;/p>
+&lt;blockquote>
+&lt;p>条件概率和贝叶斯表示的意思相同，就一个用的是同时发生的概率，一个在不知道同时发生的概率的情况下用释然函数进行估计&lt;/p>
+&lt;p>两者的数学含义是相同的，主要就是看你有的条件和数据&lt;/p>
+&lt;/blockquote>
+&lt;h4 id="234-常见概率分布">&lt;a href="#234-%e5%b8%b8%e8%a7%81%e6%a6%82%e7%8e%87%e5%88%86%e5%b8%83" class="header-anchor">&lt;/a>2.3.4 常见概率分布
+&lt;/h4>&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1794981678404.png"
+width="2117"
+height="1807"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1794981678404_hu12183805894319606631.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1794981678404_hu14383950616705540791.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1794981678404"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1794981678404.png"
+>
+&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>分布&lt;/th>
+&lt;th>特点&lt;/th>
+&lt;th>应用&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>伯努利分布(0/1分布)&lt;/td>
+&lt;td>单次 0/1 事件&lt;/td>
+&lt;td>二分类&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>二项式分布&lt;/td>
+&lt;td>多次 Bernoulli&lt;/td>
+&lt;td>成功次数&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>正态分布&lt;/td>
+&lt;td>钟形分布&lt;/td>
+&lt;td>误差建模&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>均匀分布&lt;/td>
+&lt;td>均匀分布&lt;/td>
+&lt;td>随机初始化等&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>泊松分布&lt;/td>
+&lt;td>事件发生次数&lt;/td>
+&lt;td>计数数据&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>正态分布&lt;/strong>&lt;br>
+&lt;/p>
+$$
+X\sim N(\mu,\sigma^2)
+$$
+&lt;p>&lt;br>
+其中：&lt;/p>
+&lt;ul>
+&lt;li>$\mu$：均值&lt;/li>
+&lt;li>$\sigma^2$：方差&lt;/li>
+&lt;/ul>
+&lt;h4 id="235-最大释然估计">&lt;a href="#235-%e6%9c%80%e5%a4%a7%e9%87%8a%e7%84%b6%e4%bc%b0%e8%ae%a1" class="header-anchor">&lt;/a>2.3.5 最大释然估计
+&lt;/h4>&lt;p>MLE (Maximum Likelihood Estimation)&lt;/p>
+&lt;p>目标是寻找最可能产生当前观察数据的参数&lt;/p>
+&lt;p>假设数据：$D=\{x_1,x_2,\dots,x_n\}$&lt;/p>
+&lt;p>参数：$\theta$&lt;/p>
+&lt;p>Likelihood：$L(\theta)=P(D|\theta)$&lt;/p>
+&lt;p>我们希望：$\hat\theta= \arg\max_\theta P(D|\theta) $&lt;/p>
+&lt;p>通常使用 Log-Likelihood：&lt;/p>
+&lt;p>$\hat\theta= \arg\max_\theta\log P(D|\theta) $&lt;/p>
+&lt;blockquote>
+&lt;p>将乘积变为求和，并且数据更加稳定&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="24-统计学">&lt;a href="#24-%e7%bb%9f%e8%ae%a1%e5%ad%a6" class="header-anchor">&lt;/a>2.4 统计学
+&lt;/h3>&lt;p>获取、整合需要的信息，估计规律，判断结论是否可靠&lt;/p>
+&lt;h4 id="241-均值">&lt;a href="#241-%e5%9d%87%e5%80%bc" class="header-anchor">&lt;/a>2.4.1 均值
+&lt;/h4>$$
+\mu=\frac{1}{n}\sum_{i=1}^{n}x_i
+$$
+&lt;blockquote>
+&lt;p>例如：[2,4,6,8]&lt;br>
+均值：$\mu=5$&lt;/p>
+&lt;/blockquote>
+&lt;h4 id="242-方差">&lt;a href="#242-%e6%96%b9%e5%b7%ae" class="header-anchor">&lt;/a>2.4.2 方差
+&lt;/h4>&lt;p>方差描述的是数据的离散程度，也就是数据有多均匀&lt;br>
+&lt;/p>
+$$
+\sigma^2=\frac{1}{n}\sum_{i=1}^{n}(x_i-\mu)^2
+$$
+&lt;blockquote>
+&lt;p>每个值与平均值的差别的平方和的均值&lt;br>
+有点像MSE求损失&lt;/p>
+&lt;/blockquote>
+&lt;h4 id="243-标准差">&lt;a href="#243-%e6%a0%87%e5%87%86%e5%b7%ae" class="header-anchor">&lt;/a>2.4.3 标准差
+&lt;/h4>$$
+\sigma=\sqrt{\sigma^2}
+$$
+&lt;p>主要的作用就是单位有意义和元数据使用相同的数据，更加直观&lt;/p>
+&lt;blockquote>
+&lt;p>差不多相当于RMSE了是&lt;/p>
+&lt;/blockquote>
+&lt;h4 id="244-协方差">&lt;a href="#244-%e5%8d%8f%e6%96%b9%e5%b7%ae" class="header-anchor">&lt;/a>2.4.4 协方差
+&lt;/h4>&lt;p>协方差用于看两个变量之间的关系&lt;br>
+看一个变量变化，另一个变量是否也一起变化&lt;br>
+&lt;/p>
+$$
+Cov(X,Y)=
+\frac{1}{n}\sum_{i=1}^{n}(x_i-\mu_x)(y_i-\mu_y)
+$$
+&lt;blockquote>
+&lt;p>Cov &amp;gt; 0 : 倾向于同向变化&lt;br>
+Cov &amp;lt; 0 : 倾向于反向变化&lt;br>
+Cov ≈ 0 : 线性关系较弱&lt;/p>
+&lt;/blockquote>
+&lt;p>可以看到分割点在0,&lt;br>
+协方差起作用的原因可以这么看&lt;br>
+主要就是 $(x_i-\mu_x)(y_i-\mu_y)$&lt;br>
+可以看到 $x_i$ 和 $y_i$ 都相对于各自的均值偏大/偏向时，为正(&amp;gt;0)&lt;br>
+相对于各自的均值偏向不同是，为负(&amp;lt;0)&lt;br>
+这些结果求均值看全部的平均变化倾向&lt;/p>
+&lt;h4 id="245-相关系数">&lt;a href="#245-%e7%9b%b8%e5%85%b3%e7%b3%bb%e6%95%b0" class="header-anchor">&lt;/a>2.4.5 相关系数
+&lt;/h4>$$
+\rho_{XY}=
+\frac{Cov(X,Y)}{\sigma_X\sigma_Y}
+$$
+&lt;p>取值：$-1\le\rho\le1​$&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>相关系数&lt;/th>
+&lt;th>含义&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>完全正相关&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>0&lt;/td>
+&lt;td>无线性相关&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>-1&lt;/td>
+&lt;td>完全负相关&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;ul>
+&lt;li>注意相关关系并不意味着因果关系&lt;br>
+A、B一起变化并不能说明是A导致B变化或B导致A变化&lt;br>
+也可能是有一个第三方C导致了这个关系&lt;br>
+或者是完全的巧合&lt;/li>
+&lt;/ul>
+&lt;h4 id="246-偏差与方差">&lt;a href="#246-%e5%81%8f%e5%b7%ae%e4%b8%8e%e6%96%b9%e5%b7%ae" class="header-anchor">&lt;/a>2.4.6 偏差与方差
+&lt;/h4>&lt;p>&lt;strong>(1) 偏差&lt;/strong>&lt;br>
+模型预测值与真实值的差距&lt;br>
+可能是模型太简单，无法捕获复杂规律，导致欠拟合&lt;/p>
+&lt;p>&lt;strong>(2) 方差&lt;/strong>&lt;br>
+模型对数据变化的敏感程度，泛化能力的体现&lt;br>
+可能是模型太负责，多度拟合每一个数据点，导致过拟合&lt;/p>
+&lt;p>&lt;strong>(3) 偏差方差均衡&lt;/strong>&lt;br>
+&lt;/p>
+$$
+\mathbf{E}\big[(y-\hat{f}(x))^2\big]
+=\text{Bias}^2(\hat{f}(x))
++\text{Var}(\hat{f}(x))
++\sigma^2
+$$
+&lt;p>&lt;br>
+其中：&lt;/p>
+&lt;ul>
+&lt;li>$\mathbf{E}\big[(y-\hat{f}(x))^2\big]$：期望测试误差（MSE，均方误差）&lt;/li>
+&lt;li>$\text{Bias}^2$：偏差平方，模型本身拟合能力不足带来的误差（欠拟合）&lt;/li>
+&lt;li>$\text{Var}​$：方差，模型在不同训练集上波动大（过拟合）&lt;/li>
+&lt;li>$\sigma^2​$：固有噪声，数据本身的随机噪声，任何模型都消不掉&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>注意误差和噪声，误差可以减小，但是噪声本来就存在不可去除&lt;br>
+比如传感器采集，温度、图像、传感器读数自带仪器误差&lt;/p>
+&lt;/blockquote>
+&lt;p>对这个公式简单理解就是&lt;br>
+结果 = 偏差 + 方差 + 噪声(这个一般直接不考虑)&lt;br>
+主要就是记住下面这个图就可以&lt;br>
+&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1795056795550.png"
+width="1444"
+height="934"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1795056795550_hu4873899691871521993.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1795056795550_hu6265572708308366447.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795056795550"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1795056795550.png"
+>
+&lt;/p>
+&lt;p>随着程度的加深，训练越来越多轮或者模型越来越复杂等等&lt;br>
+偏差会降低，方差会加大&lt;br>
+从而模型总的损失是先大后小再大&lt;br>
+模型训练就是为了找到这个最低点&lt;/p>
+&lt;h3 id="24-优化理论">&lt;a href="#24-%e4%bc%98%e5%8c%96%e7%90%86%e8%ae%ba" class="header-anchor">&lt;/a>2.4 优化理论
+&lt;/h3>&lt;p>机器学习训练的本质目标就是寻找一个最优的参数使模型预测的损失最小&lt;/p>
+&lt;h4 id="241-梯度下降">&lt;a href="#241-%e6%a2%af%e5%ba%a6%e4%b8%8b%e9%99%8d" class="header-anchor">&lt;/a>2.4.1 梯度下降
+&lt;/h4>&lt;p>更新公式：&lt;br>
+&lt;/p>
+$$
+\theta_{t+1}=\theta_t-\eta\nabla_\theta L(\theta_t)
+$$
+&lt;p>&lt;br>
+其中：&lt;/p>
+&lt;ul>
+&lt;li>$\theta_t​$：当前参数&lt;/li>
+&lt;li>$\eta$：学习率&lt;/li>
+&lt;li>$\nabla L$：梯度&lt;/li>
+&lt;li>$\theta_{t+1}$：更新后的参数&lt;/li>
+&lt;/ul>
+&lt;p>这里有几个点&lt;br>
+首先是&lt;strong>梯度&lt;/strong>，顺着梯度走就是上升最快的方向&lt;br>
+所以我们这里需要反着走使用减去，这样就是使损失下降最快的方向&lt;br>
+有了方向我们还需要知道朝着这个方向走多远，这个的把控就是&lt;strong>学习率&lt;/strong>&lt;br>
+前面说了，梯度或者说导数，他只能判断一段很小的变化对结果的影响，所以这个走的距离不能太大，不然就不准了，也不能太小，不然走的太慢了(这里是直观的理解，下面还会详细解释一下)&lt;br>
+通过梯度更新就实现了参数的自动更新&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1795057998348.png"
+width="1308"
+height="874"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1795057998348_hu5104925260560340715.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1795057998348_hu7026889882753647030.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795057998348"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1795057998348.png"
+>
+&lt;/p>
+&lt;h4 id="242-学习率">&lt;a href="#242-%e5%ad%a6%e4%b9%a0%e7%8e%87" class="header-anchor">&lt;/a>2.4.2 学习率
+&lt;/h4>&lt;p>Learning Rate&lt;/p>
+&lt;p>学习率决定每次更新的步长&lt;br>
+&lt;/p>
+$$
+\theta_{t+1}=\theta_t-\eta\nabla L
+$$
+&lt;p>&lt;br>
+下面看不同学习率的影响&lt;/p>
+&lt;p>&lt;strong>(1) LR过大&lt;/strong>&lt;/p>
+&lt;p>Loss震荡，越过最优点，甚至无法收敛&lt;/p>
+&lt;p>&lt;strong>(2) LR过小&lt;/strong>&lt;/p>
+&lt;p>训练过慢&lt;br>
+还有就是局部最优的情况下，较大的LR可能会越过，而较小的LR就会困于这个局部最优&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1795059038728.png"
+width="1185"
+height="349"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1795059038728_hu14593267830864746851.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1795059038728_hu6249341669555656010.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795059038728"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1795059038728.png"
+>
+&lt;/p>
+&lt;h4 id="243-梯度下降-训练数据选择">&lt;a href="#243-%e6%a2%af%e5%ba%a6%e4%b8%8b%e9%99%8d-%e8%ae%ad%e7%bb%83%e6%95%b0%e6%8d%ae%e9%80%89%e6%8b%a9" class="header-anchor">&lt;/a>2.4.3 梯度下降-训练数据选择
+&lt;/h4>&lt;p>&lt;strong>(1) 批量梯度下降&lt;/strong>&lt;/p>
+&lt;p>BGD ：Batch Gradient Descent&lt;/p>
+&lt;p>这里注意批量的意思，不是说选一部分，指的是全部&lt;br>
+每次更新参数时都使用&lt;strong>全部&lt;/strong>训练数据&lt;br>
+&lt;/p>
+$$
+\nabla L=\frac{1}{n}\sum_{i=1}^{n}\nabla\ell_i
+$$
+&lt;p>&lt;br>
+其中 $\nabla\ell_i​$ 是第i个样本的损失&lt;br>
+&lt;strong>优点&lt;/strong>：梯度稳定&lt;br>
+&lt;strong>缺点&lt;/strong>：计算成本高，内存需求大&lt;/p>
+&lt;p>&lt;strong>(2) 随机梯度下降&lt;/strong>&lt;/p>
+&lt;p>SGD : Stochastic Gradient Descent&lt;/p>
+&lt;p>每次只使用&lt;strong>一个&lt;/strong>样本更新参数&lt;br>
+&lt;strong>优点&lt;/strong> ：计算快&lt;br>
+&lt;strong>缺点&lt;/strong> ：更新噪声大，Loss可能震荡&lt;/p>
+&lt;p>&lt;strong>(3) 小批量梯度下降&lt;/strong>&lt;/p>
+&lt;p>Mini-batch Gradient Descent&lt;/p>
+&lt;ul>
+&lt;li>注意很多地方说的SGD其实指的是小批量梯度下降&lt;/li>
+&lt;/ul>
+&lt;p>每次使用一小批样本&lt;br>
+效果和需求更加平衡，最常用&lt;/p>
+&lt;h4 id="244-梯度下降-优化器">&lt;a href="#244-%e6%a2%af%e5%ba%a6%e4%b8%8b%e9%99%8d-%e4%bc%98%e5%8c%96%e5%99%a8" class="header-anchor">&lt;/a>2.4.4 梯度下降-优化器
+&lt;/h4>&lt;p>优化器的意思就是对参数进行优化的工具，其实就是上面的梯度下降公式，这个梯度下降的方式有很多&lt;br>
+这里只用了解一下就好，知道都有什么优化就好，不用太在意公式&lt;/p>
+&lt;p>&lt;strong>(1) SGD&lt;/strong>&lt;br>
+基础梯度下降方法&lt;br>
+&lt;/p>
+$$
+\theta_{t+1}=\theta_t-\eta g_t
+$$
+&lt;p>&lt;br>
+&lt;strong>(2) Momentum&lt;/strong>&lt;br>
+动量，就是相当于惯性，让变化更加连续性的感觉，前面的会对后面的产生影响&lt;br>
+通过累积过去梯度，减少震荡并加速优化。&lt;br>
+&lt;/p>
+$$
+v_t=\beta v_{t-1}+g_t \\
+\theta_{t+1}=\theta_t-\eta v_t
+$$
+&lt;blockquote>
+&lt;p>$\beta 、 \eta$ 都是超参数&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>(3) Adam&lt;/strong>&lt;br>
+最常用的&lt;br>
+结合Momentum和自适应学习率&lt;br>
+&lt;/p>
+$$
+m_t=\beta_1m_{t-1}+(1-\beta_1)g_t
+\\
+v_t=\beta_2v_{t-1}+(1-\beta_2)g_t^2
+\\
+\theta_{t+1}=\theta_t-\eta\frac{\hat m_t}{\sqrt{\hat v_t}+\epsilon}
+$$
+&lt;blockquote>
+&lt;p>$\eta,\ \beta_1,\ \beta_2,\ \epsilon$ 都是超参数&lt;/p>
+&lt;/blockquote>
+&lt;p>其中 $\sqrt{\hat v_t}+\epsilon​$ 让每个参数都有了它自己的缩放系数对学习率进行调整&lt;/p>
+&lt;blockquote>
+&lt;p>这个 $\epsilon$ 基本就是为了防止除零，一个很小的常数&lt;/p>
+&lt;/blockquote>
+&lt;p>利用历史梯度信息，并根据梯度大小调整不同参数的跟新步长&lt;br>
+效果一般最好&lt;/p>
+&lt;h3 id="25-问题">&lt;a href="#25-%e9%97%ae%e9%a2%98" class="header-anchor">&lt;/a>2.5 问题
+&lt;/h3>&lt;ul>
+&lt;li>为什么机器学习数据用向量和矩阵表示？&lt;/li>
+&lt;li>什么是模型参数？&lt;/li>
+&lt;li>什么是 Loss Function？&lt;/li>
+&lt;li>为什么需要 Gradient？&lt;/li>
+&lt;li>Gradient Descent 如何更新参数？&lt;/li>
+&lt;li>为什么神经网络使用 Backpropagation？&lt;/li>
+&lt;li>什么是概率和条件概率？&lt;/li>
+&lt;li>Bayes&amp;rsquo; Theorem 如何用于机器学习？&lt;/li>
+&lt;li>什么是 Mean、Variance、Covariance？&lt;/li>
+&lt;li>什么是 Bias-Variance Tradeoff？&lt;/li>
+&lt;li>Adam 和 SGD 有什么区别？&lt;/li>
+&lt;/ul>
+&lt;h2 id="3-经典机器学习算法">&lt;a href="#3-%e7%bb%8f%e5%85%b8%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0%e7%ae%97%e6%b3%95" class="header-anchor">&lt;/a>3. 经典机器学习算法
+&lt;/h2>&lt;h3 id="31-监督学习算法">&lt;a href="#31-%e7%9b%91%e7%9d%a3%e5%ad%a6%e4%b9%a0%e7%ae%97%e6%b3%95" class="header-anchor">&lt;/a>3.1 监督学习算法
+&lt;/h3>&lt;h4 id="311-线性回归">&lt;a href="#311-%e7%ba%bf%e6%80%a7%e5%9b%9e%e5%bd%92" class="header-anchor">&lt;/a>3.1.1 线性回归
+&lt;/h4>&lt;p>Linear Regression&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1795093039318.png"
+width="1539"
+height="956"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1795093039318_hu7530249460545505075.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1795093039318_hu1842001096641986022.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795093039318"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1795093039318.png"
+>
+&lt;/p>
+&lt;p>通过建立输入特征与输出结果之间的线性关系，预测连续数值&lt;br>
+&lt;/p>
+$$
+\hat y=w_1x_1+w_2x_2+\cdots+w_nx_n+b\\
+$$
+&lt;p>&lt;br>
+矩阵形式：&lt;br>
+&lt;/p>
+$$
+\hat y=Xw+b
+$$
+&lt;ul>
+&lt;li>求解使用最小二乘法或梯度下降&lt;/li>
+&lt;/ul>
+&lt;p>误差：&lt;/p>
+&lt;ul>
+&lt;li>MSE&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>线性回归经常被用作Baseline&lt;br>
+这是因为它简单、可解释、计算成本低&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;a class="link" href="https://morningCPU.github.io/blog/blog/p/003/code/code_linearregression.html" target="_blank" rel="noopener">code_LinearRegression.html&lt;/a>
+&lt;/p>
+&lt;ul>
+&lt;li>sklearn.linear_model.LinearRegression 使用的是最小二乘法直接进行求解&lt;/li>
+&lt;/ul>
+&lt;h4 id="312-逻辑回归">&lt;a href="#312-%e9%80%bb%e8%be%91%e5%9b%9e%e5%bd%92" class="header-anchor">&lt;/a>3.1.2 逻辑回归
+&lt;/h4>&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1795140839490.png"
+width="1039"
+height="708"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1795140839490_hu13697584209811618705.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1795140839490_hu2169118326605985683.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795140839490"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1795140839490.png"
+>
+&lt;/p>
+&lt;p>LogisticRegression&lt;/p>
+&lt;p>虽然是叫回归，但是是用于分类任务&lt;br>
+&lt;/p>
+$$
+z=w^Tx+b \\
+\sigma(z)=\frac{1}{1+e^{-z}}
+$$
+&lt;p>&lt;br>
+是一个线性回归的函数加上了一个sigmoid,所以有了回归这个名字，通过线性回归函数做二分类问题&lt;/p>
+&lt;p>想要知道样本属于类别1的概率：$P(y=1|x)​$&lt;br>
+我们定义 $P(y=1|x)=\sigma(w^Tx+b)​$&lt;br>
+这个是人为定义，就认为$P(y=1|x)​$可以用$\sigma(w^Tx+b)​$表示&lt;/p>
+&lt;p>&lt;strong>误差：&lt;/strong>&lt;/p>
+&lt;p>BCE : Binary Cross-Entropy 二元交叉熵&lt;br>
+&lt;/p>
+$$
+L=-\frac1n\sum_{i=1}^n
+[y_i\log(\hat y_i)
++(1-y_i)\log(1-\hat y_i)]
+$$
+&lt;ul>
+&lt;li>能够衡量模型预测概率与真实类别之间的差距&lt;/li>
+&lt;/ul>
+&lt;p>&lt;a class="link" href="https://morningCPU.github.io/blog/blog/p/003/code/code_logisticregression.html" target="_blank" rel="noopener">code_LogisticRegression.html&lt;/a>
+&lt;/p>
+&lt;h4 id="313-k近邻">&lt;a href="#313-k%e8%bf%91%e9%82%bb" class="header-anchor">&lt;/a>3.1.3 K近邻
+&lt;/h4>&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1795143923708.png"
+width="1133"
+height="848"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1795143923708_hu5259363453372875402.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1795143923708_hu4247393708202120523.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795143923708"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1795143923708.png"
+>
+&lt;/p>
+&lt;p>K-Neareset Neighbors&lt;/p>
+&lt;ul>
+&lt;li>一个样本的类别通常与它附近的样本的类别有关&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>例如：&lt;br>
+我们想判断一个新用户属于哪类客户。&lt;br>
+观察附近的 5 个用户：&lt;/p>
+&lt;ul>
+&lt;li>3 个属于 A 类&lt;/li>
+&lt;li>2 个属于 B 类&lt;/li>
+&lt;/ul>
+&lt;p>那么新用户被分类为 A 类。&lt;/p>
+&lt;/blockquote>
+&lt;p>使用欧式距离&lt;br>
+&lt;/p>
+$$
+d(x,y)=\sqrt{\sum_{i=1}^{n}(x_i-y_i)^2}
+$$
+&lt;ul>
+&lt;li>KNN通常需要对样本的特征进行标准化&lt;br>
+因为如果一个特征的取值很大，另一个相对较小，那么对欧氏距离的计算来说，就基本是第一个特征在起作用了&lt;/li>
+&lt;/ul>
+&lt;p>&lt;a class="link" href="https://morningCPU.github.io/blog/blog/p/003/code/code_kneighborsclassifier.html" target="_blank" rel="noopener">code_KNeighborsClassifier.html&lt;/a>
+&lt;/p>
+&lt;h4 id="314-朴素贝叶斯">&lt;a href="#314-%e6%9c%b4%e7%b4%a0%e8%b4%9d%e5%8f%b6%e6%96%af" class="header-anchor">&lt;/a>3.1.4 朴素贝叶斯
+&lt;/h4>&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1795145950406.png"
+width="1701"
+height="684"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1795145950406_hu5442251118985591273.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1795145950406_hu8261405423268575903.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795145950406"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1795145950406.png"
+>
+&lt;/p>
+&lt;p>基于贝叶斯定理的概率分类算法&lt;br>
+根据样本的特征，计算它属于不同类别的概率，选择概率最大的类别&lt;/p>
+&lt;blockquote>
+&lt;p>会假设所有特征之间互相独立，这个是一个很强的假设现实肯定是不对的，也是为什么叫朴素的原因&lt;/p>
+&lt;/blockquote>
+&lt;h4 id="315-决策树">&lt;a href="#315-%e5%86%b3%e7%ad%96%e6%a0%91" class="header-anchor">&lt;/a>3.1.5 决策树
+&lt;/h4>&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1795146224810.png"
+width="1701"
+height="924"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1795146224810_hu494393245134789346.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1795146224810_hu15344487689074795789.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795146224810"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1795146224810.png"
+>
+&lt;/p>
+&lt;p>通过一系列的条件判断，一步步进行划分&lt;/p>
+&lt;p>特征的选择主要是靠以下的方法&lt;/p>
+&lt;p>&lt;strong>(1) 信息熵与信息增益&lt;/strong>&lt;br>
+信息熵：&lt;/p>
+&lt;p>$H(X)=-\sum_{i=1}^{k}p_i\log_2p_i $&lt;/p>
+&lt;p>信息增益：&lt;/p>
+&lt;p>$IG=H(parent)-H(children) $&lt;/p>
+&lt;p>信息熵描述的信息量的大小，信息量越大熵越大&lt;br>
+也就是知道的越多，那就让熵减小的越多&lt;br>
+所以这是IG越大越好&lt;/p>
+&lt;p>算法倾向于选择能够最大程度降低不确定性的划分方式&lt;/p>
+&lt;p>&lt;strong>(2) 基尼指数&lt;/strong>&lt;/p>
+&lt;p>$Gini=1-\sum_{i=1}^{k}p_i^2$&lt;/p>
+&lt;p>Gini 越小，节点中的样本类别越纯&lt;/p>
+&lt;blockquote>
+&lt;p>决策树容易过拟合&lt;br>
+因为树不断对数据进行划分，会形成非常复杂的规则&lt;/p>
+&lt;/blockquote>
+&lt;h4 id="316-支持向量机">&lt;a href="#316-%e6%94%af%e6%8c%81%e5%90%91%e9%87%8f%e6%9c%ba" class="header-anchor">&lt;/a>3.1.6 支持向量机
+&lt;/h4>&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1795174179409.png"
+width="1308"
+height="798"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1795174179409_hu5996378373207928406.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1795174179409_hu1030824221552095520.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795174179409"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1795174179409.png"
+>
+&lt;/p>
+&lt;p>一种经典的分类算法&lt;br>
+找到一个能够分开不同类别的最优决策边界&lt;/p>
+&lt;p>&lt;strong>核心思想&lt;/strong>：&lt;br>
+寻找最大间隔的分类超平面&lt;br>
+也就是寻找支持向量，这样的话就找到边界了&lt;/p>
+&lt;blockquote>
+&lt;p>支持向量：距离分类边界最近的样本，决定了最优分类边界的位置&lt;/p>
+&lt;/blockquote>
+&lt;p>数据不一定能够被一条直线很好地分割，这个时候就需要&lt;strong>核函数&lt;/strong>了，能够用一条曲线进行拟合&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Kernel&lt;/th>
+&lt;th>特点&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Linear&lt;/td>
+&lt;td>线性决策边界&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Polynomial&lt;/td>
+&lt;td>多项式关系&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>RBF&lt;/td>
+&lt;td>非线性边界&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Sigmoid&lt;/td>
+&lt;td>类似神经网络激活形式的核&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;blockquote>
+&lt;p>SVM 的核心优势是在分类的同时，能够通过最大化分类边界提高泛化能力&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="32-集成学习">&lt;a href="#32-%e9%9b%86%e6%88%90%e5%ad%a6%e4%b9%a0" class="header-anchor">&lt;/a>3.2 集成学习
+&lt;/h3>&lt;p>主要有三种方式&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1795175226779.png"
+width="1308"
+height="738"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1795175226779_hu3220151242161807203.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1795175226779_hu13640236057230876336.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795175226779"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1795175226779.png"
+>
+&lt;/p>
+&lt;p>&lt;strong>Bagging&lt;/strong> : 并行训练多个模型，进行投票&lt;br>
+&lt;strong>Boosting&lt;/strong> : 串行训练模型，后一个模型对前一个模型的错误进行修正&lt;br>
+&lt;strong>Stacking&lt;/strong> : 两层，第一层用多个不同的基础模型进行预测，将这些模型的输出当成新特征，第二次训练一个元模型，由元模型给出最终的结果&lt;/p>
+&lt;h4 id="321-随机森林">&lt;a href="#321-%e9%9a%8f%e6%9c%ba%e6%a3%ae%e6%9e%97" class="header-anchor">&lt;/a>3.2.1 随机森林
+&lt;/h4>&lt;p>Random Forest&lt;br>
+由多个决策树组成，每个决策树单独训练，所以可以并行训练，最终通过投票得到结果&lt;/p>
+&lt;p>&lt;strong>随机&lt;/strong>&lt;br>
+每个树用于训练的样本和特征都是随机的，只使用了一部分数据进行训练，从而使每棵树之间有差异&lt;/p>
+&lt;blockquote>
+&lt;p>两种随机机制：&lt;br>
+自助采样：随机抽取样本&lt;br>
+随机选特征：每一次分裂时随机挑特征进行判断&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>Bagging = Bootstrap Aggregating&lt;/li>
+&lt;/ul>
+&lt;h4 id="322-gradient-boosting">&lt;a href="#322-gradient-boosting" class="header-anchor">&lt;/a>3.2.2 Gradient Boosting
+&lt;/h4>&lt;p>逐步建立模型，所以是并行的&lt;br>
+后一个模型重点学习前面模型表现不好的部分&lt;/p>
+&lt;h4 id="323-xgboost">&lt;a href="#323-xgboost" class="header-anchor">&lt;/a>3.2.3 XGBoost
+&lt;/h4>&lt;p>Extreme Gradient Boosting&lt;br>
+更加高效、表现更好&lt;/p>
+&lt;p>默认使用的模型是基于基尼指数分裂的二叉树(分类回归树)&lt;/p>
+&lt;h3 id="33-无监督学习">&lt;a href="#33-%e6%97%a0%e7%9b%91%e7%9d%a3%e5%ad%a6%e4%b9%a0" class="header-anchor">&lt;/a>3.3 无监督学习
+&lt;/h3>&lt;p>自动发现数据的规律，无需标签&lt;/p>
+&lt;h4 id="331-k均值聚类">&lt;a href="#331-k%e5%9d%87%e5%80%bc%e8%81%9a%e7%b1%bb" class="header-anchor">&lt;/a>3.3.1 K均值聚类
+&lt;/h4>&lt;p>K-Means Clustering&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1795176480476.png"
+width="1034"
+height="716"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1795176480476_hu11698555079731097938.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1795176480476_hu1459527375335452763.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795176480476"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1795176480476.png"
+>
+&lt;/p>
+&lt;p>将数据划分为K个不同的簇，让同一个簇内的数据尽可能相似，不同簇之间的数据尽可能不同&lt;br>
+这个K是超参数，认为设定&lt;/p>
+&lt;p>&lt;strong>算法流程&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>确定K值&lt;/li>
+&lt;li>初始化聚类中心&lt;/li>
+&lt;li>计算距离&lt;/li>
+&lt;li>分配类别&lt;/li>
+&lt;li>更新聚类中心&lt;/li>
+&lt;li>重复&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>目标&lt;/strong>：&lt;br>
+&lt;/p>
+$$
+J=
+\sum_{k=1}^{K}
+\sum_{x_i\in C_k}
+\|x_i-\mu_k\|^2
+\\
+\min J
+$$
+&lt;p>&lt;br>
+尽可能降低每个数据点与其所属聚类中心的距离平方和&lt;/p>
+&lt;ul>
+&lt;li>确定一个合适的K值和初始聚类中心的位置很重要&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>(1) 确定K值&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>肘部法&lt;/strong>&lt;br>
+&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1795176787718.png"
+width="1308"
+height="738"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1795176787718_hu16726659595761944363.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1795176787718_hu16569529177692528761.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795176787718"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1795176787718.png"
+>
+&lt;/p>
+&lt;p>随着 K 增大，聚类误差通常会降低，但肯定不是K越大越好，我们需要一个最小的满足要求的K&lt;br>
+所以是寻找一个误差下降趋势明显变缓的位置(肘部)&lt;/p>
+&lt;p>&lt;strong>轮廓系数&lt;/strong>&lt;br>
+用于评估聚类的紧密程度和分离程度。&lt;br>
+评估会让簇内的点要越近越好，不同簇的点越远越好&lt;br>
+取值通常在 -1 到 1 之间，越高通常表示聚类效果越好。&lt;/p>
+&lt;blockquote>
+&lt;p>K-Means也需要对数据进行标准化，因为这个评估也是基于距离的，不同尺度会导致大尺度的占据主导&lt;/p>
+&lt;/blockquote>
+&lt;h4 id="332-主成分分析">&lt;a href="#332-%e4%b8%bb%e6%88%90%e5%88%86%e5%88%86%e6%9e%90" class="header-anchor">&lt;/a>3.3.2 主成分分析
+&lt;/h4>&lt;p>一种经典的线性降维方法&lt;br>
+&lt;img src="https://morningCPU.github.io/blog/blog/p/003/assets/1795177106922.png"
+width="1308"
+height="732"
+srcset="https://morningCPU.github.io/blog/blog/p/003/assets/1795177106922_hu11661644715514210556.png 480w, https://morningCPU.github.io/blog/blog/p/003/assets/1795177106922_hu11408294967979325966.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795177106922"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/003/assets/1795177106922.png"
+>
+&lt;/p>
+&lt;blockquote>
+&lt;p>线性：新特征是原始特征的线性组合&lt;/p>
+&lt;/blockquote>
+&lt;p>一个数据有很多特征，其中很多特征是有相关性，是很相似的，使用所有数据的成本太高，这个时候就可以使用PCA进行整合降维，并尽可能保留数据中的主要变化信息&lt;/p>
+&lt;ul>
+&lt;li>主成分之间两两正交&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>基本流程&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>对数据进行&lt;strong>中心化&lt;/strong>，通常还需要根据情况标准化。&lt;/li>
+&lt;li>计算协方差矩阵。&lt;/li>
+&lt;li>计算特征值和特征向量。&lt;/li>
+&lt;li>根据特征值大小排序。&lt;/li>
+&lt;li>选择前 K 个主成分。&lt;/li>
+&lt;li>将原始数据投影到新的低维空间。&lt;/li>
+&lt;/ol>
+&lt;h3 id="34-对比">&lt;a href="#34-%e5%af%b9%e6%af%94" class="header-anchor">&lt;/a>3.4 对比
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>算法&lt;/th>
+&lt;th>类型&lt;/th>
+&lt;th>核心思想&lt;/th>
+&lt;th>主要用途&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Linear Regression&lt;/td>
+&lt;td>监督&lt;/td>
+&lt;td>线性拟合&lt;/td>
+&lt;td>回归&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Logistic Regression&lt;/td>
+&lt;td>监督&lt;/td>
+&lt;td>概率分类&lt;/td>
+&lt;td>分类&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>KNN&lt;/td>
+&lt;td>监督&lt;/td>
+&lt;td>距离与邻居投票&lt;/td>
+&lt;td>分类、回归&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Naive Bayes&lt;/td>
+&lt;td>监督&lt;/td>
+&lt;td>贝叶斯概率&lt;/td>
+&lt;td>分类&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Decision Tree&lt;/td>
+&lt;td>监督&lt;/td>
+&lt;td>递归划分&lt;/td>
+&lt;td>分类、回归&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>SVM&lt;/td>
+&lt;td>监督&lt;/td>
+&lt;td>最大间隔&lt;/td>
+&lt;td>分类、回归&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Random Forest&lt;/td>
+&lt;td>集成&lt;/td>
+&lt;td>Bagging&lt;/td>
+&lt;td>分类、回归&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>XGBoost&lt;/td>
+&lt;td>集成&lt;/td>
+&lt;td>Boosting&lt;/td>
+&lt;td>分类、回归&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>K-Means&lt;/td>
+&lt;td>无监督&lt;/td>
+&lt;td>距离聚类&lt;/td>
+&lt;td>聚类&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>PCA&lt;/td>
+&lt;td>无监督&lt;/td>
+&lt;td>最大方差投影&lt;/td>
+&lt;td>降维&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>选择&lt;/strong>&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>数据特点或研究需求&lt;/th>
+&lt;th>可以考虑的算法&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>关系简单、希望可解释&lt;/td>
+&lt;td>Linear Regression&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>二分类、需要概率输出&lt;/td>
+&lt;td>Logistic Regression&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>数据量较小、局部模式明显&lt;/td>
+&lt;td>KNN&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>高维文本分类&lt;/td>
+&lt;td>Naive Bayes&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>需要直观解释决策过程&lt;/td>
+&lt;td>Decision Tree&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>中小规模、高维分类&lt;/td>
+&lt;td>SVM&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>表格数据、需要稳健基线&lt;/td>
+&lt;td>Random Forest&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>表格数据、追求较高预测效果&lt;/td>
+&lt;td>XGBoost&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>没有标签、希望自动分群&lt;/td>
+&lt;td>K-Means&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>特征过多、需要降维&lt;/td>
+&lt;td>PCA&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="35-机器学习研究步骤">&lt;a href="#35-%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0%e7%a0%94%e7%a9%b6%e6%ad%a5%e9%aa%a4" class="header-anchor">&lt;/a>3.5 机器学习研究步骤
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>确定任务类型&lt;/strong>&lt;/p>
+&lt;p>是 Regression、Classification 还是 Clustering？&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>分析数据特征&lt;/strong>&lt;/p>
+&lt;p>样本数量多少？特征维度多高？是否存在标签？是否存在缺失值？&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>选择 Baseline&lt;/strong>&lt;/p>
+&lt;p>先使用 Logistic Regression、Linear Regression 或简单决策树等建立基准。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>选择候选模型&lt;/strong>&lt;/p>
+&lt;p>根据数据特征尝试 SVM、Random Forest、XGBoost 或其他模型。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>设计实验&lt;/strong>&lt;/p>
+&lt;p>使用交叉验证、合适的评价指标和超参数调优。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>分析结果&lt;/strong>&lt;/p>
+&lt;p>比较模型表现，分析误差来源、模型局限和泛化能力。&lt;/p>
+&lt;/li>
+&lt;/ol></description></item></channel></rss>

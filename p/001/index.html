@@ -1,0 +1,323 @@
+<!doctype html><html lang=zh-cn dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="用 Hugo 构建静态博客，并通过 GitHub 自动部署的完整流程"><title>使用 GitHub + Hugo 创建个人博客</title>
+<link rel=canonical href=https://morningCPU.github.io/blog/p/001/><link rel=stylesheet href=/blog/scss/style.min.221029fe4879ac77b01d9f86e41ed831e5ef7cd3021af26e1427d14a25e9e292.css><meta property="og:title" content="使用 GitHub + Hugo 创建个人博客"><meta property="og:description" content="用 Hugo 构建静态博客，并通过 GitHub 自动部署的完整流程"><meta property="og:url" content="https://morningCPU.github.io/blog/p/001/"><meta property="og:site_name" content="morningCPU"><meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="GitHub Actions"><meta property="article:tag" content="静态站点"><meta property="article:tag" content="自动化部署"><meta property="article:published_time" content="2026-01-28T00:00:00+00:00"><meta property="article:modified_time" content="2026-01-28T00:00:00+00:00"><meta itemprop=name content="使用 GitHub + Hugo 创建个人博客"><meta itemprop=description content="用 Hugo 构建静态博客，并通过 GitHub 自动部署的完整流程"><meta itemprop=image content="https://morningCPU.github.io/blog/share/share-thumb-base_hu4752525989838928818.png"><link rel=image_src href=https://morningCPU.github.io/blog/share/share-thumb-base_hu4752525989838928818.png><meta name=thumbnail content="https://morningCPU.github.io/blog/share/share-thumb-base_hu4752525989838928818.png"><meta property="og:image" content="https://morningCPU.github.io/blog/share/share-card-base_hu7959442485195421316.png"><meta property="og:image:secure_url" content="https://morningCPU.github.io/blog/share/share-card-base_hu7959442485195421316.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="分享卡片：使用 GitHub + Hugo 创建个人博客"><meta name=twitter:title content="使用 GitHub + Hugo 创建个人博客"><meta name=twitter:description content="用 Hugo 构建静态博客，并通过 GitHub 自动部署的完整流程"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://morningCPU.github.io/blog/share/share-card-base_hu7959442485195421316.png"><meta name=twitter:image:alt content="分享卡片：使用 GitHub + Hugo 创建个人博客"><link rel="shortcut icon" href=/blog/cpu.ico><link rel=preload href=/blog/font/JetBrains-Mono/JetBrainsMono-Regular-2.ttf as=font type=font/ttf crossorigin><style>@font-face{font-family:jetbrains mono;src:url(/blog/font/JetBrains-Mono/JetBrainsMono-Regular-2.ttf)format('truetype');font-style:normal;font-weight:400;font-display:swap}@font-face{font-family:jetbrains mono;src:url(/blog/font/JetBrains-Mono/JetBrainsMono-Medium-3.ttf)format('truetype');font-style:normal;font-weight:500;font-display:swap}@font-face{font-family:jetbrains mono;src:url(/blog/font/JetBrains-Mono/JetBrainsMono-Bold-7.ttf)format('truetype');font-style:normal;font-weight:700;font-display:swap}</style></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"light")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky compact"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/blog/><img src=/blog/img/avatar_hu1684407346504397915.jpg width=300 height=300 class=site-logo loading=lazy alt=Avatar></a></figure><div class=site-meta><h1 class=site-name><a href=/blog>morningCPU</a></h1><h2 class=site-description>学习笔记</h2></div></header><ol class=menu-social><li><a href=https://github.com/morningCPU target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li><li><a href=https://www.zhihu.com/people/13-69-67-66/posts target=_blank title=zhihu rel=me><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-zhihu"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 6h6v12h-2l-2 2-1-2h-1V6"/><path d="M4 12h6.5"/><path d="M10.5 6h-5"/><path d="M6 4c-.5 2.5-1.5 3.5-2.5 4.5"/><path d="M8 6v7c0 4.5-2 5.5-4 7"/><path d="M11 18l-3-5"/></svg></a></li></ol><ol class=menu id=main-menu><li class=current><a href=/blog/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>主页</span></a></li><li><a href=/blog/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>搜索</span></a></li><li><a href=/blog/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>归档</span></a></li><li><a href=/blog/links/><svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg>
+<span>资料链接</span></a></li><li><a href=/blog/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>关于</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-library-minus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 5.667A2.667 2.667.0 019.667 3h8.666A2.667 2.667.0 0121 5.667v8.666A2.667 2.667.0 0118.333 17H9.667A2.667 2.667.0 017 14.333V5.667"/><path d="M4.012 7.26A2.005 2.005.0 003 8.997v10c0 1.1.9 2 2 2h10c.75.0 1.158-.385 1.5-1"/><path d="M11 10h6"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#1-资源准备><strong>1.</strong> 资源准备</a><ol><li><a href=#11-下载hugo><strong>1.1</strong> 下载hugo</a></li><li><a href=#12-下载主题><strong>1.2</strong> 下载主题</a></li></ol></li><li><a href=#2-准备工作><strong>2.</strong> 准备工作</a><ol><li><a href=#21-创建项目><strong>2.1</strong> 创建项目</a></li><li><a href=#22-设置主题><strong>2.2</strong> 设置主题</a></li><li><a href=#23-使用样例><strong>2.3</strong> 使用样例</a></li><li><a href=#24-启动><strong>2.4</strong> 启动</a></li></ol></li><li><a href=#3-修改配置><strong>3.</strong> 修改配置</a><ol><li><a href=#31-完整的hugoyaml配置文件><strong>3.1</strong> 完整的hugo.yaml配置文件</a></li><li><a href=#32-详细说明><strong>3.2</strong> 详细说明</a></li></ol></li><li><a href=#4-使用博客><strong>4.</strong> 使用博客</a></li><li><a href=#5-github自动部署><strong>5.</strong> github自动部署</a><ol><li><a href=#51-github创建仓库><strong>5.1</strong> github创建仓库</a></li><li><a href=#52-设置访问token><strong>5.2</strong> 设置访问token</a></li><li><a href=#53-设置仓库变量><strong>5.3</strong> 设置仓库变量</a></li><li><a href=#54-本地创建仓库><strong>5.4</strong> 本地创建仓库</a></li><li><a href=#55-创建工作流配置文件><strong>5.5</strong> 创建工作流配置文件</a></li><li><a href=#56-创建gitignore文件><strong>5.6</strong> 创建.gitignore文件</a></li><li><a href=#57-github设置action><strong>5.7</strong> github设置action</a></li><li><a href=#58-提交><strong>5.8</strong> 提交</a></li></ol></li><li><a href=#6-目录的修改><strong>6.</strong> 目录的修改</a></li><li><a href=#7-评论><strong>7.</strong> 评论</a><ol><li><a href=#71-utterances><strong>7.1</strong> utterances</a></li><li><a href=#72-giscus><strong>7.2</strong> giscus</a></li></ol></li></ol></nav></div></section></aside><main class="main full-width"><article class="has-image main-article"><header class=article-header><div class=article-image><img src=/blog/p/001/assets/title_hu15791591415830104823.webp srcset="/blog/p/001/assets/title_hu15791591415830104823.webp 800w, /blog/p/001/assets/title_hu17597190725741403570.webp 1600w" width=800 height=272 loading=eager fetchpriority=high decoding=async alt="文章封面：使用 GitHub + Hugo 创建个人博客"></div><div class=article-details><nav class=article-breadcrumb aria-label=面包屑导航><a href=/blog/>笔记索引</a>
+<span class=article-breadcrumb-sep aria-hidden=true>/</span>
+<a href=/blog/categories/github/>GitHub</a></nav><div class=article-title-wrapper><h1 class=article-title>使用 GitHub + Hugo 创建个人博客</h1><p class=article-subtitle>用 Hugo 构建静态博客，并通过 GitHub 自动部署的完整流程</p></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published datetime=2026-01-28T00:00:00Z>2026-01-28</time></div></footer></div></header><section class=article-content><p>本文介绍如何使用hugo和github构建个人博客<br>参照B站 <a class=link href=https://www.bilibili.com/video/BV1bovfeaEtQ/ target=_blank rel=noopener>@Letere-莱特雷</a>
+的教学：<br><a class=link href=https://www.bilibili.com/video/BV1bovfeaEtQ/ target=_blank rel=noopener>https://www.bilibili.com/video/BV1bovfeaEtQ/</a><br><a class=link href=https://letere-gzj.github.io/hugo-stack target=_blank rel=noopener>Letere-莱特雷博客</a><br><a class=link href=https://letere-gzj.github.io/hugo-stack target=_blank rel=noopener>https://letere-gzj.github.io/hugo-stack</a><br>感谢大佬(*´∀`)~♥</p><hr><h2 id=1-资源准备><a href=#1-%e8%b5%84%e6%ba%90%e5%87%86%e5%a4%87 class=header-anchor></a><strong>1.</strong> 资源准备</h2><h3 id=11-下载hugo><a href=#11-%e4%b8%8b%e8%bd%bdhugo class=header-anchor></a><strong>1.1</strong> 下载hugo</h3><p>下载地址 <a class=link href=https://gohugo.io/ target=_blank rel=noopener>https://gohugo.io/</a><br>点击上方github进入仓库<br>点击tag选择需要的版本进行下载，注意要点进去，里面有不同的类型</p><p><img src=/blog/p/001/assets/image.png width=1278 height=366 srcset="/blog/p/001/assets/image_hu2801315308241895762.png 480w, /blog/p/001/assets/image_hu5873903982594316204.png 1024w" loading=lazy decoding=async alt=hugo class=article-content-image data-lightbox-src=/blog/p/001/assets/image.png></p><p>这里下载版本是 extended-0.131.0<br>最好用同样的版本，不然依照这个教程会有些问题(有些函数，变量之类的可能变了)</p><h3 id=12-下载主题><a href=#12-%e4%b8%8b%e8%bd%bd%e4%b8%bb%e9%a2%98 class=header-anchor></a><strong>1.2</strong> 下载主题</h3><p>hugo页面上方点击Themes<br>这里选择stack-3.26.0</p><hr><h2 id=2-准备工作><a href=#2-%e5%87%86%e5%a4%87%e5%b7%a5%e4%bd%9c class=header-anchor></a><strong>2.</strong> 准备工作</h2><h3 id=21-创建项目><a href=#21-%e5%88%9b%e5%bb%ba%e9%a1%b9%e7%9b%ae class=header-anchor></a><strong>2.1</strong> 创建项目</h3><p>cmd使用命令 <code>hugo new site name</code>(注意在hugo所在文件夹使用cmd)<br>ex. <code>hugo new site blog</code></p><h3 id=22-设置主题><a href=#22-%e8%ae%be%e7%bd%ae%e4%b8%bb%e9%a2%98 class=header-anchor></a><strong>2.2</strong> 设置主题</h3><p>将上面下载好的主题解压到 hugo/blog/themes</p><h3 id=23-使用样例><a href=#23-%e4%bd%bf%e7%94%a8%e6%a0%b7%e4%be%8b class=header-anchor></a><strong>2.3</strong> 使用样例</h3><p><strong>1.</strong> 在解压的主题文件中可以发现exampleSite，这是示例文件<br>将其中的content和hugo.yaml复制到项目主文件夹(也就是hugo/blog)<br><strong>2.</strong> 删除多余的hugo.toml<br><strong>3.</strong> 将主题文件夹多余的版本号去除(因为要和配置文件中匹配)<br><strong>4.</strong> 把blog/content/post/rich-content删除(里面有一些链接可能无法访问会导致不能正常启动)</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=c># hugo.yaml</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>theme</span><span class=p>:</span><span class=w> </span><span class=l>hugo-theme-stack</span><span class=w>
+</span></span></span></code></pre></td></tr></table></div></div><p><img src=/blog/p/001/assets/image-1.png width=1364 height=156 srcset="/blog/p/001/assets/image-1_hu123750753053067149.png 480w, /blog/p/001/assets/image-1_hu14782472331622712161.png 1024w" loading=lazy decoding=async alt=theme class=article-content-image data-lightbox-src=/blog/p/001/assets/image-1.png></p><h3 id=24-启动><a href=#24-%e5%90%af%e5%8a%a8 class=header-anchor></a><strong>2.4</strong> 启动</h3><p><strong>1.</strong> 将hugo目录中的hugo.exe复制到blog中(因为没有配置环境变量又要使用hugo)<br>也没有必要配置环境变量，直接使用也方便<br><strong>2.</strong> 进入新建的项目 <code>cd blog</code><br><strong>3.</strong> 使用命令 <code>hugo server -D</code> 启动<br><strong>4.</strong> 进入提示的网址</p><p><img src=/blog/p/001/assets/image-2.png width=2310 height=894 srcset="/blog/p/001/assets/image-2_hu12898517455977428051.png 480w, /blog/p/001/assets/image-2_hu1400918210462071311.png 1024w" loading=lazy decoding=async alt=web class=article-content-image data-lightbox-src=/blog/p/001/assets/image-2.png></p><p>按住ctrl点击就可以浏览器打开</p><p><img src=/blog/p/001/assets/image-3.png width=3200 height=1730 srcset="/blog/p/001/assets/image-3_hu6853771828445262963.png 480w, /blog/p/001/assets/image-3_hu13631806756268730898.png 1024w" loading=lazy decoding=async alt=example class=article-content-image data-lightbox-src=/blog/p/001/assets/image-3.png></p><p>差不多这样(有些有改了没有复原，不要在意~)</p><hr><h2 id=3-修改配置><a href=#3-%e4%bf%ae%e6%94%b9%e9%85%8d%e7%bd%ae class=header-anchor></a><strong>3.</strong> 修改配置</h2><h3 id=31-完整的hugoyaml配置文件><a href=#31-%e5%ae%8c%e6%95%b4%e7%9a%84hugoyaml%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6 class=header-anchor></a><strong>3.1</strong> 完整的hugo.yaml配置文件</h3><p><a class=link href=/blog/p/001/resources/hugo.txt target=_blank rel=noopener>hugo.yaml</a></p><h3 id=32-详细说明><a href=#32-%e8%af%a6%e7%bb%86%e8%af%b4%e6%98%8e class=header-anchor></a><strong>3.2</strong> 详细说明</h3><p><strong>1.</strong> baseurl 下面配置github自动部署有用<br><strong>2.</strong> languageCode 网站的语言，告诉浏览器自己用的是什么语言<br><strong>3.</strong> theme 使用的主题<br><strong>4.</strong> paginate 分页，每一页有几个<br><strong>5.</strong> title 名字<br>浏览器标签这里</p><p><img src=/blog/p/001/assets/image-4.png width=788 height=107 srcset="/blog/p/001/assets/image-4_hu11627856278961745279.png 480w, /blog/p/001/assets/image-4_hu14099004218357875190.png 1024w" loading=lazy decoding=async alt=title class=article-content-image data-lightbox-src=/blog/p/001/assets/image-4.png></p><p><strong>6.</strong> copyright 版权声明<br>下面这里</p><p><img src=/blog/p/001/assets/image-5.png width=1167 height=250 srcset="/blog/p/001/assets/image-5_hu16529180830008213252.png 480w, /blog/p/001/assets/image-5_hu2164049805202367588.png 1024w" loading=lazy decoding=async alt=copyright class=article-content-image data-lightbox-src=/blog/p/001/assets/image-5.png></p><p><strong>7.</strong> DefaultContentLanguage 创建的默认语言<br>hugo文件格式为index.language.md<br>如果你写为index.md那么默认就是index.DefaultContentLanguage.md<br><strong>8.</strong> hasCJKLanguage 如果使用中文就改为true<br><strong>9.</strong> languages 配置不同语言显示的主页</p><p><img src=/blog/p/001/assets/image-6.png width=517 height=237 srcset="/blog/p/001/assets/image-6_hu3007857035469143887.png 480w, /blog/p/001/assets/image-6_hu2868887333466595076.png 1024w" loading=lazy decoding=async alt=languages class=article-content-image data-lightbox-src=/blog/p/001/assets/image-6.png></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>zh-cn</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>languageName</span><span class=p>:</span><span class=w> </span><span class=l>简体中文</span><span class=w> </span><span class=c>#左下角语言选项的名字</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>title</span><span class=p>:</span><span class=w> </span><span class=l>morningCPU</span><span class=w> </span><span class=c># 名字</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>weight</span><span class=p>:</span><span class=w> </span><span class=m>2</span><span class=w> </span><span class=c># 权重，选项里排第几个</span><span class=w>
+</span></span></span></code></pre></td></tr></table></div></div><p><strong>params</strong> 其他设置</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>favicon</span><span class=p>:</span><span class=w> </span><span class=c># 网页标签图标,放在 blog/static/</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>footer</span><span class=p>:</span><span class=w> </span><span class=c># 角标</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>since</span><span class=p>:</span><span class=w> </span><span class=m>2026</span><span class=w> </span><span class=c>#开始时间</span><span class=w>
+</span></span></span></code></pre></td></tr></table></div></div><p>下面那里</p><p><img src=/blog/p/001/assets/image-7.png width=1063 height=182 srcset="/blog/p/001/assets/image-7_hu8230783005085364090.png 480w, /blog/p/001/assets/image-7_hu12093066239062272474.png 1024w" loading=lazy decoding=async alt=footer class=article-content-image data-lightbox-src=/blog/p/001/assets/image-7.png></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>sidebar</span><span class=p>:</span><span class=w> </span><span class=c># 侧边栏设置</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>emoji</span><span class=p>:</span><span class=w> </span><span class=l>🤠</span><span class=w> </span><span class=c>#头像旁的表情包</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>subtitle</span><span class=p>:</span><span class=w> </span><span class=l>一起记录知识！</span><span class=w> </span><span class=c># 名字下面的描述</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>avatar</span><span class=p>:</span><span class=w> </span><span class=c># 头像</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>enabled</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>local</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>src</span><span class=p>:</span><span class=w> </span><span class=l>img/avatar.png</span><span class=w> </span><span class=c># 放在 blog/assets/img/avatar.png</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>compact</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w> </span><span class=c># 紧凑模式,改为true更好看我觉得</span><span class=w>
+</span></span></span></code></pre></td></tr></table></div></div><ul><li>注意图片一定要是150*150的</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>article</span><span class=p>:</span><span class=w> </span><span class=c># 文章默认设置</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>headingAnchor</span><span class=p>:</span><span class=w> </span><span class=kc>false</span><span class=w> </span><span class=c>#标题左边的链接标签</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>math</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>toc</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w> </span><span class=c># 目录</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>readingTime</span><span class=p>:</span><span class=w> </span><span class=kc>false</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>license</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>enabled</span><span class=p>:</span><span class=w> </span><span class=kc>false</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>default</span><span class=p>:</span><span class=w> </span><span class=l>Licensed under CC BY-NC-SA 4.0</span><span class=w>
+</span></span></span></code></pre></td></tr></table></div></div><ul><li>这是默认设置，文章里面也可以设置并且优先级更高</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>widgets</span><span class=p>:</span><span class=w> </span><span class=c># 组件</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>homepage</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=nt>type</span><span class=p>:</span><span class=w> </span><span class=l>search</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=nt>type</span><span class=p>:</span><span class=w> </span><span class=l>archives</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>params</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>              </span><span class=nt>limit</span><span class=p>:</span><span class=w> </span><span class=m>5</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=nt>type</span><span class=p>:</span><span class=w> </span><span class=l>categories</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>params</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>              </span><span class=nt>limit</span><span class=p>:</span><span class=w> </span><span class=m>5</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>page</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=nt>type</span><span class=p>:</span><span class=w> </span><span class=l>toc</span><span class=w>
+</span></span></span></code></pre></td></tr></table></div></div><ul><li>左侧的选项，文章的目录</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>menu</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>main</span><span class=p>:</span><span class=w> </span><span class=p>[]</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>social</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=nt>identifier</span><span class=p>:</span><span class=w> </span><span class=l>github</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>GitHub</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>url</span><span class=p>:</span><span class=w> </span><span class=l>https://github.com/CaiJimmy/hugo-theme-stack</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>params</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>              </span><span class=nt>icon</span><span class=p>:</span><span class=w> </span><span class=l>brand-github</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=nt>identifier</span><span class=p>:</span><span class=w> </span><span class=l>zhihu</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>zhihu</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>url</span><span class=p>:</span><span class=w> </span><span class=l>https://www.zhihu.com/people/13-69-67-66/posts</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>params</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>              </span><span class=nt>icon</span><span class=p>:</span><span class=w> </span><span class=l>zhihu</span><span class=w>
+</span></span></span></code></pre></td></tr></table></div></div><ul><li>侧边栏的小图标</li><li>图标文件存在 blog/assets/icons</li><li>可以在 <a class=link href=https://tabler.io/icons target=_blank rel=noopener>Tabler Icons</a>
+下载图标</li></ul><hr><h2 id=4-使用博客><a href=#4-%e4%bd%bf%e7%94%a8%e5%8d%9a%e5%ae%a2 class=header-anchor></a><strong>4.</strong> 使用博客</h2><p><strong>1.</strong> 命令<code>hugo new content post/name/index.language.md</code>创建一个文件<br>ex. <code>hugo new content post/test/index.md</code> (因为设置了默认所以就不写language了)<br>(name是文件名，language是语言，md是文件格式)</p><p><img src=/blog/p/001/assets/image-8.png width=1415 height=87 srcset="/blog/p/001/assets/image-8_hu13560010343485419425.png 480w, /blog/p/001/assets/image-8_hu5780014599696949241.png 1024w" loading=lazy decoding=async alt=file class=article-content-image data-lightbox-src=/blog/p/001/assets/image-8.png></p><p><strong>2.</strong> 可以使用code或者其他打开目录<br>这里就 <code>code E:\\library\\hugo\\blog\\content\\post\\test</code></p><p><strong>3.</strong> 创建模版<br>打开index.md会发现已经有内容了，这是因为有模版<br>模版是 blog/archetypes/default.md<br>可以使用下面这个模版</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-markdown data-lang=markdown><span class=line><span class=cl>+++
+</span></span><span class=line><span class=cl>author = &#34;morning&#34;
+</span></span><span class=line><span class=cl>title = &#39;{{ replace .File.ContentBaseName &#34;-&#34; &#34; &#34; | title }}&#39;
+</span></span><span class=line><span class=cl>description = &#34;&#34;
+</span></span><span class=line><span class=cl>date = {{ .Date }}
+</span></span><span class=line><span class=cl>image = &#34;title.jpg&#34;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>readingtime = false
+</span></span><span class=line><span class=cl>math = true
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>categories = []
+</span></span><span class=line><span class=cl>tags = []
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>slug= &#34;&#34;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>series = []
+</span></span><span class=line><span class=cl>aliases = []
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>draft = true
+</span></span><span class=line><span class=cl>+++
+</span></span></code></pre></td></tr></table></div></div><hr><h2 id=5-github自动部署><a href=#5-github%e8%87%aa%e5%8a%a8%e9%83%a8%e7%bd%b2 class=header-anchor></a><strong>5.</strong> github自动部署</h2><h3 id=51-github创建仓库><a href=#51-github%e5%88%9b%e5%bb%ba%e4%bb%93%e5%ba%93 class=header-anchor></a><strong>5.1</strong> github创建仓库</h3><p>比如仓库名为blog</p><h3 id=52-设置访问token><a href=#52-%e8%ae%be%e7%bd%ae%e8%ae%bf%e9%97%aetoken class=header-anchor></a><strong>5.2</strong> 设置访问token</h3><p>头像->settings->Developer settings->personal access tokens->tokens(basic)</p><h3 id=53-设置仓库变量><a href=#53-%e8%ae%be%e7%bd%ae%e4%bb%93%e5%ba%93%e5%8f%98%e9%87%8f class=header-anchor></a><strong>5.3</strong> 设置仓库变量</h3><ul><li>用于安全访问token<br>仓库->settings->secrets and variables->actions->repository secrets</li></ul><h3 id=54-本地创建仓库><a href=#54-%e6%9c%ac%e5%9c%b0%e5%88%9b%e5%bb%ba%e4%bb%93%e5%ba%93 class=header-anchor></a><strong>5.4</strong> 本地创建仓库</h3><ul><li>在blog下创建仓库</li><li>关联远程仓库</li></ul><h3 id=55-创建工作流配置文件><a href=#55-%e5%88%9b%e5%bb%ba%e5%b7%a5%e4%bd%9c%e6%b5%81%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6 class=header-anchor></a><strong>5.5</strong> 创建工作流配置文件</h3><ul><li>创建blog/.github/workflows/blog.yaml</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>deploy</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=c># 代码提交到main分支时触发github action</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>on</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>push</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>branches</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=l>main</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>jobs</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>deploy</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>runs-on</span><span class=p>:</span><span class=w> </span><span class=l>ubuntu-latest</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>steps</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Checkout</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>actions/checkout@v4</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>with</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>              </span><span class=nt>fetch-depth</span><span class=p>:</span><span class=w> </span><span class=m>0</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Setup Hugo</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>peaceiris/actions-hugo@v3</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>with</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>              </span><span class=nt>hugo-version</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;0.131.0&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>              </span><span class=nt>extended</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Build Web</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>run</span><span class=p>:</span><span class=w> </span><span class=l>hugo -D</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Deploy Web</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>peaceiris/actions-gh-pages@v4</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>with</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>              </span><span class=nt>PERSONAL_TOKEN</span><span class=p>:</span><span class=w> </span><span class=l>${{ secrets.token }}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>              </span><span class=nt>EXTERNAL_REPOSITORY</span><span class=p>:</span><span class=w> </span><span class=l>morningCPU/blog</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>              </span><span class=nt>PUBLISH_BRANCH</span><span class=p>:</span><span class=w> </span><span class=l>main</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>              </span><span class=nt>PUBLISH_DIR</span><span class=p>:</span><span class=w> </span><span class=l>./public</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>              </span><span class=nt>commit_message</span><span class=p>:</span><span class=w> </span><span class=l>auto deploy</span><span class=w>
+</span></span></span></code></pre></td></tr></table></div></div><ul><li>hugo-version，PERSONAL_TOKEN，EXTERNAL_REPOSITORY改一下</li></ul><h3 id=56-创建gitignore文件><a href=#56-%e5%88%9b%e5%bb%bagitignore%e6%96%87%e4%bb%b6 class=header-anchor></a><strong>5.6</strong> 创建.gitignore文件</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-txt data-lang=txt><span class=line><span class=cl>./public
+</span></span><span class=line><span class=cl>./resources
+</span></span><span class=line><span class=cl>./.hugo_build.lock
+</span></span><span class=line><span class=cl>./hugo.exe
+</span></span></code></pre></td></tr></table></div></div><h3 id=57-github设置action><a href=#57-github%e8%ae%be%e7%bd%aeaction class=header-anchor></a><strong>5.7</strong> github设置action</h3><p>仓库->settings->pages->branch->选择分支->save</p><h3 id=58-提交><a href=#58-%e6%8f%90%e4%ba%a4 class=header-anchor></a><strong>5.8</strong> 提交</h3><p>需要<code>git push -f</code>强制提交，因为action会改变提交内容<br>千万不要git pull，里面的内容是不一样的</p><hr><h2 id=6-目录的修改><a href=#6-%e7%9b%ae%e5%bd%95%e7%9a%84%e4%bf%ae%e6%94%b9 class=header-anchor></a><strong>6.</strong> 目录的修改</h2><ul><li>要注意要二级标题目录才生效<br>改为无序列表<br>blog\assets\scss\custom.scss中写入</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-scss data-lang=scss><span class=line><span class=cl><span class=cm>/* --- Hugo Stack TOC 无序列表自定义 --- */</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=cm>/* 1. 禁用原有的计数器数字 */</span>
+</span></span><span class=line><span class=cl><span class=nc>.widget--toc</span> <span class=nn>#TableOfContents</span> <span class=nt>ol</span> <span class=nt>li</span> <span class=nt>a</span><span class=nd>:first-of-type::before</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=na>content</span><span class=o>:</span> <span class=ni>none</span> <span class=k>!important</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=cm>/* 2. 还原列表的显示模式，并设置一级为实心圆 */</span>
+</span></span><span class=line><span class=cl><span class=nc>.widget--toc</span> <span class=nn>#TableOfContents</span> <span class=nt>ol</span><span class=o>,</span>
+</span></span><span class=line><span class=cl><span class=nc>.widget--toc</span> <span class=nn>#TableOfContents</span> <span class=nt>ul</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=na>list-style-type</span><span class=o>:</span> <span class=ni>disc</span> <span class=k>!important</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=cm>/* 一级圆点 */</span>
+</span></span><span class=line><span class=cl>    <span class=na>padding-left</span><span class=o>:</span> <span class=mi>1</span><span class=mf>.2</span><span class=kt>rem</span> <span class=k>!important</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=cm>/* 留出圆点空间 */</span>
+</span></span><span class=line><span class=cl>    <span class=na>counter-reset</span><span class=o>:</span> <span class=ni>none</span> <span class=k>!important</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=cm>/* 3. 强制每一行作为列表项显示（否则不显示圆点） */</span>
+</span></span><span class=line><span class=cl><span class=nc>.widget--toc</span> <span class=nn>#TableOfContents</span> <span class=nt>li</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=na>display</span><span class=o>:</span> <span class=ni>list-item</span> <span class=k>!important</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=na>margin</span><span class=o>:</span> <span class=mi>10</span><span class=kt>px</span> <span class=mi>0</span> <span class=mi>10</span><span class=kt>px</span> <span class=mi>10</span><span class=kt>px</span> <span class=k>!important</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=cm>/* 调整间距 */</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=cm>/* 4. 设置二级及以上层级为空心圆 */</span>
+</span></span><span class=line><span class=cl><span class=nc>.widget--toc</span> <span class=nn>#TableOfContents</span> <span class=nt>li</span><span class=o>&gt;</span><span class=nt>ol</span><span class=o>,</span>
+</span></span><span class=line><span class=cl><span class=nc>.widget--toc</span> <span class=nn>#TableOfContents</span> <span class=nt>li</span><span class=o>&gt;</span><span class=nt>ul</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=na>list-style-type</span><span class=o>:</span> <span class=ni>circle</span> <span class=k>!important</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=cm>/* 二级圆点 */</span>
+</span></span><span class=line><span class=cl>    <span class=na>padding-left</span><span class=o>:</span> <span class=mi>1</span><span class=mf>.5</span><span class=kt>rem</span> <span class=k>!important</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=cm>/* 层级缩进 */</span>
+</span></span><span class=line><span class=cl>    <span class=na>margin-top</span><span class=o>:</span> <span class=mi>5</span><span class=kt>px</span> <span class=k>!important</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=cm>/* 5. 针对 Stack 主题高亮条的微调（防止遮挡圆点） */</span>
+</span></span><span class=line><span class=cl><span class=nc>.widget--toc</span> <span class=nn>#TableOfContents</span> <span class=nt>li</span><span class=nc>.active-class</span><span class=o>&gt;</span><span class=nt>a</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=na>padding-left</span><span class=o>:</span> <span class=mi>5</span><span class=kt>px</span> <span class=k>!important</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=na>margin-left</span><span class=o>:</span> <span class=mi>0</span> <span class=k>!important</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><hr><h2 id=7-评论><a href=#7-%e8%af%84%e8%ae%ba class=header-anchor></a><strong>7.</strong> 评论</h2><h3 id=71-utterances><a href=#71-utterances class=header-anchor></a><strong>7.1</strong> utterances</h3><p><strong>1.</strong> github安装utterances<br>地址：https://github.com/apps/utterances<br><strong>2.</strong> 修改配置文件<br>hugo.yaml->comments->provider<br>打开并使用utterances<br>utterances设置仓库</p><h3 id=72-giscus><a href=#72-giscus class=header-anchor></a><strong>7.2</strong> giscus</h3><p><strong>1.</strong> github安装giscus<br><a class=link href=https://github.com/apps/giscus target=_blank rel=noopener>https://github.com/apps/giscus</a><br><strong>2.</strong> 配置<br><a class=link href=https://giscus.app/zh-CN target=_blank rel=noopener>https://giscus.app/zh-CN</a><br><strong>3.</strong> 修改配置文件<br>hugo.yaml->comments->provider<br>打开并使用giscus<br>配置giscus<br><strong>4.</strong> 注意事项</p><ol><li>确保仓库是公开的</li><li>仓库开启discussions(仓库->settings->general->features)</li><li>配置映射关系pathname,discussion分类，其他默认就好</li></ol></section><footer class=article-footer><nav class=article-pager aria-label=相邻笔记><a class="article-pager-link article-pager-link--next" href=/blog/p/002/><span class=article-pager-label>较新的笔记 <span aria-hidden=true>→</span></span>
+<span class=article-pager-title>Tailwind CSS 使用笔记</span></a></nav><section class=article-share data-share-root data-share-url=https://morningCPU.github.io/blog/p/001/ data-share-draft=false aria-labelledby=article-share-title><div class=article-share-head><div><span class=article-share-kicker>SHARE / 分享</span><h2 class=article-share-title id=article-share-title>把这篇笔记分享出去</h2></div><a class=article-share-card-link href=/blog/share/share-card-base_hu7959442485195421316.png target=_blank rel=noopener>分享卡片预览 <span aria-hidden=true>↗</span></a></div><div class=article-share-actions><button type=button class=article-share-button data-share-copy>
+<svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg>
+<span data-copy-label>复制链接</span>
+</button>
+<button type=button class=article-share-button data-copy-image data-card-url=/blog/share/share-card-base_hu7959442485195421316.png>
+<svg class="icon icon-tabler icon-tabler-copy" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7m0 2.667A2.667 2.667.0 019.667 7h8.666A2.667 2.667.0 0121 9.667v8.666A2.667 2.667.0 0118.333 21H9.667A2.667 2.667.0 017 18.333z"/><path d="M4.012 16.737A2.005 2.005.0 013 15V5c0-1.1.9-2 2-2h10c.75.0 1.158.385 1.5 1"/></svg>
+<span data-card-copy-label>复制卡片</span></button></div><p class=article-share-feedback data-share-feedback role=status aria-live=polite></p></section><script src=/blog/js/article-share.min.ed9b8743e7e0b44a9a530863ea0833221a2154e8a0825dbe8f38a956162813a5.js integrity="sha256-7ZuHQ+fgtEqaUwhj6ggzIhohVOiggl2+jzipVhYoE6U=" defer></script><section class=article-tags><a href=/blog/tags/github-actions/>GitHub Actions</a>
+<a href=/blog/tags/%E9%9D%99%E6%80%81%E7%AB%99%E7%82%B9/>静态站点</a>
+<a href=/blog/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/>自动化部署</a></section><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>本文采用 <a class=link href=https://creativecommons.org/licenses/by-nc-sa/4.0/ target=_blank rel=noopener>CC BY-NC-SA 4.0</a>
+许可协议。</span></section></footer><link rel=stylesheet href=/blog/katex/katex.min.css><script defer src=/blog/katex/katex.min.js></script><script defer src=/blog/katex/contrib/auto-render.min.js></script><script>window.addEventListener("DOMContentLoaded",()=>{if(typeof renderMathInElement!="function")return;renderMathInElement(document.querySelector(".article-content")||document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"],throwOnError:!1})})</script></article><script src=https://giscus.app/client.js data-repo=morningCPU/blog data-repo-id=R_kgDORCgPmw data-category=Announcements data-category-id=DIC_kwDORCgPm84C1inE data-mapping=pathname data-strict=0 data-reactions-enabled=1 data-emit-metadata=0 data-input-position=top data-theme=light data-lang=en crossorigin=anonymous async></script><script>function setGiscusTheme(e){let t=document.querySelector("iframe.giscus-frame");t&&t.contentWindow.postMessage({giscus:{setConfig:{theme:e}}},"https://giscus.app")}(function(){addEventListener("message",t=>{if(event.origin!=="https://giscus.app")return;e()}),window.addEventListener("onColorSchemeChange",e);function e(){setGiscusTheme(document.documentElement.dataset.scheme==="light"?"light":"dark_dimmed")}})()</script><script type=text/javascript src=/blog/js/article-image-lightbox.min.264c0002c4a1e356e06890eba030c415c9a1b285f22f5100e19e9aefb976468d.js integrity="sha256-JkwAAsSh41bgaJDroDDEFcmhsoXyL1EA4Z6a77l2Ro0=" defer></script><script type=text/javascript src=/blog/js/article-checklist.min.f6477e456c9e20799e6eca79c993b0ec2626b283f7b91c91a13de9712a825202.js integrity="sha256-9kd+RWyeIHmebsp5yZOw7CYmsoP3uRyRoT3pcSqCUgI=" defer></script><footer class=site-footer><section class=copyright>&copy;
+2026 morningCPU</section><section class=powerby>Learning ......<br>使用 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> 构建<br>主题 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.26.0>Stack</a></b> 由 <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> 设计</section></footer></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/blog/ts/main.js defer></script><div id=reading-progress aria-hidden=true></div><style>#reading-progress{position:fixed;top:0;left:0;right:0;height:2px;background:var(--academic-accent);transform:scaleX(0);transform-origin:left center;transition:transform .08s linear;z-index:9999}</style><script>(function(){const t=document.getElementById("reading-progress");if(!t)return;function e(){const e=document.documentElement,n=e.scrollHeight-e.clientHeight,s=n>0?e.scrollTop/n:0;t.style.transform="scaleX("+s+")"}document.addEventListener("scroll",e,{passive:!0}),window.addEventListener("resize",e),e()})()</script><script type=text/javascript src=/blog/js/academic-motion.min.a14fca978aecab0359d6d2d5fd8222abbccf511642401c9faa08654053adedea.js integrity="sha256-oU/Kl4rsqwNZ1tLV/YIiq7zPURZCQByfqghlQFOt7eo=" defer></script><button id=backTopBtn type=button aria-label=回到顶部>↑</button><style>#backTopBtn{position:fixed;right:var(--space-lg,24px);bottom:var(--space-lg,24px);width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--academic-rule);border-radius:2px;background:var(--academic-card);color:var(--academic-ink-soft);font-family:var(--academic-sans);font-size:18px;line-height:1;cursor:pointer;opacity:1;transform:translateY(0);transition:opacity .2s ease,transform .2s ease,background-color .2s ease,border-color .2s ease;z-index:99}#backTopBtn.is-hidden{opacity:0;pointer-events:none;transform:translateY(8px)}#backTopBtn:hover{background:var(--academic-paper-deep);border-color:var(--academic-rule-strong);color:var(--academic-ink)}#backTopBtn:active{transform:translateY(1px)}#backTopBtn:focus-visible{outline:2px solid var(--academic-accent);outline-offset:2px}@media(max-width:767px){#backTopBtn{right:var(--space-md,16px);bottom:var(--space-md,16px)}}</style><script>(function(){const e=document.getElementById("backTopBtn");if(!e)return;function t(){e.classList.toggle("is-hidden",window.scrollY<=420)}e.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})}),document.addEventListener("scroll",t,{passive:!0}),t()})()</script></body></html>

@@ -14,7 +14,7 @@ slug = "009"
 series = []
 aliases = []
 
-draft = true
+draft = false
 +++
 
 # 深度学习-梯度下降

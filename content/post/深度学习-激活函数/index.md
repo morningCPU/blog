@@ -14,7 +14,7 @@ slug = "008"
 series = []
 aliases = []
 
-draft = true
+draft = false
 +++
 
 # 深度学习-激活函数

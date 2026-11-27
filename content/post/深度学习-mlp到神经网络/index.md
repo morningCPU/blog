@@ -14,7 +14,7 @@ slug = "006"
 series = []
 aliases = []
 
-draft = true
+draft = false
 +++
 
 # 深度学习-MLP到神经网络

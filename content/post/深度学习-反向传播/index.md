@@ -14,7 +14,7 @@ slug = "007"
 series = []
 aliases = []
 
-draft = true
+draft = false
 +++
 
 # 神经网络-反向传播

@@ -14,7 +14,7 @@ slug = "010"
 series = []
 aliases = []
 
-draft = true
+draft = false
 +++
 
 # 深度学习-损失函数

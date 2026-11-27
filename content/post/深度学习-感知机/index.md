@@ -14,7 +14,7 @@ slug = "005"
 series = []
 aliases = []
 
-draft = true
+draft = false
 +++
 
 # 深度学习-感知机

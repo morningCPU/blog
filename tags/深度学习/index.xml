@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>深度学习 on morningCPU</title><link>https://morningCPU.github.io/blog/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</link><description>Recent content in 深度学习 on morningCPU</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>morningCPU</copyright><lastBuildDate>Fri, 27 Nov 2026 20:35:55 +0800</lastBuildDate><atom:link href="https://morningCPU.github.io/blog/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml"/><item><title>深度学习-损失函数</title><link>https://morningCPU.github.io/blog/p/010/</link><pubDate>Fri, 27 Nov 2026 20:35:55 +0800</pubDate><guid>https://morningCPU.github.io/blog/p/010/</guid><description>&lt;h1 id="深度学习-损失函数">&lt;a href="#%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0-%e6%8d%9f%e5%a4%b1%e5%87%bd%e6%95%b0" class="header-anchor">&lt;/a>深度学习-损失函数
+&lt;/h1>&lt;h2 id="1-回归任务">&lt;a href="#1-%e5%9b%9e%e5%bd%92%e4%bb%bb%e5%8a%a1" class="header-anchor">&lt;/a>1. 回归任务
+&lt;/h2>&lt;h3 id="11-mse">&lt;a href="#11-mse" class="header-anchor">&lt;/a>1.1 MSE
+&lt;/h3>&lt;p>均方误差，回归任务的默认损失&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/010/assets/1795783067271.png"
+width="607"
+height="150"
+srcset="https://morningCPU.github.io/blog/blog/p/010/assets/1795783067271_hu9973328972643499500.png 480w, https://morningCPU.github.io/blog/blog/p/010/assets/1795783067271_hu10778839703101356899.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795783067271"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/010/assets/1795783067271.png"
+>
+&lt;/p>
+&lt;p>有时候平方前面加个1/2让求导结果更好看&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/010/assets/1795783163337.png"
+width="1600"
+height="638"
+srcset="https://morningCPU.github.io/blog/blog/p/010/assets/1795783163337_hu8626657861470703626.png 480w, https://morningCPU.github.io/blog/blog/p/010/assets/1795783163337_hu11966121535486094005.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795783163337"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/010/assets/1795783163337.png"
+>
+&lt;/p>
+&lt;p>&lt;strong>MSE假设误差分布符合正态分布&lt;/strong>&lt;br>
+假设大部分的样本误差接近0&lt;/p>
+&lt;p>在这条假设下，最小化MSE就等价于最大似然估计&lt;/p>
+&lt;p>&lt;strong>缺点&lt;/strong>：&lt;br>
+平方让MSE对离群点过分敏感&lt;/p>
+&lt;p>&lt;strong>用于分类问题不合适&lt;/strong>：&lt;/p>
+&lt;ol>
+&lt;li>MSE会让差2比差1严重4倍，而在分类问题中，不同标签之间的区别是严重程度一样的&lt;/li>
+&lt;li>配置Sigmoid使用会让梯度消失&lt;/li>
+&lt;/ol>
+&lt;h2 id="2-分类任务">&lt;a href="#2-%e5%88%86%e7%b1%bb%e4%bb%bb%e5%8a%a1" class="header-anchor">&lt;/a>2. 分类任务
+&lt;/h2>&lt;h3 id="21-要求">&lt;a href="#21-%e8%a6%81%e6%b1%82" class="header-anchor">&lt;/a>2.1 要求
+&lt;/h3>&lt;ol>
+&lt;li>单调递减于输入&lt;br>
+因为对于分类任务，输入会是对这个预测正确性的打分p，p在0到1之间&lt;br>
+p越大损失越掉&lt;/li>
+&lt;li>越错惩罚要越大&lt;/li>
+&lt;li>多样本可加&lt;/li>
+&lt;/ol>
+&lt;blockquote>
+&lt;p>$-logp$ 就符合这些要求&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="22-交叉熵">&lt;a href="#22-%e4%ba%a4%e5%8f%89%e7%86%b5" class="header-anchor">&lt;/a>2.2 交叉熵
+&lt;/h3>$$
+H(p,q) = -\sum_x p(x)\log q(x)
+$$
+&lt;p>越小越合拍&lt;/p>
+&lt;p>p(x)是真实情况，q(x)是预测情况&lt;/p>
+&lt;p>&lt;strong>自信息&lt;/strong> : -logp(x)&lt;br>
+表达的是一件事情发生会带来的信息量的大小&lt;br>
+一件事情发生的概率越小,带来的信息就越多。反之一件事情大概率发生，那说明现在已经有很多关于这件事情的信息了，带来的新信息就会比较少,-log正好能够很好得表示&lt;/p>
+&lt;p>所以交叉熵可以像下面一样进行直观的理解：&lt;/p>
+&lt;p>p(x)是真实发生的概率，这个是固定的&lt;br>
+而在预测模型中，可以通过自信息调整这个概率的分量&lt;br>
+一件真实发生概率很大的事件，预测发生概率很小，那么计算得到的值就会很大&lt;br>
+但是也有一个问题：&lt;strong>交叉熵天然会更看重真实分布里高频的样本，低频样本就算预测翻车，它带来的惩罚也很轻&lt;/strong>，在类别不平衡任务里，需要额外改造&lt;/p>
+&lt;h3 id="23-二分类交叉熵">&lt;a href="#23-%e4%ba%8c%e5%88%86%e7%b1%bb%e4%ba%a4%e5%8f%89%e7%86%b5" class="header-anchor">&lt;/a>2.3 二分类交叉熵
+&lt;/h3>&lt;p>BCE&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/010/assets/1795785457144.png"
+width="866"
+height="157"
+srcset="https://morningCPU.github.io/blog/blog/p/010/assets/1795785457144_hu12423018502566417141.png 480w, https://morningCPU.github.io/blog/blog/p/010/assets/1795785457144_hu1811910803294325410.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795785457144"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/010/assets/1795785457144.png"
+>
+&lt;/p>
+&lt;p>其实就是交叉熵公式，用了点技巧把求和展开了&lt;/p>
+&lt;p>并且BCE加上sigmoid会让求导非常结果非常简单，并且去掉了 $\hat{y}(1-\hat{y})$&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/010/assets/1795785633672.png"
+width="1506"
+height="175"
+srcset="https://morningCPU.github.io/blog/blog/p/010/assets/1795785633672_hu15903298641145065155.png 480w, https://morningCPU.github.io/blog/blog/p/010/assets/1795785633672_hu14638098952959960289.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795785633672"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/010/assets/1795785633672.png"
+>
+&lt;/p>
+&lt;h3 id="24-多分类交叉熵">&lt;a href="#24-%e5%a4%9a%e5%88%86%e7%b1%bb%e4%ba%a4%e5%8f%89%e7%86%b5" class="header-anchor">&lt;/a>2.4 多分类交叉熵
+&lt;/h3>&lt;p>softmax+CE&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/010/assets/1795785710292.png"
+width="1492"
+height="98"
+srcset="https://morningCPU.github.io/blog/blog/p/010/assets/1795785710292_hu5143338788452444247.png 480w, https://morningCPU.github.io/blog/blog/p/010/assets/1795785710292_hu10719592588524521782.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795785710292"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/010/assets/1795785710292.png"
+>
+&lt;/p></description></item><item><title>深度学习-梯度下降</title><link>https://morningCPU.github.io/blog/p/009/</link><pubDate>Fri, 27 Nov 2026 19:24:20 +0800</pubDate><guid>https://morningCPU.github.io/blog/p/009/</guid><description>&lt;h1 id="深度学习-梯度下降">&lt;a href="#%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0-%e6%a2%af%e5%ba%a6%e4%b8%8b%e9%99%8d" class="header-anchor">&lt;/a>深度学习-梯度下降
+&lt;/h1>&lt;h2 id="1-导数">&lt;a href="#1-%e5%af%bc%e6%95%b0" class="header-anchor">&lt;/a>1. 导数
+&lt;/h2>&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/009/assets/1795778764805.png"
+width="1289"
+height="824"
+srcset="https://morningCPU.github.io/blog/blog/p/009/assets/1795778764805_hu17066255642986066832.png 480w, https://morningCPU.github.io/blog/blog/p/009/assets/1795778764805_hu11288812422775999671.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795778764805"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/009/assets/1795778764805.png"
+>
+&lt;/p>
+&lt;p>上升最快的方向&lt;br>
+所以梯度下降的话要加上负号&lt;/p>
+&lt;blockquote>
+&lt;p>使用梯度自带刹车：越靠近最低点梯度越小&lt;/p>
+&lt;p>永远最近：只是无限逼近&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="2-优化器">&lt;a href="#2-%e4%bc%98%e5%8c%96%e5%99%a8" class="header-anchor">&lt;/a>2. 优化器
+&lt;/h2>&lt;h3 id="21-bgd">&lt;a href="#21-bgd" class="header-anchor">&lt;/a>2.1 BGD
+&lt;/h3>&lt;p>每次用全部样本&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/009/assets/1795779414005.png"
+width="685"
+height="141"
+srcset="https://morningCPU.github.io/blog/blog/p/009/assets/1795779414005_hu16151713044692986741.png 480w, https://morningCPU.github.io/blog/blog/p/009/assets/1795779414005_hu9453528342197837967.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795779414005"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/009/assets/1795779414005.png"
+>
+&lt;/p>
+&lt;p>在进行更新时，会先完整遍历整个训练集，计算所有样本损失的平均梯度，再进行更新&lt;/p>
+&lt;p>&lt;strong>优点&lt;/strong>：&lt;br>
+方向准确，全局使用，几乎没有噪声&lt;br>
+&lt;strong>缺点&lt;/strong>：&lt;br>
+训练成本高&lt;br>
+缺少随机性，这样在鞍点或梯度小的地方可能跳不出来&lt;/p>
+&lt;h3 id="22-sgd">&lt;a href="#22-sgd" class="header-anchor">&lt;/a>2.2 SGD
+&lt;/h3>&lt;p>随机梯度下降，每次更新随机抽取一个样本用于更新&lt;/p>
+&lt;p>&lt;strong>优点&lt;/strong>：&lt;br>
+计算成本低，可以跳出局部最优&lt;br>
+&lt;strong>缺点&lt;/strong>：&lt;br>
+震荡剧烈，对离群样本敏感&lt;/p>
+&lt;h3 id="23-mini-batch-sgd">&lt;a href="#23-mini-batch-sgd" class="header-anchor">&lt;/a>2.3 Mini-batch SGD
+&lt;/h3>&lt;p>使用一部分样本&lt;/p>
+&lt;h3 id="24-momentum">&lt;a href="#24-momentum" class="header-anchor">&lt;/a>2.4 Momentum
+&lt;/h3>&lt;p>加上动量，会累积前面的梯度&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/009/assets/1795780938689.png"
+width="1276"
+height="762"
+srcset="https://morningCPU.github.io/blog/blog/p/009/assets/1795780938689_hu480512082454407957.png 480w, https://morningCPU.github.io/blog/blog/p/009/assets/1795780938689_hu16229536212620352937.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795780938689"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/009/assets/1795780938689.png"
+>
+&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/009/assets/1795780980134.png"
+width="606"
+height="251"
+srcset="https://morningCPU.github.io/blog/blog/p/009/assets/1795780980134_hu17007043702064689571.png 480w, https://morningCPU.github.io/blog/blog/p/009/assets/1795780980134_hu6917216837014004029.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795780980134"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/009/assets/1795780980134.png"
+>
+&lt;/p>
+&lt;p>&lt;strong>三大作用&lt;/strong>：&lt;/p>
+&lt;ol>
+&lt;li>加速方向一致&lt;/li>
+&lt;li>抑制震荡方向&lt;/li>
+&lt;li>可以穿过局部最优点&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>缺点&lt;/strong>：&lt;br>
+可能冲过头，在最优点附近小幅度震荡&lt;/p>
+&lt;h3 id="25-adagrad">&lt;a href="#25-adagrad" class="header-anchor">&lt;/a>2.5 AdaGrad
+&lt;/h3>&lt;p>让每个参数有自己的学习率&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/009/assets/1795781283989.png"
+width="1547"
+height="258"
+srcset="https://morningCPU.github.io/blog/blog/p/009/assets/1795781283989_hu1512646978928945169.png 480w, https://morningCPU.github.io/blog/blog/p/009/assets/1795781283989_hu5466070163578125567.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795781283989"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/009/assets/1795781283989.png"
+>
+&lt;/p>
+&lt;p>对于累加多的，把学习率变小，防止过度更新&lt;br>
+对于累加少的，把学习率变大，保证充分学习&lt;/p>
+&lt;p>&lt;strong>缺点&lt;/strong>：&lt;br>
+G一直累加，这会让学习率一直变小，梯度消失&lt;/p>
+&lt;h3 id="26-rmsprop">&lt;a href="#26-rmsprop" class="header-anchor">&lt;/a>2.6 RMSProp
+&lt;/h3>&lt;p>RMS : 均方根&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/009/assets/1795781809178.png"
+width="1548"
+height="251"
+srcset="https://morningCPU.github.io/blog/blog/p/009/assets/1795781809178_hu8578894435404283468.png 480w, https://morningCPU.github.io/blog/blog/p/009/assets/1795781809178_hu2364603801251423139.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795781809178"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/009/assets/1795781809178.png"
+>
+&lt;/p>
+&lt;p>使用最近的一些(我的理解是影响力，$\beta$ 就是来调节这个的)，而不是一直加&lt;/p>
+&lt;h3 id="27-adam">&lt;a href="#27-adam" class="header-anchor">&lt;/a>2.7 Adam
+&lt;/h3>&lt;p>把自适应学习率和动量相结合&lt;/p>
+&lt;h3 id="28-adamw">&lt;a href="#28-adamw" class="header-anchor">&lt;/a>2.8 AdamW
+&lt;/h3>&lt;p>对Adam的修正&lt;br>
+主要是Adam对正则化的处理是放在梯度处理里面的，但是这样的话自适应会让这个参数的调整不合理&lt;br>
+梯度大的参数衰减不足，梯度小的过渡衰减&lt;br>
+AdamW就把梯度更新和权重衰减相分离&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/009/assets/1795782288694.png"
+width="1531"
+height="244"
+srcset="https://morningCPU.github.io/blog/blog/p/009/assets/1795782288694_hu5963124081635743480.png 480w, https://morningCPU.github.io/blog/blog/p/009/assets/1795782288694_hu3667938931302055174.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795782288694"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/009/assets/1795782288694.png"
+>
+&lt;/p>
+&lt;h3 id="29-muon">&lt;a href="#29-muon" class="header-anchor">&lt;/a>2.9 Muon
+&lt;/h3>&lt;p>将奇异值拉平&lt;br>
+解决少数方向太强、垄断训练、学习率上不去的问题&lt;/p>
+&lt;h2 id="3-实践选择">&lt;a href="#3-%e5%ae%9e%e8%b7%b5%e9%80%89%e6%8b%a9" class="header-anchor">&lt;/a>3. 实践选择
+&lt;/h2>&lt;p>&lt;strong>CV任务&lt;/strong>：&lt;br>
+SGD + Momentum&lt;/p>
+&lt;p>&lt;strong>NLP/大模型&lt;/strong>&lt;br>
+AdamW , Muon&lt;/p>
+&lt;p>&lt;strong>快速试验&lt;/strong>&lt;br>
+Adam&lt;/p>
+&lt;p>&lt;strong>稀疏/在线/短周期&lt;/strong>&lt;br>
+比如广告CTR，传统NLP&lt;br>
+AdaGrad&lt;/p></description></item><item><title>深度学习-激活函数</title><link>https://morningCPU.github.io/blog/p/008/</link><pubDate>Fri, 27 Nov 2026 16:51:42 +0800</pubDate><guid>https://morningCPU.github.io/blog/p/008/</guid><description>&lt;h1 id="深度学习-激活函数">&lt;a href="#%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0-%e6%bf%80%e6%b4%bb%e5%87%bd%e6%95%b0" class="header-anchor">&lt;/a>深度学习-激活函数
+&lt;/h1>&lt;h2 id="1-非线性函数">&lt;a href="#1-%e9%9d%9e%e7%ba%bf%e6%80%a7%e5%87%bd%e6%95%b0" class="header-anchor">&lt;/a>1. 非线性函数
+&lt;/h2>&lt;p>为什么要同时使用线性函数和非线性函数呢，直接全部使用非线性函数不就好了&lt;/p>
+&lt;p>理论上是可以的，但是工程实现困难，想要一个好的用于非线性叠加的函数也很难&lt;br>
+而这种线性函数+激活函数的叠加方式简单好用，并且证明了可以拟合任意复杂函数&lt;/p>
+&lt;h2 id="2-好的激活函数">&lt;a href="#2-%e5%a5%bd%e7%9a%84%e6%bf%80%e6%b4%bb%e5%87%bd%e6%95%b0" class="header-anchor">&lt;/a>2. 好的激活函数
+&lt;/h2>&lt;ol>
+&lt;li>非线性&lt;/li>
+&lt;li>几乎处处可导(对于不可导点可以设定特定的值)&lt;/li>
+&lt;li>梯度值良好，不容易导致梯度消失或爆炸，最好就是接近1&lt;/li>
+&lt;li>输出零中心&lt;/li>
+&lt;li>计算便宜&lt;/li>
+&lt;li>单调、平滑、有界&lt;/li>
+&lt;/ol>
+&lt;h2 id="3-激活函数">&lt;a href="#3-%e6%bf%80%e6%b4%bb%e5%87%bd%e6%95%b0" class="header-anchor">&lt;/a>3. 激活函数
+&lt;/h2>&lt;h3 id="31-阶跃函数">&lt;a href="#31-%e9%98%b6%e8%b7%83%e5%87%bd%e6%95%b0" class="header-anchor">&lt;/a>3.1 阶跃函数
+&lt;/h3>&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/008/assets/1795771455679.png"
+width="848"
+height="432"
+srcset="https://morningCPU.github.io/blog/blog/p/008/assets/1795771455679_hu16649189896087822215.png 480w, https://morningCPU.github.io/blog/blog/p/008/assets/1795771455679_hu7778460559222507480.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795771455679"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/008/assets/1795771455679.png"
+>
+&lt;/p>
+&lt;p>就是用于感知机的&lt;br>
+这里可以看到导数为0，不可用于梯度下降，所以多层无法训练&lt;/p>
+&lt;h3 id="32-sigmoid">&lt;a href="#32-sigmoid" class="header-anchor">&lt;/a>3.2 Sigmoid
+&lt;/h3>&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/008/assets/1795771565198.png"
+width="855"
+height="222"
+srcset="https://morningCPU.github.io/blog/blog/p/008/assets/1795771565198_hu14392320148122821876.png 480w, https://morningCPU.github.io/blog/blog/p/008/assets/1795771565198_hu6337804096647565544.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795771565198"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/008/assets/1795771565198.png"
+>
+&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/008/assets/1795771572268.png"
+width="736"
+height="264"
+srcset="https://morningCPU.github.io/blog/blog/p/008/assets/1795771572268_hu14434827735099399663.png 480w, https://morningCPU.github.io/blog/blog/p/008/assets/1795771572268_hu9258204898613916955.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795771572268"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/008/assets/1795771572268.png"
+>
+&lt;/p>
+&lt;p>将区间控制在0到1&lt;/p>
+&lt;p>&lt;strong>缺点：&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>导数最大值过小，多层容易导致梯度消失，里面的参数不更新&lt;/li>
+&lt;li>所有的输出值都是正数，参数更新的灵活性下降&lt;br>
+每一个神经元上这参数的更新方向的符号都会相同(隐藏层的第一层不一定，因为前面输入层没有激活)，灵活性更弱&lt;/li>
+&lt;/ol>
+&lt;h3 id="33-tanh">&lt;a href="#33-tanh" class="header-anchor">&lt;/a>3.3 Tanh
+&lt;/h3>&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/008/assets/1795775065095.png"
+width="747"
+height="203"
+srcset="https://morningCPU.github.io/blog/blog/p/008/assets/1795775065095_hu6553493825697275955.png 480w, https://morningCPU.github.io/blog/blog/p/008/assets/1795775065095_hu9727577620505061685.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795775065095"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/008/assets/1795775065095.png"
+>
+&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/008/assets/1795775073548.png"
+width="719"
+height="248"
+srcset="https://morningCPU.github.io/blog/blog/p/008/assets/1795775073548_hu8249700142198326038.png 480w, https://morningCPU.github.io/blog/blog/p/008/assets/1795775073548_hu15947576758282463342.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795775073548"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/008/assets/1795775073548.png"
+>
+&lt;/p>
+&lt;ul>
+&lt;li>零对称&lt;/li>
+&lt;li>导数的最大值更大了&lt;/li>
+&lt;/ul>
+&lt;p>但是可以看到，对于导数，在输入偏大或输入偏小的时候导数都几乎为0，会导致梯度消失&lt;/p>
+&lt;h3 id="34-relu">&lt;a href="#34-relu" class="header-anchor">&lt;/a>3.4 ReLU
+&lt;/h3>&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/008/assets/1795776079466.png"
+width="813"
+height="230"
+srcset="https://morningCPU.github.io/blog/blog/p/008/assets/1795776079466_hu16067017839173788585.png 480w, https://morningCPU.github.io/blog/blog/p/008/assets/1795776079466_hu8972242345565059783.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795776079466"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/008/assets/1795776079466.png"
+>
+&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/008/assets/1795776085424.png"
+width="788"
+height="276"
+srcset="https://morningCPU.github.io/blog/blog/p/008/assets/1795776085424_hu160426908597255135.png 480w, https://morningCPU.github.io/blog/blog/p/008/assets/1795776085424_hu9241469603054050753.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795776085424"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/008/assets/1795776085424.png"
+>
+&lt;/p>
+&lt;h3 id="35-leaky-relu">&lt;a href="#35-leaky-relu" class="header-anchor">&lt;/a>3.5 Leaky ReLU
+&lt;/h3>&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/008/assets/1795776827171.png"
+width="856"
+height="108"
+srcset="https://morningCPU.github.io/blog/blog/p/008/assets/1795776827171_hu4851315739034234438.png 480w, https://morningCPU.github.io/blog/blog/p/008/assets/1795776827171_hu16127070302982935622.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795776827171"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/008/assets/1795776827171.png"
+>
+&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/008/assets/1795776841032.png"
+width="736"
+height="247"
+srcset="https://morningCPU.github.io/blog/blog/p/008/assets/1795776841032_hu8720632972974766035.png 480w, https://morningCPU.github.io/blog/blog/p/008/assets/1795776841032_hu7869501891682644425.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795776841032"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/008/assets/1795776841032.png"
+>
+&lt;/p>
+&lt;p>解决Deal ReLU的问题&lt;/p>
+&lt;h3 id="36-gelu">&lt;a href="#36-gelu" class="header-anchor">&lt;/a>3.6 GELU
+&lt;/h3>&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/008/assets/1795777102374.png"
+width="912"
+height="270"
+srcset="https://morningCPU.github.io/blog/blog/p/008/assets/1795777102374_hu12593240027464466969.png 480w, https://morningCPU.github.io/blog/blog/p/008/assets/1795777102374_hu637345668718942902.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795777102374"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/008/assets/1795777102374.png"
+>
+&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/008/assets/1795777124108.png"
+width="1318"
+height="444"
+srcset="https://morningCPU.github.io/blog/blog/p/008/assets/1795777124108_hu7996727148795825508.png 480w, https://morningCPU.github.io/blog/blog/p/008/assets/1795777124108_hu5475485168804422788.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795777124108"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/008/assets/1795777124108.png"
+>
+&lt;/p>
+&lt;h3 id="37-swishsilu">&lt;a href="#37-swishsilu" class="header-anchor">&lt;/a>3.7 Swish/SiLU
+&lt;/h3>&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/008/assets/1795777284857.png"
+width="848"
+height="77"
+srcset="https://morningCPU.github.io/blog/blog/p/008/assets/1795777284857_hu13625486959103267007.png 480w, https://morningCPU.github.io/blog/blog/p/008/assets/1795777284857_hu2238439396760669120.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795777284857"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/008/assets/1795777284857.png"
+>
+&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/008/assets/1795777305149.png"
+width="1324"
+height="454"
+srcset="https://morningCPU.github.io/blog/blog/p/008/assets/1795777305149_hu11165742581994856466.png 480w, https://morningCPU.github.io/blog/blog/p/008/assets/1795777305149_hu1708856577268987431.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795777305149"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/008/assets/1795777305149.png"
+>
+&lt;/p></description></item><item><title>深度学习-反向传播</title><link>https://morningCPU.github.io/blog/p/007/</link><pubDate>Fri, 27 Nov 2026 16:24:35 +0800</pubDate><guid>https://morningCPU.github.io/blog/p/007/</guid><description>&lt;h1 id="神经网络-反向传播">&lt;a href="#%e7%a5%9e%e7%bb%8f%e7%bd%91%e7%bb%9c-%e5%8f%8d%e5%90%91%e4%bc%a0%e6%92%ad" class="header-anchor">&lt;/a>神经网络-反向传播
+&lt;/h1>&lt;h2 id="1-诞生的环境">&lt;a href="#1-%e8%af%9e%e7%94%9f%e7%9a%84%e7%8e%af%e5%a2%83" class="header-anchor">&lt;/a>1. 诞生的环境
+&lt;/h2>&lt;p>多层神经网络训练困难&lt;/p>
+&lt;h2 id="2-简介">&lt;a href="#2-%e7%ae%80%e4%bb%8b" class="header-anchor">&lt;/a>2. 简介
+&lt;/h2>&lt;p>主要就是利用链式法则，从而知道每个参数对损失函数的偏导，从而知道要怎么更新&lt;/p>
+&lt;blockquote>
+&lt;p>一个理解是：&lt;br>
+通过求得每一个的偏导就知道怎么调整参数能够让损失最快下降&lt;/p>
+&lt;p>还有一个直观理解就是：&lt;br>
+能够知道每个参数对这个损失要负多大的责任&lt;br>
+为什么可以这样直观理解呢&lt;br>
+因为可以这样看：偏导越大，参数变化同一个幅度，损失的变化就越大，这样就可以直观的认为它的责任越大，当然这个值是相对值不是实际值，可以比较大小，但是没有实际意义&lt;/p>
+&lt;/blockquote>
+&lt;p>反向就是说，这个求偏导的过程中是，从后面到前面一步步求的，每一次的求导同时也可以使用到上一步求导得到的值&lt;/p>
+&lt;h2 id="3-模型训练的过程">&lt;a href="#3-%e6%a8%a1%e5%9e%8b%e8%ae%ad%e7%bb%83%e7%9a%84%e8%bf%87%e7%a8%8b" class="header-anchor">&lt;/a>3. 模型训练的过程
+&lt;/h2>&lt;ol>
+&lt;li>初始化参数&lt;/li>
+&lt;li>前向传播（先预测一下，要先得到误差才知道怎么更新）&lt;/li>
+&lt;li>计算损失&lt;/li>
+&lt;li>反向传播&lt;/li>
+&lt;li>梯度下降&lt;/li>
+&lt;li>迭代&lt;/li>
+&lt;li>得到模型&lt;/li>
+&lt;/ol></description></item><item><title>深度学习-MLP到神经网络</title><link>https://morningCPU.github.io/blog/p/006/</link><pubDate>Fri, 27 Nov 2026 16:05:17 +0800</pubDate><guid>https://morningCPU.github.io/blog/p/006/</guid><description>&lt;h1 id="深度学习-mlp到神经网络">&lt;a href="#%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0-mlp%e5%88%b0%e7%a5%9e%e7%bb%8f%e7%bd%91%e7%bb%9c" class="header-anchor">&lt;/a>深度学习-MLP到神经网络
+&lt;/h1>&lt;h2 id="1-多层感知机的一般结构">&lt;a href="#1-%e5%a4%9a%e5%b1%82%e6%84%9f%e7%9f%a5%e6%9c%ba%e7%9a%84%e4%b8%80%e8%88%ac%e7%bb%93%e6%9e%84" class="header-anchor">&lt;/a>1. 多层感知机的一般结构
+&lt;/h2>&lt;p>多层感知机 (MLP)&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/006/assets/1795767003707.png"
+width="796"
+height="402"
+srcset="https://morningCPU.github.io/blog/blog/p/006/assets/1795767003707_hu11860114436455938742.png 480w, https://morningCPU.github.io/blog/blog/p/006/assets/1795767003707_hu572715182009417518.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795767003707"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/006/assets/1795767003707.png"
+>
+&lt;/p>
+&lt;p>多个感知机之间按层排列，层间进行全连接&lt;/p>
+&lt;p>输入层接收原始特征，隐藏层进行中间的特征提取与运算，输出层给出最终的结果&lt;/p>
+&lt;h2 id="2-激活函数">&lt;a href="#2-%e6%bf%80%e6%b4%bb%e5%87%bd%e6%95%b0" class="header-anchor">&lt;/a>2. 激活函数
+&lt;/h2>&lt;p>多层线性变换的叠加依旧是一个线性变换&lt;/p>
+&lt;p>要增加激活函数，增加非线性&lt;/p></description></item><item><title>深度学习-感知机</title><link>https://morningCPU.github.io/blog/p/005/</link><pubDate>Fri, 27 Nov 2026 15:12:48 +0800</pubDate><guid>https://morningCPU.github.io/blog/p/005/</guid><description>&lt;h1 id="深度学习-感知机">&lt;a href="#%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0-%e6%84%9f%e7%9f%a5%e6%9c%ba" class="header-anchor">&lt;/a>深度学习-感知机
+&lt;/h1>&lt;h2 id="1-作用">&lt;a href="#1-%e4%bd%9c%e7%94%a8" class="header-anchor">&lt;/a>1. 作用
+&lt;/h2>&lt;p>给定一组输入数据，自动找到一条决策边界，将不同类别的数据正确区分&lt;/p>
+&lt;blockquote>
+&lt;p>包含了神经网络的所有核心要素 ： 输入、权重、求和、激活、误差反馈、参数更新&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="2-基本结构">&lt;a href="#2-%e5%9f%ba%e6%9c%ac%e7%bb%93%e6%9e%84" class="header-anchor">&lt;/a>2. 基本结构
+&lt;/h2>&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/005/assets/1795763961261.png"
+width="1805"
+height="531"
+srcset="https://morningCPU.github.io/blog/blog/p/005/assets/1795763961261_hu2981775223626039598.png 480w, https://morningCPU.github.io/blog/blog/p/005/assets/1795763961261_hu14767414644557055127.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795763961261"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/005/assets/1795763961261.png"
+>
+&lt;/p>
+&lt;p>对输入做加权求和，与阈值比较做出判断，根据错误反馈进行调整&lt;/p>
+&lt;blockquote>
+&lt;p>错误修正公式：&lt;br>
+$w_i \leftarrow w_i + \eta \cdot (y - \hat{y}) \cdot x_i$&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="3-重大问题">&lt;a href="#3-%e9%87%8d%e5%a4%a7%e9%97%ae%e9%a2%98" class="header-anchor">&lt;/a>3. 重大问题
+&lt;/h2>&lt;p>XOR(异或)问题无法解决&lt;br>
+这是因为异或线性不可分&lt;/p></description></item><item><title>深度学习-概述</title><link>https://morningCPU.github.io/blog/p/004/</link><pubDate>Fri, 27 Nov 2026 14:52:48 +0800</pubDate><guid>https://morningCPU.github.io/blog/p/004/</guid><description>&lt;h1 id="深度学习-概述">&lt;a href="#%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0-%e6%a6%82%e8%bf%b0" class="header-anchor">&lt;/a>深度学习-概述
+&lt;/h1>&lt;blockquote>
+&lt;p>学习来源 ： &lt;a class="link" href="https://www.bilibili.com/video/BV1NMVn6vE7o/" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1NMVn6vE7o/&lt;/a>
+&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="1-本质">&lt;a href="#1-%e6%9c%ac%e8%b4%a8" class="header-anchor">&lt;/a>1. 本质
+&lt;/h2>&lt;p>AI &amp;gt; ML &amp;gt; DL&lt;br>
+深度学习就是用多层神经网络提取特征学习数据这种数据学习方式进行学习的方法&lt;/p>
+&lt;h2 id="2-应用">&lt;a href="#2-%e5%ba%94%e7%94%a8" class="header-anchor">&lt;/a>2. 应用
+&lt;/h2>&lt;ul>
+&lt;li>计算机时间 CV&lt;/li>
+&lt;li>自然语言处理 NLP&lt;/li>
+&lt;li>智能语音&lt;/li>
+&lt;li>推荐系统&lt;/li>
+&lt;/ul>
+&lt;h2 id="3-与机器学习的不同">&lt;a href="#3-%e4%b8%8e%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0%e7%9a%84%e4%b8%8d%e5%90%8c" class="header-anchor">&lt;/a>3. 与机器学习的不同
+&lt;/h2>&lt;p>机器学习需要人工提取特征，这个过程本身是不容易的，深度学习可以通过多层神经网络自动完成这个特征提取的过程&lt;/p>
+&lt;p>也就是说机器学习处理的基本上是结构化数据，对于非结构化数据需要人工进行特征工程提取特征从而整理得到结构化数据，而深度学习就可以直接对非结构化数据进行学习&lt;/p>
+&lt;h2 id="4-实现原理">&lt;a href="#4-%e5%ae%9e%e7%8e%b0%e5%8e%9f%e7%90%86" class="header-anchor">&lt;/a>4. 实现原理
+&lt;/h2>&lt;p>逐层抽象&lt;/p>
+&lt;p>&lt;img src="https://morningCPU.github.io/blog/blog/p/004/assets/1795763089583.png"
+width="844"
+height="343"
+srcset="https://morningCPU.github.io/blog/blog/p/004/assets/1795763089583_hu10797764016112720370.png 480w, https://morningCPU.github.io/blog/blog/p/004/assets/1795763089583_hu11445397694942975931.png 1024w"
+loading="lazy"
+decoding="async"
+alt="1795763089583"
+class="article-content-image"
+data-lightbox-src="https://morningCPU.github.io/blog/blog/p/004/assets/1795763089583.png"
+>
+&lt;/p>
+&lt;p>主要就是三个层级：输入层，隐藏层，输出层&lt;br>
+逐层抽象提取特征，最后进行预测&lt;/p></description></item></channel></rss>

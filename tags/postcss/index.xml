@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PostCSS on morningCPU</title><link>https://morningCPU.github.io/blog/tags/postcss/</link><description>Recent content in PostCSS on morningCPU</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>morningCPU</copyright><lastBuildDate>Thu, 19 Feb 2026 17:41:44 +0800</lastBuildDate><atom:link href="https://morningCPU.github.io/blog/tags/postcss/index.xml" rel="self" type="application/rss+xml"/><item><title>Tailwind CSS 使用笔记</title><link>https://morningCPU.github.io/blog/p/002/</link><pubDate>Thu, 19 Feb 2026 17:41:44 +0800</pubDate><guid>https://morningCPU.github.io/blog/p/002/</guid><description>&lt;img src="https://morningCPU.github.io/blog/p/002/assets/title.webp" alt="Featured image of post Tailwind CSS 使用笔记" />&lt;h2 id="1-使用">&lt;a href="#1-%e4%bd%bf%e7%94%a8" class="header-anchor">&lt;/a>&lt;strong>1.&lt;/strong> 使用
+&lt;/h2>&lt;h3 id="11-要在nodejs中使用">&lt;a href="#11-%e8%a6%81%e5%9c%a8nodejs%e4%b8%ad%e4%bd%bf%e7%94%a8" class="header-anchor">&lt;/a>&lt;strong>1.1&lt;/strong> 要在node.js中使用
+&lt;/h3>&lt;p>&lt;code>npm init -y&lt;/code>&lt;/p>
+&lt;h3 id="12-安装一些需要的功能">&lt;a href="#12-%e5%ae%89%e8%a3%85%e4%b8%80%e4%ba%9b%e9%9c%80%e8%a6%81%e7%9a%84%e5%8a%9f%e8%83%bd" class="header-anchor">&lt;/a>&lt;strong>1.2&lt;/strong> 安装一些需要的功能
+&lt;/h3>&lt;p>tailwindcss,postcss-cli,autoprefixer&lt;br>
+autoprefixer是postcss-cli的一个插件，使用postcss是为了对tailwindcss进行解析&lt;br>
+注意要使用postcss的话tailwindcss要使用3.14.7版本，不然会冲突&lt;br>
+&lt;code>npm install tailwindcss@3.4.17 postcss-cli autoprefixer&lt;/code>&lt;/p>
+&lt;h3 id="13-初始化配置文件">&lt;a href="#13-%e5%88%9d%e5%a7%8b%e5%8c%96%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="header-anchor">&lt;/a>&lt;strong>1.3&lt;/strong> 初始化配置文件
+&lt;/h3>&lt;p>&lt;code>npx init tailwindcss&lt;/code>&lt;br>
+完善content(tailwind.config.js)&lt;br>
+就是给出要使用tailwindcss的文件&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">content&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;./public/**/*.{html,js}&amp;#34;&lt;/span>&lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="14-将加载-tailwind-的指令添加到-css-文件中">&lt;a href="#14-%e5%b0%86%e5%8a%a0%e8%bd%bd-tailwind-%e7%9a%84%e6%8c%87%e4%bb%a4%e6%b7%bb%e5%8a%a0%e5%88%b0-css-%e6%96%87%e4%bb%b6%e4%b8%ad" class="header-anchor">&lt;/a>&lt;strong>1.4&lt;/strong> 将加载 Tailwind 的指令添加到 CSS 文件中
+&lt;/h3>&lt;p>这里写在 /css/tailwind.css&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-css" data-lang="css">&lt;span class="line">&lt;span class="cl">&lt;span class="p">@&lt;/span>&lt;span class="k">tailwind&lt;/span> &lt;span class="nt">base&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">@&lt;/span>&lt;span class="k">tailwind&lt;/span> &lt;span class="nt">components&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">@&lt;/span>&lt;span class="k">tailwind&lt;/span> &lt;span class="nt">utilities&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="15-配置postcss">&lt;a href="#15-%e9%85%8d%e7%bd%aepostcss" class="header-anchor">&lt;/a>&lt;strong>1.5&lt;/strong> 配置postcss
+&lt;/h3>&lt;p>配置package.json&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;scripts&amp;#34;&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;build&amp;#34;&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s2">&amp;#34;postcss ./css/tailwind.css -o ./public/build/tailwind.css --watch&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">},&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>配置postcss.config.js&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="line">&lt;span class="cl">&lt;span class="kr">import&lt;/span> &lt;span class="nx">tailwindcss&lt;/span> &lt;span class="nx">from&lt;/span> &lt;span class="s1">&amp;#39;tailwindcss&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">import&lt;/span> &lt;span class="nx">autoprefixer&lt;/span> &lt;span class="nx">from&lt;/span> &lt;span class="s1">&amp;#39;autoprefixer&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">export&lt;/span> &lt;span class="k">default&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">plugins&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">tailwindcss&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">autoprefixer&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="16-运行bulid">&lt;a href="#16-%e8%bf%90%e8%a1%8cbulid" class="header-anchor">&lt;/a>&lt;strong>1.6&lt;/strong> 运行bulid
+&lt;/h3>&lt;p>&lt;code>npm run build&lt;/code>&lt;/p>
+&lt;h3 id="17-编写html引入build的tailwindcss">&lt;a href="#17-%e7%bc%96%e5%86%99html%e5%bc%95%e5%85%a5build%e7%9a%84tailwindcss" class="header-anchor">&lt;/a>&lt;strong>1.7&lt;/strong> 编写html,引入build的tailwind.css
+&lt;/h3>&lt;p>注意要引入build生成的tailwind.css文件&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">h1&lt;/span> &lt;span class="na">class&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;text-4xl font-bold text-center text-blue-500&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>Hello World!&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">h1&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h2 id="2-一些基本的用法">&lt;a href="#2-%e4%b8%80%e4%ba%9b%e5%9f%ba%e6%9c%ac%e7%9a%84%e7%94%a8%e6%b3%95" class="header-anchor">&lt;/a>&lt;strong>2.&lt;/strong> 一些基本的用法
+&lt;/h2>&lt;h3 id="21-基本">&lt;a href="#21-%e5%9f%ba%e6%9c%ac" class="header-anchor">&lt;/a>&lt;strong>2.1&lt;/strong> 基本
+&lt;/h3>&lt;p>bg,px,py,mx,my,mt,h,rounded,shadow&lt;/p>
+&lt;h3 id="22-响应式布局">&lt;a href="#22-%e5%93%8d%e5%ba%94%e5%bc%8f%e5%b8%83%e5%b1%80" class="header-anchor">&lt;/a>&lt;strong>2.2&lt;/strong> 响应式布局
+&lt;/h3>&lt;p>大小：default,sm,md,lg,xl&lt;br>
+sm:&amp;hellip;&lt;br>
+也就是在不同的大小有不同的样式&lt;/p>
+&lt;h3 id="23-鼠标悬停与焦点">&lt;a href="#23-%e9%bc%a0%e6%a0%87%e6%82%ac%e5%81%9c%e4%b8%8e%e7%84%a6%e7%82%b9" class="header-anchor">&lt;/a>&lt;strong>2.3&lt;/strong> 鼠标悬停与焦点
+&lt;/h3>&lt;ul>
+&lt;li>&lt;code>hover:&lt;/code>&lt;/li>
+&lt;li>&lt;code>focus:&lt;/code>&lt;/li>
+&lt;li>&lt;code>active:&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h3 id="24-自定义样式组">&lt;a href="#24-%e8%87%aa%e5%ae%9a%e4%b9%89%e6%a0%b7%e5%bc%8f%e7%bb%84" class="header-anchor">&lt;/a>&lt;strong>2.4&lt;/strong> 自定义样式组
+&lt;/h3>&lt;p>&lt;code>@apply&lt;/code>&lt;br>
+ex.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-css" data-lang="css">&lt;span class="line">&lt;span class="cl">&lt;span class="p">.&lt;/span>&lt;span class="nc">btn&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">@apply&lt;/span> &lt;span class="err">block&lt;/span> &lt;span class="err">text-center&lt;/span> &lt;span class="err">mt-6&lt;/span> &lt;span class="err">bg-blue-900&lt;/span> &lt;span class="err">w-28&lt;/span> &lt;span class="err">text-white&lt;/span> &lt;span class="err">mx-auto&lt;/span> &lt;span class="err">rounded-lg&lt;/span> &lt;span class="n">hover&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="n">bg-blue-200&lt;/span> &lt;span class="n">active&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="n">bg-red-600&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>注意写在&lt;code>@tailwind utilities;&lt;/code>上面,从而还能添加样式&lt;/li>
+&lt;/ul>
+&lt;h3 id="25-自定义系统">&lt;a href="#25-%e8%87%aa%e5%ae%9a%e4%b9%89%e7%b3%bb%e7%bb%9f" class="header-anchor">&lt;/a>&lt;strong>2.5&lt;/strong> 自定义系统
+&lt;/h3>&lt;p>在&lt;code>tailwind.config.js&lt;/code>的&lt;code>extend: {},&lt;/code>中添加&lt;br>
+有哪些可以通过 &lt;code>npx tailwindcss init tailwind-full.config.js --full&lt;/code>进行查看&lt;br>
+这个的作用是生成一个有完整默认配置的文件(不用担心会不会覆盖原来的，是一个新的文件，并且tailwind的默认配置文件名就是tailwein.config.js,要使用tailwind-full.config.js要使用 &lt;code>npx tailwindcss -c tailwind-full.config.js &lt;/code>)&lt;/p>
+&lt;h3 id="26-图标资源推荐">&lt;a href="#26-%e5%9b%be%e6%a0%87%e8%b5%84%e6%ba%90%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>&lt;strong>2.6&lt;/strong> 图标资源推荐
+&lt;/h3>&lt;ul>
+&lt;li>&lt;a class="link" href="https://heroicons.com/" target="_blank" rel="noopener">https://heroicons.com/&lt;/a>
+&lt;/li>
+&lt;/ul></description></item></channel></rss>
